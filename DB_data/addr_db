@@ -1,0 +1,38 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 화요일-2월-16-2021   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table ADDR_DB
+--------------------------------------------------------
+
+  CREATE TABLE "PROJECT_DB"."ADDR_DB" 
+   (	"NO" NUMBER(*,0), 
+	"ADDR" VARCHAR2(20 BYTE), 
+	"ADDR_NUMBER" VARCHAR2(20 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+
+   COMMENT ON COLUMN "PROJECT_DB"."ADDR_DB"."NO" IS 'addr_head_no';
+   COMMENT ON COLUMN "PROJECT_DB"."ADDR_DB"."ADDR" IS 'addr_head_name';
+REM INSERTING into PROJECT_DB.ADDR_DB
+SET DEFINE OFF;
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (1,'서울','02');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (2,'경기','031');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (3,'인천','032');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (4,'강원','033');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (5,'충남','041');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (6,'대전','042');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (7,'충복','043');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (8,'세종','044');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (9,'부산','051');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (10,'울산','052');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (11,'대구','053');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (12,'경북','054');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (13,'경남','055');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (14,'전남','061');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (15,'광주','062');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (16,'전북','063');
+Insert into PROJECT_DB.ADDR_DB (NO,ADDR,ADDR_NUMBER) values (17,'제주','064');
