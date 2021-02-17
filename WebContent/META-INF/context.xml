@@ -2,13 +2,13 @@
 <Context docBase="test"
 		path="/test"
 		reloadable="true"
-		source="org.eclipse.jst.jee.server:test">
+		source="org.eclipse.jst.jee.server:Korea">
 <Resource name="jdbc/oracle"
   type="javax.sql.DataSource"
   driverClassName="oracle.jdbc.driver.OracleDriver"
   url="jdbc:oracle:thin:@localhost:1521:xe"
-  username="gy1597"
-  password="gy1597"
+  username="project_db"
+  password="project_db"
   maxTotal="20"
   maxActive="20"
   maxIdle="3"

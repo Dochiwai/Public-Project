@@ -4,11 +4,11 @@
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form class = "join_form" action = "미정" method = "post"> 
 		<div class = "id">
-				<div class = "join_text_css">
+			<div class = "join_text_css">
 				아이디 
 			</div>
 			<div class = "join_id_text">
-				<input type = "text" name = "join_user_id">
+				<input type = "text" name = "join_user_id" required>
 			</div>
 		</div>
 		<div class = "password">
@@ -16,15 +16,23 @@
 				비밀번호 
 			</div>
 			<div class = "join_password_text">
-				<input type = "text" name = "join_user_password">
+				<input type = "text" name = "join_user_password" required>
 			</div>
 		</div>
-		<div class = "nickname">
+		<div class = "name">
 			<div class = "join_text_css">
-				닉네임 
+				이름 
 			</div>
-			<div class = "join_nickname_text">
-				<input type = "text" name = "join_user_nickname">
+			<div class = "join_name_text">
+				<input type = "text" name = "join_user_name" required>
+			</div>
+		</div>
+		<div class = "join_text_css">
+			<div class = "join_user_gender">
+				<input type="radio" name="join_user_gender" value="남자" checked="checked">남자
+				<input type="radio" name="join_user_gender" value="여자">여자
+				<label>나이</label>
+				<input type="text" name = "join_user_age" required>
 			</div>
 		</div>
 		<div class = "addr">
@@ -32,15 +40,35 @@
 				거주지 // 나중에 api를 추가할건데 일단 귀찮아서 패스.
 			</div>
 			<div class = "join_addr_text">
-				<input type = "text" name = "join_user_addr">
+				<select>
+					<c:forEach var = "list" items = "${headlist}" varStatus = "status">
+						<option name = "join_head_addr" value = "${headlist[stauts.index]}">${headlist[status.index]}</option>
+					</c:forEach>
+	
+				<%--
+					<c:forEach var = "headnumlist" items = "${headnumberlist}" varStatus = "status">  
+						<input type = "hidden" value = "${headnumberlist[status.index]}" name = "join_head_number">    
+					</c:forEach>	
+				--%>
+				
+					
+				</select>
 			</div>
 		</div>
 		<div class = "phone">
 			<div class = "join_text_css">
-				이메일 
+				핸드폰번호 
 			</div>
 			<div class = "join_phone_text">
-				<input type = "email" name = "join_user_phone">
+				<input type = "text" name = "join_user_phone" required>
+			</div>
+		</div>
+		<div class = "email">
+			<div class = "join_text_css">
+				이메일 
+			</div>
+			<div class = "join_email_text">
+				<input type = "email" name = "join_user_email" required>
 			</div>
 		</div>
 		<div class = "submit">

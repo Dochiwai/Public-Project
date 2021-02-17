@@ -15,7 +15,7 @@
         <div class = "side">
         	<ul>
         		<li>
-        			<input type = "button" value = "회원가입" onclick = "location.href = 'userjoin/UserJoinView.jsp'">
+        			<input type = "button" value = "회원가입" onclick = "location.href = '/test/userjoin/UserJoinViewLogic.jsp'">
         		</li>
         	</ul>
         </div>
