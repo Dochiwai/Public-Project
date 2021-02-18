@@ -77,11 +77,9 @@ public class AddrDao {
 		return list.isEmpty() ? null : list;
 	}
 	
-	public ArrayList<Detail_Addr_Dto> middle_search(String headname){
-		Detail_Addr_Dto dto = null;
-		ArrayList<Detail_Addr_Dto> list = new ArrayList<>();
+	public String middle_search(String headname){
 		sql = "SELECT * FROM ADDR_DB WHERE ADDR = ?";
-		String number;
+		String number = null;
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
@@ -89,18 +87,22 @@ public class AddrDao {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				number = rs.getString("addr_number");
-				System.out.println(number);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			close(con, ps, rs);
 		}
-		
+		return number;
+	}
+	public ArrayList<Detail_Addr_Dto> detailSearch(String middle_num) {
+		Detail_Addr_Dto dto = null;
+		ArrayList<Detail_Addr_Dto> list = new ArrayList<>();
 		sql = "SELECT * FROM ADDR_DETAIL WHERE ADDR_NUMBER = ?";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setString(1, middle_num);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				dto = new Detail_Addr_Dto();

@@ -1,6 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri ="http://java.sun.com/jsp/jstl/core" %>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+   //formAction s
+   
+      $('#selectID').change(function() {
+      var city = $("#selectID").val();
+         $.ajax({
+        	  type:'GET',
+        	  async:'true',
+        	  url: './AddrMiddleSearch.do?city=' + city,
+        	  data: city,
+        	  dataType: 'text',
+            success: function(data) {
+               $("#selectID2").empty();
+               $("#selectID2").append(data);             
+            }, 
+            error: function(xhr, status) {
+               alert(xhr + " : " + status);
+            }
+         }); // $.ajax
+         return false;
+      }); //formAction e
+   });
+
+</script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form class = "join_form" action = "미정" method = "post"> 
 		<div class = "id">
@@ -40,19 +66,16 @@
 				거주지 // 나중에 api를 추가할건데 일단 귀찮아서 패스.
 			</div>
 			<div class = "join_addr_text">
-				<select>
+				<select id = "selectID">
 					<c:forEach var = "list" items = "${headlist}" varStatus = "status">
-						<option name = "join_head_addr" value = "${headlist[stauts.index]}">${headlist[status.index]}</option>
+						<option name = "join_head_addr" value = "${list.head_addr}">${list.head_addr}</option>
 					</c:forEach>
-	
-				<%--
-					<c:forEach var = "headnumlist" items = "${headnumberlist}" varStatus = "status">  
-						<input type = "hidden" value = "${headnumberlist[status.index]}" name = "join_head_number">    
-					</c:forEach>	
-				--%>
-				
-					
 				</select>
+				광역시/도
+				<select id = "selectID2">
+					<option value = "" required></option>
+				</select>
+				시/군/구
 			</div>
 		</div>
 		<div class = "phone">
