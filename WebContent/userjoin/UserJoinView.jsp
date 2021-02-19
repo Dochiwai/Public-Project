@@ -26,7 +26,7 @@ $(function() {
    });
 $(function() {
 	   //formAction s  
-	      $('#Idcheck').click(function() {
+	      $('#user_input_id').keyup(function() {
 	      var userid = $("#user_input_id").val();
 	      var idcheck = "사용 가능한 아이디입니다.";
 	      var realid = "";
@@ -71,7 +71,6 @@ $(function() {
 				<input type = "text" name = "join_user_id" id = "user_input_id" required>
 			</div>
 			<div class = "id_overlap_check">
-				<input type = "button" value = "중복체크" id  = "Idcheck">
 				<div id = "id_overlap_result">
 					
 				</div>
