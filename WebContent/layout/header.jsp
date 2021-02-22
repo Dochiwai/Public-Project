@@ -27,7 +27,7 @@
         				<input type = "button" value = "로그인" onclick = "location.href = '/test/userlogin/LoginView.jsp'">
         			</c:if>
         			<c:if test = "${sessionScope.currentid != null }">
-        				<input type = "button" value = "로그아웃" onclick = "location.href = '미정이가누구야'">
+        				<input type = "button" value = "로그아웃" onclick = "location.href = '/test/userlogin/LogoutLogic.jsp'">
         			</c:if>
         		</li>
         	</ul>
