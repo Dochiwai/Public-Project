@@ -8,6 +8,6 @@
 	<c:if test = "${result != 1 }">
 		회원가입 실패
 	</c:if>
-	<br><input type = "button" value = "로그인하기" onclick = "location.href = '나중에 로그인페이지 만들면 할 것'"><br>
+	<br><input type = "button" value = "로그인하기" onclick = "location.href = '/test/userlogin/LoginView.jsp'"><br>
 	<input type = "button" value = "메인으로" onclick = "location.href = '/test/index.jsp'">
 <jsp:include page = "/layout/footer.jsp"></jsp:include>

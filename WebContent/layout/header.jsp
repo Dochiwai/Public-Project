@@ -19,7 +19,7 @@
         				<input type = "button" value = "회원가입" onclick = "location.href = '/test/userjoin/UserJoinViewLogic.jsp'">
         			</c:if>
         			<c:if test = "${sessionScope.currentid != null}"> 
-        				<input type = "button" value = "내정보수정" onclick = "location.href = '미정이가 누구야'">
+        				<input type = "button" value = "내정보수정" onclick = "location.href = '/test/profile/profilepasswordView.jsp'">
         			</c:if>
         		</li>
         		<li>

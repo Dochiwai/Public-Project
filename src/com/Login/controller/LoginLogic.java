@@ -36,7 +36,6 @@ public class LoginLogic extends HttpServlet {
 			session.setAttribute("currentaddr", dto.getUser_addr());
 			session.setAttribute("currentphone", dto.getUser_phone());
 			session.setAttribute("currentemail", dto.getUser_email());		
-			System.out.println("ㅎㅇ");
 		}				
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/userlogin/LoginResultView.jsp");

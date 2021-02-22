@@ -126,4 +126,33 @@ public class UserDao {
 	}
 	
 	
+	public UserDto profileEdit(String id, String password) {
+		UserDto dto = new UserDto();
+		sql = "SELECT * FROM USER_DB WHERE M_USERID = ? AND M_USERPASSWORD = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, password);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				dto = new UserDto();
+				dto.setUser_id(rs.getString("m_userid"));
+				dto.setUser_password(rs.getString("m_userpassword"));
+				dto.setUser_name(rs.getString("M_NAME"));
+				dto.setUser_age(rs.getString("M_AGE"));
+				dto.setUser_gender(rs.getString("M_GENDER"));
+				dto.setUser_addr(rs.getString("M_ADDR"));
+				dto.setUser_phone(rs.getString("M_PHONE"));
+				dto.setUser_email(rs.getString("M_EMAIL"));
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con,ps);
+		}
+		return dto;
+	}
+	
+	
 }
