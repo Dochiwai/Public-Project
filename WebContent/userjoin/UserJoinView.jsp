@@ -4,6 +4,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <%-- ajax 통신용 스크립트입니다. --%>
 <script type="text/javascript">
+
 $(function() {
    //formAction s  
       $('#selectID').change(function() {
@@ -38,7 +39,7 @@ $(function() {
 	        	  dataType: 'text',
 	            success: function(data) {
 	               $("#id_overlap_result").empty();
-	               $("#id_overlap_result").append(data);      
+	               $("#id_overlap_result").append(data);
 	               realid = data;
 	               yourealwantthisid(realid,idcheck); // 아이디를 체크하는 함수
 	            }, 
@@ -53,12 +54,38 @@ $(function() {
 	   //아이디 체크하는 함수
 	   function yourealwantthisid(realid ,idcheck){
 		   var joinbtn = document.getElementById('join_go');
+		   var pscheckreal = document.getElementById('password_result').innerText;  
+		   var pscheck = "비밀번호가 일치합니다.";
 		   if(realid == idcheck){
-			   joinbtn.disabled = false;
+			   if(pscheckreal == pscheck){
+				   joinbtn.disabled = false;
+			   }
 		   }else{
 			   joinbtn.disabled = true;
 		   }
 	   }
+	   //비밀번호 체크 함수
+	   $(function() {
+		      $('#password2').keyup(function() {
+		    	  var joinbtn = document.getElementById('join_go');
+		    	  var idcheckreal = document.getElementById('id_overlap_result').innerText;
+		    	  var idcheck = "사용 가능한 아이디입니다.";
+		    	  var ps1 = $("#password1").val();
+		    	  var ps2 = $("#password2").val();
+		    	  if(ps1 == ps2){
+		    		  $("#password_result").empty();
+		    		  $("#password_result").append("비밀번호가 일치합니다.");
+		    		  if(idcheckreal == idcheck){
+		    			  joinbtn.disabled = false;
+		    		  }
+		    	  }else{
+		    		  $("#password_result").empty();
+		    		  $("#password_result").append("비밀번호가 하지않습니다.");
+		    		  joinbtn.disabled = true;
+		    	  }
+		      return false;
+		      }); //formAction e
+		   });
 </script>
 <%-- submit 버튼용 스크립트입니다. --%>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
@@ -81,7 +108,16 @@ $(function() {
 				비밀번호 
 			</div>
 			<div class = "join_password_text">
-				<input type = "password" name = "join_user_password" required>
+				<input type = "password" name = "join_user_password" id = "password1" required>
+			</div>
+			<div class = "join_text_css">
+				비밀번호 한번더~
+			</div>
+			<div class = "join_password_text">
+				<input type = "password" name = "join_user_password_onemore" id = "password2" required>
+			</div>
+			<div class = "join_password_equel_result" id = "password_result">
+				
 			</div>
 		</div>
 		<div class = "name">

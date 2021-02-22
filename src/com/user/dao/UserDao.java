@@ -8,6 +8,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.user.dto.UserDto;
+
 public class UserDao {
 	private static UserDao dao;
 	private java.sql.Connection con;
@@ -52,6 +54,8 @@ public class UserDao {
 	}
 	
 	
+	//회원가입
+	
 	public int join(String id, String password, String name, int age, String gender, String addr, String phone,String email) {
 		int result = -1;
 		sql = "INSERT INTO USER_DB VALUES(?,?,?,?,?,?,?,?)";
@@ -75,6 +79,7 @@ public class UserDao {
 		return result;
 	}
 
+//	아이디체크
 	public int idoverlapcheck(String user_id) {
 		int result = -1;
 		sql = "SELECT * FROM USER_DB WHERE M_USERID = ?";
@@ -89,6 +94,35 @@ public class UserDao {
 			close(con, ps);
 		}
 		return result;
+	}
+	
+//	로그인
+	public UserDto login(String id, String password) {
+		UserDto dto = null;
+		sql = "SELECT * FROM USER_DB WHERE M_USERID = ? AND M_USERPASSWORD = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, password);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				dto = new UserDto();
+				dto.setUser_id(rs.getString("m_userid"));
+				dto.setUser_password(rs.getString("m_userpassword"));
+				dto.setUser_name(rs.getString("M_NAME"));
+				dto.setUser_age(rs.getString("M_AGE"));
+				dto.setUser_gender(rs.getString("M_GENDER"));
+				dto.setUser_addr(rs.getString("M_ADDR"));
+				dto.setUser_phone(rs.getString("M_PHONE"));
+				dto.setUser_email(rs.getString("M_EMAIL"));
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con,ps);
+		}
+		return dto;
 	}
 	
 	

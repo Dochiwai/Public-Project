@@ -15,7 +15,20 @@
         <div class = "side">
         	<ul>
         		<li>
-        			<input type = "button" value = "회원가입" onclick = "location.href = '/test/userjoin/UserJoinViewLogic.jsp'">
+        			<c:if test = "${sessionScope.currentid == null }">
+        				<input type = "button" value = "회원가입" onclick = "location.href = '/test/userjoin/UserJoinViewLogic.jsp'">
+        			</c:if>
+        			<c:if test = "${sessionScope.currentid != null}"> 
+        				<input type = "button" value = "내정보수정" onclick = "location.href = '미정이가 누구야'">
+        			</c:if>
+        		</li>
+        		<li>
+        			<c:if test = "${sessionScope.currentid == null }">
+        				<input type = "button" value = "로그인" onclick = "location.href = '/test/userlogin/LoginView.jsp'">
+        			</c:if>
+        			<c:if test = "${sessionScope.currentid != null }">
+        				<input type = "button" value = "로그아웃" onclick = "location.href = '미정이가누구야'">
+        			</c:if>
         		</li>
         	</ul>
         </div>
