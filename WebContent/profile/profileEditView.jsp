@@ -30,7 +30,7 @@ $(function() {
 			비밀번호가 잘못되었거나, 알 수 없는 오류가 발생하였습니다.
 		</c:when>
 		<c:otherwise>
-			<form action = "어디로가야하죠 아저씨" method = "post">
+			<form action = "ProfileEditDoLogic.jsp" method = "post">
 				<div class = "edit_id_text">
 					아이디
 				</div>
@@ -41,10 +41,10 @@ $(function() {
 					비밀번호
 				</div>
 				<div class = "edit_password">
-					<input type = "password" id = "edit_password_real">
+					<input type = "password" id = "edit_password_real" name = "re_edit_password" placeholder = "비밀번호 변경 시 입력">
 				</div>
 				<div class = "edit_password_onemore">
-					<input type = "password" id = "edit_password_onemore" name = "re_edit_password">
+					<input type = "password" id = "edit_password_onemore" name = "re_edit_password_onemore" placeholder = "비밀번호 변경 시 재입력">
 				</div>
 				<div class = "edit_name_text">
 					이름
@@ -75,18 +75,18 @@ $(function() {
 					주소
 				</div>
 				<div class = "edit_addr">
-					<select id = "edit_addr_head_id" name = "edit_addr_head">
+					<select id = "edit_addr_head_id" name = "re_edit_addr_head">
 						<c:forEach var = "list" items = "${headlist}">
 							<option value = "${list.head_addr}" <c:if test="${list.head_addr == sessionScope.currentaddr_head}"> selected</c:if>>${list.head_addr}</option>
 						</c:forEach>
 					</select>
 					광역시/도
-					<select id = "edit_addr_middle_id" name = "edit_addr_middle">
+					<select id = "edit_addr_middle_id" name = "re_edit_addr_middle">
 						<c:forEach var = "list" items = "${middlelist}">
 							<option value = "${list.detail_addr}" <c:if test="${list.detail_addr == sessionScope.currentaddr_middle}"> selected</c:if>>${list.detail_addr}</option>
 						</c:forEach>
 					</select>
-					<input type = "text" name = "re_edit_addr" value = "${sessionScope.currentaddr_end }" required>
+					<input type = "text" name = "re_edit_addr_end" value = "${sessionScope.currentaddr_end }" required>
 				</div>
 				<div class = "edit_phone_text">
 					핸드폰

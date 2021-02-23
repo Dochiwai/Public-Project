@@ -160,5 +160,41 @@ public class UserDao {
 		return dto;
 	}
 	
+//	업데이트
+	
+	public int profile_edit(String password, String name, int age, String gender, String addr_head,String addr_middle,String addr_end, String phone,String email, String id) {
+		int result = -1;
+		sql = "UPDATE USER_DB SET m_userpassword = ?, m_name = ?, m_age = ?, m_gender = ?, m_addr_head = ?, m_addr_middle = ?, m_addr_end = ?, m_phone = ?, m_email = ? WHERE m_userid = ?";
+		try {
+			System.out.println(password);
+			System.out.println(name);
+			System.out.println(gender);
+			System.out.println(age);
+			System.out.println(addr_head);
+			System.out.println(addr_middle);
+			System.out.println(addr_end);
+			System.out.println(phone);
+			System.out.println(email);
+			System.out.println(id);
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1,password);
+			ps.setString(2, name);
+			ps.setInt(3, age);
+			ps.setString(4, gender);
+			ps.setString(5,addr_head);
+			ps.setString(6,addr_middle);
+			ps.setString(7,addr_end);
+			ps.setString(8, phone);
+			ps.setString(9, email);
+			ps.setString(10, id);
+			result = ps.executeUpdate();			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}	
+		return result;
+	}
 	
 }
