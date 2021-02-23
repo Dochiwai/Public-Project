@@ -28,11 +28,10 @@ public class UserJoinLogic extends HttpServlet {
 		String addr_head = request.getParameter("join_addr_head");
 		String addr_middle = request.getParameter("join_addr_middle");
 		String addr_end = request.getParameter("join_addr_end");
-		String addr = (addr_head + addr_middle + addr_end);
 		String phone = request.getParameter("join_user_phone");
 		String email = request.getParameter("join_user_email");
 		
-		result = dao.join(id, password, name, age, gender, addr, phone, email);
+		result = dao.join(id, password, name, age, gender, addr_head,addr_middle,addr_end, phone, email);
 		request.setAttribute("result", result);
 		
 		

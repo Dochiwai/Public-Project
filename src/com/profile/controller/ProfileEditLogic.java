@@ -1,6 +1,7 @@
 package com.profile.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.user.dao.UserDao;
-import com.user.dto.UserDto;
+import com.addr.dao.AddrDao;
+import com.addr.dto.Detail_Addr_Dto;
+import com.addr.dto.Head_Addr_Dto;
 
 @WebServlet("/profile/ProfileEditLogic.jsp")
 public class ProfileEditLogic extends HttpServlet {
@@ -21,10 +23,18 @@ public class ProfileEditLogic extends HttpServlet {
 		HttpSession session = request.getSession();
 		String password = request.getParameter("profile_password");
 		String realpassword = (String)session.getAttribute("currentpassword");
+		String id = (String)session.getAttribute("currentid");
 		int result = -1;
 		
 		if(password.equals(realpassword)) {
 			result = 1;
+			AddrDao dao = AddrDao.getInstance();
+			ArrayList<Head_Addr_Dto> dto = dao.head_search();
+			request.setAttribute("headlist", dto);
+			AddrDao addrdao = AddrDao.getInstance();
+			String headnum = addrdao.middle_search(dto.get(0).getHead_addr());
+			ArrayList<Detail_Addr_Dto> middleaddrlist = addrdao.detailSearch(headnum);
+			request.setAttribute("middlelist", middleaddrlist);
 		}
 		
 		request.setAttribute("result", result);

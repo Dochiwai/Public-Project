@@ -95,6 +95,7 @@ public class AddrDao {
 		}
 		return number;
 	}
+	
 	public ArrayList<Detail_Addr_Dto> detailSearch(String middle_num) {
 		Detail_Addr_Dto dto = null;
 		ArrayList<Detail_Addr_Dto> list = new ArrayList<>();

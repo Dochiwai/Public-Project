@@ -21,7 +21,7 @@ public class AddrMiddleSearch extends HttpServlet {
 		response.getWriter().write(getJSON(city_name));
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doGet(request, response);
 	}
 
 	public String getJSON(String city_name) {

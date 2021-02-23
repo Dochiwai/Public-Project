@@ -20,6 +20,10 @@ public class UserJoinViewLogic extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AddrDao dao = AddrDao.getInstance();
 		ArrayList<Head_Addr_Dto> dto = dao.head_search();
+		request.setAttribute("headlist", dto);
+		RequestDispatcher rd = request.getRequestDispatcher("UserJoinView.jsp");
+		rd.forward(request, response);
+		
 //		ArrayList<String> headlist = new ArrayList<String>();
 //		ArrayList<String> headnumberlist = new ArrayList<String>();
 		
@@ -28,11 +32,7 @@ public class UserJoinViewLogic extends HttpServlet {
 ////			headnumberlist.add(dto.get(i).getHead_addr_number());
 //		}
 //	
-		request.setAttribute("headlist", dto);
 //		request.setAttribute("headnumberlist", headnumberlist);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("UserJoinView.jsp");
-		rd.forward(request, response);
 		
 		
 	}

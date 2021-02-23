@@ -33,7 +33,9 @@ public class LoginLogic extends HttpServlet {
 			session.setAttribute("currentname", dto.getUser_name());
 			session.setAttribute("currentage", dto.getUser_age());
 			session.setAttribute("currentgender", dto.getUser_gender());
-			session.setAttribute("currentaddr", dto.getUser_addr());
+			session.setAttribute("currentaddr_head", dto.getUser_addr_head());
+			session.setAttribute("currentaddr_middle", dto.getUser_addr_middle());
+			session.setAttribute("currentaddr_end", dto.getUser_addr_end());
 			session.setAttribute("currentphone", dto.getUser_phone());
 			session.setAttribute("currentemail", dto.getUser_email());		
 		}				

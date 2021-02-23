@@ -1,6 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri ="http://java.sun.com/jsp/jstl/core" %>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	      $('#edit_addr_head_id').change(function() {
+	      var city = $("#edit_addr_head_id").val();
+	         $.ajax({
+	        	  type:'GET',
+	        	  async:'true',
+	        	  url: '/test/userjoin/AddrMiddleSearch.do?city=' + city,
+	        	  data: city,
+	        	  dataType: 'text',
+	            success: function(data) {
+	               $("#edit_addr_middle_id").empty();
+	               $("#edit_addr_middle_id").append(data);        
+	            }, 
+	            error: function(xhr, status) {
+	            	alert(xhr + ":" + status );
+	            }
+	         }); 
+	         return false;
+	      }); 
+	   });
+</script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<c:choose>
 		<c:when test="${result == -1}">
@@ -52,7 +75,18 @@
 					주소
 				</div>
 				<div class = "edit_addr">
-					<input type = "text" value = "${sessionScope.currentaddr }" name = "re_edit_addr" required>
+					<select id = "edit_addr_head_id" name = "edit_addr_head">
+						<c:forEach var = "list" items = "${headlist}">
+							<option value = "${list.head_addr}" <c:if test="${list.head_addr == sessionScope.currentaddr_head}"> selected</c:if>>${list.head_addr}</option>
+						</c:forEach>
+					</select>
+					광역시/도
+					<select id = "edit_addr_middle_id" name = "edit_addr_middle">
+						<c:forEach var = "list" items = "${middlelist}">
+							<option value = "${list.detail_addr}" <c:if test="${list.detail_addr == sessionScope.currentaddr_middle}"> selected</c:if>>${list.detail_addr}</option>
+						</c:forEach>
+					</select>
+					<input type = "text" name = "re_edit_addr" value = "${sessionScope.currentaddr_end }" required>
 				</div>
 				<div class = "edit_phone_text">
 					핸드폰

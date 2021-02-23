@@ -56,9 +56,9 @@ public class UserDao {
 	
 	//회원가입
 	
-	public int join(String id, String password, String name, int age, String gender, String addr, String phone,String email) {
+	public int join(String id, String password, String name, int age, String gender, String addr_head,String addr_middle,String addr_end, String phone,String email) {
 		int result = -1;
-		sql = "INSERT INTO USER_DB VALUES(?,?,?,?,?,?,?,?)";
+		sql = "INSERT INTO USER_DB VALUES(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
@@ -67,9 +67,11 @@ public class UserDao {
 			ps.setString(3, name);
 			ps.setInt(4, age);
 			ps.setString(5, gender);
-			ps.setString(6,addr);
-			ps.setString(7, phone);
-			ps.setString(8, email);
+			ps.setString(6,addr_head);
+			ps.setString(7,addr_middle);
+			ps.setString(8,addr_end);
+			ps.setString(9, phone);
+			ps.setString(10, email);
 			result = ps.executeUpdate();			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -113,7 +115,9 @@ public class UserDao {
 				dto.setUser_name(rs.getString("M_NAME"));
 				dto.setUser_age(rs.getString("M_AGE"));
 				dto.setUser_gender(rs.getString("M_GENDER"));
-				dto.setUser_addr(rs.getString("M_ADDR"));
+				dto.setUser_addr_head(rs.getString("M_ADDR_HEAD"));
+				dto.setUser_addr_middle(rs.getString("M_ADDR_MIDDLE"));
+				dto.setUser_addr_end(rs.getString("M_ADDR_END"));
 				dto.setUser_phone(rs.getString("M_PHONE"));
 				dto.setUser_email(rs.getString("M_EMAIL"));
 			}			
@@ -142,7 +146,9 @@ public class UserDao {
 				dto.setUser_name(rs.getString("M_NAME"));
 				dto.setUser_age(rs.getString("M_AGE"));
 				dto.setUser_gender(rs.getString("M_GENDER"));
-				dto.setUser_addr(rs.getString("M_ADDR"));
+				dto.setUser_addr_head(rs.getString("M_ADDR_HEAD"));
+				dto.setUser_addr_middle(rs.getString("M_ADDR_MIDDLE"));
+				dto.setUser_addr_end(rs.getString("M_ADDR_END"));
 				dto.setUser_phone(rs.getString("M_PHONE"));
 				dto.setUser_email(rs.getString("M_EMAIL"));
 			}			
