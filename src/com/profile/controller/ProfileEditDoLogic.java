@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.user.dao.UserDao;
-import com.user.dto.UserDto;
 
 @WebServlet("/profile/ProfileEditDoLogic.jsp")
 public class ProfileEditDoLogic extends HttpServlet {

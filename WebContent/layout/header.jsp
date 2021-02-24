@@ -14,6 +14,11 @@
         </div>
         <div class = "side">
         	<ul>
+        		<c:if test = "${sessionScope.currentid != null }">
+        			<li>
+        				<input type = "button" value = "이력서관리" onclick = "location.href = '/test/resume/resumeMainView.jsp'">
+        			</li>
+        		</c:if>
         		<li>
         			<c:if test = "${sessionScope.currentid == null }">
         				<input type = "button" value = "회원가입" onclick = "location.href = '/test/userjoin/UserJoinViewLogic.jsp'">
