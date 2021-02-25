@@ -10,8 +10,8 @@
 				<td><input type = "text"></td>
 			</tr>
 			<tr>
-				<td rowspan = "4" align = "center">사진</td>
-				<td colspan="3">개인정보</td>
+				<td rowspan = "5" align = "center">사진</td>
+				<td colspan="2" align = "center" >개인정보</td>
 			</tr>
 			<tr>
 				<td>이름</td>
@@ -20,6 +20,11 @@
 			<tr>
 				<td>나이</td>
 				<td>18</td>
+				
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td>중성</td>
 			</tr>
 			<tr>
 				<td>주소</td>
@@ -29,23 +34,10 @@
 				<td colspan="4">원하는 직업군</td>		
 			</tr>
 			<tr>
-				<td>대충 내용들</td>
+				<td>
+					<input type = "text">
+				</td>
 			</tr>
 		</table>
-		
-		<%--
-		<div class = "re_title_text_css">
-			제목 : <input type = "text" name = "re_title" class = "re_title_name_css">
-		</div>
-		<div class = "re_picture_css">
-			이곳은 사진을 넣을곳입니다...
-		</div>
-		<div class = "re_profile_css">
-			이곳은 프로필 넣을곳입니다			
-		</div>
-		<div class = "re_wantjob_css">
-			이곳은 원하는직업을 넣을 공간입니다.
-		</div>
-		 --%>
 	</form>
 <jsp:include page = "/layout/footer.jsp"></jsp:include>
