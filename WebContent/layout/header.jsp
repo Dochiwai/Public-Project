@@ -10,7 +10,7 @@
 </head>
 	<body>	
         <div class = "header" align = "center">
-        	<h1><a href = "/test/index.jsp">허억허억</a></h1>
+        	<h1><a href = "/test/index.jsp">Public Test Project</a></h1>
         </div>
         <div class = "side">
         	<ul>
