@@ -7,7 +7,7 @@
 		<table border = "1" align = "center" style = "width :100%;" >
 			<tr>
 				<td>타이틀</td>
-				<td colspan ="6"><input type = "text" style= "width: 100%;"></td>
+				<td colspan ="6"><input type = "text" placeholder="이력서의 제목을 입력해주세요" style= "width: 100%;"></td>
 			</tr>
 			<tr>
 				<td rowspan = "4" align = "center">사진</td>
@@ -29,7 +29,7 @@
 				<td>주소</td>
 				<td>${sessionScope.currentaddr_head } ${sessionScope.currentaddr_middle} ${sessionScope.currentaddr_end}</td>
 				<td>이메일</td>
-				<td>${sessionScope.email}</td>
+				<td>${sessionScope.currentemail}</td>
 			</tr>
 			<tr>
 				<td colspan="7">원하는 직업군</td>		
