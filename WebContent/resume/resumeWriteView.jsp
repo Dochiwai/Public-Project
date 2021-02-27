@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+
+
+</script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form action = "" method = "post">
 		<table border = "1" align = "center" style = "width :100%;" >
@@ -31,12 +35,22 @@
 				<td>이메일</td>
 				<td>${sessionScope.currentemail}</td>
 			</tr>
+		</table>
+		<table border = "1" align ="center" style = "width : 100%;">
 			<tr>
 				<td colspan="7">원하는 직업군</td>		
 			</tr>
 			<tr>
-				<td>
-					
+				<td colspan = "1">
+					<c:forEach var = "list" items = "${list}" varStatus = "status">
+						<input type = "radio" name = "j_head" id = "j_head" value = "${list.j_id }">${list.j_head_job }<br>
+					</c:forEach>
+				</td>
+				<td colspan = "2">
+				
+				</td>
+				<td colspan = "4">
+				
 				</td>
 			</tr>
 		</table>

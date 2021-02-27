@@ -18,5 +18,5 @@
 			현재 등록된 이력서가 없어영 ㅠㅠ<br>
 		</c:otherwise>
 	</c:choose>
-	<input type = "button" value = "이력서 작성하기" onclick = "location.href = 'resumeWriteView.jsp'">
+	<input type = "button" value = "이력서 작성하기" onclick = "location.href = 'ResumeWriteViewLogic.jsp'">
 <jsp:include page = "/layout/footer.jsp"></jsp:include>

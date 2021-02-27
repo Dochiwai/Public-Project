@@ -9,6 +9,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.resume.dto.Resume_Head_Dto;
 import com.resume.dto.Resume_User_Dto;
 import com.user.dao.UserDao;
 
@@ -72,6 +73,27 @@ public class ResumeDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public ArrayList<Resume_Head_Dto> jog_head_list() {
+		Resume_Head_Dto dto = null;
+		ArrayList<Resume_Head_Dto> list = new ArrayList<Resume_Head_Dto>();
+		sql = "SELECT * FROM JOB_HEAD_DB";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				dto = new Resume_Head_Dto();
+				dto.setJ_id(rs.getString("j_id"));
+				dto.setJ_head_job(rs.getString("j_head"));
+				list.add(dto);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}
+		return list.isEmpty() ? null : list;
 	}
 	
 }
