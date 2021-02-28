@@ -3,8 +3,47 @@
 <%@ taglib prefix = "c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-
-
+$(function() {
+	   //formAction s  
+	      $(j_head_id).change(function() {
+	      var job_head=$('[name=j_head]:checked').val();
+	         $.ajax({
+	        	  type:'GET',
+	        	  async:'true',
+	        	  url: './ResumeMiddleSearch.jsp?job_head=' + job_head,
+	        	  data: job_head,
+	        	  dataType: 'text',
+	            success: function(data) {
+	               $("#job_middle").empty();
+	               $("#job_middle").append(data);        
+	            }, 
+	            error: function(xhr, status) {
+	            	alert(xhr + ":" + status)
+	            }
+	         }); // $.ajax
+	         return false;
+	      }); //formAction e
+	   });
+$(function() {
+	   //formAction s  
+	      $(job_middle).change(function() {
+	      var job_middle=$('[name=j_middle_name]:checked').val();
+	      alert(job_middle);
+	         $.ajax({
+	        	  type:'GET',
+	        	  async:'true',
+	        	  url: './ResumeEndSearch.jsp?job_middle=' + job_middle,
+	        	  data: job_middle,
+	        	  dataType: 'text',
+	            success: function(data) {    
+	            }, 
+	            error: function(xhr, status) {
+	            	alert(xhr + ":" + status)
+	            }
+	         }); // $.ajax
+	         return false;
+	      }); //formAction e
+	   });
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form action = "" method = "post">
@@ -41,15 +80,15 @@
 				<td colspan="7">원하는 직업군</td>		
 			</tr>
 			<tr>
-				<td colspan = "1">
+				<td colspan = "1"> 
 					<c:forEach var = "list" items = "${list}" varStatus = "status">
-						<input type = "radio" name = "j_head" id = "j_head" value = "${list.j_id }">${list.j_head_job }<br>
+						<input type = "radio" name = "j_head" id = "j_head_id" value = "${list.j_id }">${list.j_head_job }<br>
 					</c:forEach>
 				</td>
-				<td colspan = "2">
-				
+				<td colspan = "2" id = "job_middle" >
+					
 				</td>
-				<td colspan = "4">
+				<td colspan = "4" id = "job_end">
 				
 				</td>
 			</tr>
