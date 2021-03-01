@@ -9,6 +9,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.resume.dto.Resume_End_Dto;
 import com.resume.dto.Resume_Head_Dto;
 import com.resume.dto.Resume_Middle_Dto;
 import com.resume.dto.Resume_User_Dto;
@@ -109,6 +110,29 @@ public class ResumeDao {
 				dto = new Resume_Middle_Dto();
 				dto.setJ_id(rs.getString("j_id"));
 				dto.setJ_middle_job(rs.getString("j_middle"));
+				list.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}
+		
+		return list.isEmpty() ? null : list;
+	}
+	public ArrayList<Resume_End_Dto> endsearch(String middle_job) {
+		Resume_End_Dto dto = null;
+		ArrayList<Resume_End_Dto> list = new ArrayList<Resume_End_Dto>();
+		sql = "SELECT * FROM JOB_END_DB WHERE J_KEYID = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, middle_job);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				dto = new Resume_End_Dto();
+				dto.setJ_id(rs.getString("j_keyid"));
+				dto.setJ_end_job(rs.getString("j_end"));
 				list.add(dto);
 			}
 		}catch(Exception e) {

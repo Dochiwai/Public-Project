@@ -15,7 +15,8 @@ $(function() {
 	        	  dataType: 'text',
 	            success: function(data) {
 	               $("#job_middle").empty();
-	               $("#job_middle").append(data);        
+	               $("#job_middle").append(data);   
+	               $("#job_end").empty();
 	            }, 
 	            error: function(xhr, status) {
 	            	alert(xhr + ":" + status)
@@ -28,7 +29,6 @@ $(function() {
 	   //formAction s  
 	      $(job_middle).change(function() {
 	      var job_middle=$('[name=j_middle_name]:checked').val();
-	      alert(job_middle);
 	         $.ajax({
 	        	  type:'GET',
 	        	  async:'true',
@@ -36,6 +36,8 @@ $(function() {
 	        	  data: job_middle,
 	        	  dataType: 'text',
 	            success: function(data) {    
+		           $("#job_end").empty();
+		           $("#job_end").append(data);  
 	            }, 
 	            error: function(xhr, status) {
 	            	alert(xhr + ":" + status)
@@ -44,8 +46,18 @@ $(function() {
 	         return false;
 	      }); //formAction e
 	   });
+var count = 0;
+function add_textbox(){
+	if(count < 4){		
+		document.getElementById("self_id").innerHTML +=
+		"<td align = 'center'><input type = 'text' placeholder = '제목' name = 'title"+ count +"'><br><textarea name = 'area"+ count+"'></textarea></td>";	
+		count = count + 1;
+	}else{
+		alert("더이상 생성불가");
+	}
+}
 </script>
-<jsp:include page = "/layout/header.jsp"></jsp:include>
+<jsp:include page = "/layout/header.jsp"></jsp:include> 
 	<form action = "" method = "post">
 		<table border = "1" align = "center" style = "width :100%;" >
 			<tr>
@@ -91,6 +103,11 @@ $(function() {
 				<td colspan = "4" id = "job_end">
 				
 				</td>
+			</tr>
+		</table>
+		<table border = "1" id = "self_id" align = "center" style = "width : 100%;">
+			<tr>
+				<td align = "center">자기소개서 작성<br><input type = "button" value = "추가하기" onclick = "add_textbox()"></td>
 			</tr>
 		</table>
 	</form>
