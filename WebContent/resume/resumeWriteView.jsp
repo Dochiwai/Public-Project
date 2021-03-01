@@ -46,6 +46,16 @@ $(function() {
 	         return false;
 	      }); //formAction e
 	   });
+$(function() {
+	   //formAction s  
+	      $(ficture_id).change(function() {
+	      var ficture=$('ficture_id').val();
+	      var data = "<img scr = '"+data+"'>";
+	      $("#ficture_box").empty();
+	      $("#ficture_box").append(data);
+	         return false;
+	      }); //formAction e
+	   });
 var count = 0;
 function add_textbox(){
 	if(count < 4){		
@@ -65,7 +75,7 @@ function add_textbox(){
 				<td colspan ="6"><input type = "text" placeholder="이력서의 제목을 입력해주세요" style= "width: 100%;"></td>
 			</tr>
 			<tr>
-				<td rowspan = "4" align = "center">사진</td>
+				<td><input type = "file" name = "ficture_name" id = "ficture_id"><div id= "ficture_box">섹</div>사진업로드</td>
 				<td colspan="6"  width="90%" align = "center" >개인정보</td>
 			</tr>
 			<tr>
