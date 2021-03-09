@@ -8,20 +8,28 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.resume.dao.ResumeDao;
+import com.resume.dto.Resume_User_Dto;
 
 @WebServlet("/resume/ResumeJoinLogic.jsp")
 public class ResumeJoinLogic extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String main_title = request.getParameter("r_title");
+		HttpSession session = request.getSession();
+		
+		ResumeDao dao = ResumeDao.getInstance(); 	
+		int result = -1;
+		String id = (String) session.getAttribute("currentid");
+		String main_title = request.getParameter("r_main_title");
 		String addr_head = request.getParameter("r_want_head");
 		String addr_middle = request.getParameter("r_want_middle");
 		String j_head = request.getParameter("j_head");
-		String j_middle = request.getParameter("j_middle");
-		String j_end = request.getParameter("j_end");
+		String j_middle = request.getParameter("j_middle_name");
+		String j_end = request.getParameter("j_end_name");
 		String title0 = request.getParameter("title0");
 		String text0 = request.getParameter("aear0");
 		String title1 = request.getParameter("title1");
@@ -32,7 +40,7 @@ public class ResumeJoinLogic extends HttpServlet {
 		String text3 = request.getParameter("aear3");
 		String fileName = "";
 		String orgfileName = "";
-		String uploadPath = request.getRealPath("upload"); 
+		String uploadPath = request.getRealPath("upload");
 		
 		try {
 			MultipartRequest multi = new MultipartRequest( // MultipartRequest 인스턴스 생성(cos.jar의 라이브러리)
@@ -49,10 +57,19 @@ public class ResumeJoinLogic extends HttpServlet {
 			e.getStackTrace();
 		} // 업로드 종료
 		
+		System.out.println(id + ": id");
+		System.out.println(main_title + ": main_title");
+		System.out.println(fileName + ": fileName");
+		System.out.println(addr_head + ": addr_head");
+		System.out.println(addr_middle + ": addr_middle");
+		System.out.println(j_head + ": j_head");
+		System.out.println(j_middle + ": j_middle");
+		System.out.println(j_end + ": j_end");
 
 		//
 		if(null == title0) {
 			//자소서 없는 dao실행
+			result = dao.insertResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end);
 		}
 		if(null != title0){
 			

@@ -3,6 +3,7 @@ package com.resume.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -22,7 +23,7 @@ public class ResumeDao {
 	private ResultSet rs;
 	private String sql;
 	private static DataSource ds;
-	
+	 
 	static {
 		try {
 			Context context = new InitialContext();
@@ -143,5 +144,44 @@ public class ResumeDao {
 		
 		return list.isEmpty() ? null : list;
 	}
-	
+	public int insertResume(String id, String main_title, String fileName, String addr_head, String addr_middle,
+			String j_head, String j_middle, String j_end) {
+		int result = -1;
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		sql = "INSERT INTO RESUME_DB VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, id);
+			ps.setString(2, main_title);
+			ps.setString(3, fileName);
+			ps.setInt(4,year);
+			ps.setInt(5,month);
+			ps.setInt(6,day);
+			ps.setString(7, addr_head);
+			ps.setString(8, addr_middle);
+			ps.setString(9, j_head);
+			ps.setString(10, j_middle);
+			ps.setString(11, "");
+			ps.setString(12, "");
+			ps.setString(13, "");
+			ps.setString(14, "");
+			ps.setString(15, "");
+			ps.setString(16, "");
+			ps.setString(17, "");
+			ps.setString(18, "");
+			ps.setString(19, "");
+			
+			result = ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
+		return result;
+	}
 }

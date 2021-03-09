@@ -91,8 +91,8 @@ function add_textbox(){
 }
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include> 
-	<form action = "ResumeJoinLogic.jsp" method = "post" enctype="multipart/form-data">
-		<table border = "1" align = "center" style = "width :100%;" >
+	<form action = "ResumeJoinLogic.jsp" method = "post" enctype="Multipart/form-data">
+		<table border = "1" align = "center" style = "width :100%;"  >
 			<tr>
 				<td>타이틀</td>
 				<td colspan ="6"><input type = "text" name = "r_main_title" placeholder="이력서의 제목을 입력해주세요" style= "width: 100%;"></td>
