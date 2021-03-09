@@ -6,6 +6,13 @@
 	border-style: solid;
 }
 
+img {
+    margin: 1em 0;
+    display: block;
+    background: #eee;
+    border: 1px solid #000;
+}
+
 .side{
 	width : 10%;
 	height : 800px;
@@ -37,6 +44,7 @@
 	box-sizing: border-box;
 	border-style: solid;
 	text-align : center;
+	overflow: scroll;
 }
 
 .footer{
@@ -45,6 +53,7 @@
 	height : 50px;
     margin-top: 800px;
     border-style: solid;
+    text-align : bottom;
 }
 
 .logout_body{

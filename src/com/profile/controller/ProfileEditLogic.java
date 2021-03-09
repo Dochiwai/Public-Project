@@ -26,6 +26,7 @@ public class ProfileEditLogic extends HttpServlet {
 		String id = (String)session.getAttribute("currentid");
 		int result = -1;
 		
+		
 		if(password.equals(realpassword)) {
 			result = 1;
 			AddrDao dao = AddrDao.getInstance();
