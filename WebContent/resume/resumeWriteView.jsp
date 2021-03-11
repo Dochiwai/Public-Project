@@ -148,7 +148,7 @@ function delSet3(){
 }
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include> 
-	<form action = "ResumeJoinLogic.jsp" method = "post" name = "form_" enctype="Multipart/form-data">
+	<form action = "ResumeJoinLogic.jsp" method = "post" enctype="multipart/form-data">
 		<table border = "1" align = "center" style = "width :100%;"  >
 			<tr>
 				<td>타이틀</td>
@@ -177,7 +177,7 @@ function delSet3(){
 				<td>${sessionScope.currentemail}</td>
 			</tr>
 		</table>
-		<table border = "1" align = "center" style = "width : 100%;">
+		<table border = "1" style = "width : 100%;">
 			<tr>
 				<td align = "center">
 					원하는 근무 지역
@@ -218,34 +218,34 @@ function delSet3(){
 				</td>
 			</tr>
 		</table>
-		<table border = "1" id = "self_id" align = "center" style = "width : 100%;">
+		<table border = "1" id = "self_id" style = "width : 100%;">
 			<tr >
 				<td align = "center">자기소개서 작성<br><input type = "button" value = "추가하기" onclick = "showTr()"></td>
 			</tr>
 			<tr id = titleset0 style="display:none;">
 				<td align = 'center'>
-				<input type = 'text' align = 'center' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid0'name = 'title0"
+				<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid0'name = 'title0"
 						count + "'><br>
 				<textarea style= 'width: 100%; height :100;' id = 'textid0' name = 'area0'></textarea>
 				<input type = 'button' value = '삭제' onclick = "delSet0()"></td>
 			</tr>
 			<tr id = titleset1 style="display:none;">
 				<td align = 'center'>
-				<input type = 'text' align = 'center' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid1'name = 'title1"
+				<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid1'name = 'title1"
 						count + "'><br>
 				<textarea style= 'width: 100%; height :100;' id = 'textid1' name = 'area1'></textarea>
 				<input type = 'button' value = '삭제' onclick = "delSet1()"></td>
 			</tr>
 			<tr id = titleset2 style="display:none;">
 				<td align = 'center'>
-				<input type = 'text' align = 'center' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid2'name = 'title2"
+				<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid2'name = 'title2"
 						count + "'><br>
 				<textarea style= 'width: 100%; height :100;' id = 'textid2' name = 'area2'></textarea>
 				<input type = 'button' value = '삭제' onclick = "delSet2()"></td>
 			</tr>
 			<tr id = titleset3 style="display:none;">
 				<td align = 'center'>
-				<input type = 'text' align = 'center' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid3'name = 'title3"
+				<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid3'name = 'title3"
 						count + "'><br>
 				<textarea style= 'width: 100%; height :100;' id = 'textid3' name = 'area3'></textarea>
 				<input type = 'button' value = '삭제' onclick = "delSet3()"></td>
