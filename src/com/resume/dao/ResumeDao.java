@@ -162,11 +162,11 @@ public class ResumeDao {
 			ps.setInt(4,year);
 			ps.setInt(5,month);
 			ps.setInt(6,day);
-			ps.setString(7, addr_head);
-			ps.setString(8, addr_middle);
-			ps.setString(9, j_head);
-			ps.setString(10, j_middle);
-			ps.setString(11, "");
+			ps.setString(7, j_head);
+			ps.setString(8, j_middle);
+			ps.setString(9, j_end);
+			ps.setString(10, addr_head);
+			ps.setString(11, addr_middle);
 			ps.setString(12, "");
 			ps.setString(13, "");
 			ps.setString(14, "");
@@ -184,4 +184,165 @@ public class ResumeDao {
 		}
 		return result;
 	}
+	public int insertResume(String id, String main_title, String fileName, String addr_head, String addr_middle,
+			String j_head, String j_middle, String j_end,String title0,String text0) {
+		int result = -1;
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		sql = "INSERT INTO RESUME_DB VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, id);
+			ps.setString(2, main_title);
+			ps.setString(3, fileName);
+			ps.setInt(4,year);
+			ps.setInt(5,month);
+			ps.setInt(6,day);
+			ps.setString(7, j_head);
+			ps.setString(8, j_middle);
+			ps.setString(9, j_end);
+			ps.setString(10, addr_head);
+			ps.setString(11, addr_middle);
+			ps.setString(12, title0);
+			ps.setString(13, text0);
+			ps.setString(14, "");
+			ps.setString(15, "");
+			ps.setString(16, "");
+			ps.setString(17, "");
+			ps.setString(18, "");
+			ps.setString(19, "");
+			
+			result = ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
+		return result;
+	}
+	public int insertResume(String id, String main_title, String fileName, String addr_head, String addr_middle,
+			String j_head, String j_middle, String j_end,String title0,String text0,String title1,String text1) {
+		int result = -1;
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		sql = "INSERT INTO RESUME_DB VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, id);
+			ps.setString(2, main_title);
+			ps.setString(3, fileName);
+			ps.setInt(4,year);
+			ps.setInt(5,month);
+			ps.setInt(6,day);
+			ps.setString(7, j_head);
+			ps.setString(8, j_middle);
+			ps.setString(9, j_end);
+			ps.setString(10, addr_head);
+			ps.setString(11, addr_middle);
+			ps.setString(12, title0);
+			ps.setString(13, text0);
+			ps.setString(14, title1);
+			ps.setString(15, text1);
+			ps.setString(16, "");
+			ps.setString(17, "");
+			ps.setString(18, "");
+			ps.setString(19, "");
+			
+			result = ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
+		return result;
+	}
+	public int insertResume(String id, String main_title, String fileName, String addr_head, String addr_middle,
+			String j_head, String j_middle, String j_end,String title0,String text0,String title1,String text1,String title2,String text2) {
+		int result = -1;
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		sql = "INSERT INTO RESUME_DB VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, id);
+			ps.setString(2, main_title);
+			ps.setString(3, fileName);
+			ps.setInt(4,year);
+			ps.setInt(5,month);
+			ps.setInt(6,day);
+			ps.setString(7, j_head);
+			ps.setString(8, j_middle);
+			ps.setString(9, j_end);
+			ps.setString(10, addr_head);
+			ps.setString(11, addr_middle);
+			ps.setString(12, title0);
+			ps.setString(13, text0);
+			ps.setString(14, title1);
+			ps.setString(15, text1);
+			ps.setString(16, title2);
+			ps.setString(17, text2);
+			ps.setString(18, "");
+			ps.setString(19, "");
+			
+			result = ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
+		return result;
+	}
+	public int insertResume(String id, String main_title, String fileName, String addr_head, String addr_middle,
+			String j_head, String j_middle, String j_end,String title0,String text0,String title1,String text1,String title2,String text2,String title3,String text3) {
+		int result = -1;
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		sql = "INSERT INTO RESUME_DB VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, id);
+			ps.setString(2, main_title);
+			ps.setString(3, fileName);
+			ps.setInt(4,year);
+			ps.setInt(5,month);
+			ps.setInt(6,day);
+			ps.setString(7, j_head);
+			ps.setString(8, j_middle);
+			ps.setString(9, j_end);
+			ps.setString(10, addr_head);
+			ps.setString(11, addr_middle);
+			ps.setString(12, title0);
+			ps.setString(13, text0);
+			ps.setString(14, title1);
+			ps.setString(15, text1);
+			ps.setString(16, title2);
+			ps.setString(17, text2);
+			ps.setString(18, title3);
+			ps.setString(19, text3);
+			
+			result = ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
+		return result;
+	}
+	
 }

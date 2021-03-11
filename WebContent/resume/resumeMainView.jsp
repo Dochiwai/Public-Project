@@ -5,10 +5,10 @@
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<c:choose>
 		<c:when test ="${list != null }">
-			<c:forEach var = "list" items = "${list}">
 			<div>
 				현재 작성한 이력서<br>
 			</div>
+			<c:forEach var = "list" items = "${list}">
 			<div>
 				<a href = "미정">${list.r_title }</a>
 			</div>

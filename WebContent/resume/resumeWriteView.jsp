@@ -81,17 +81,23 @@ $(function() {
 	   });
 var count = 0;
 function add_textbox(){
-	if(count < 4){		
-		document.getElementById("self_id").innerHTML +=
-		"<td align = 'center'><input type = 'text' align = 'center' placeholder = '제목'  style= 'width: 100%; height :30;' name = 'title"+ count +"'><br><textarea style= 'width: 100%; height :100;' name = 'area"+ count+"'></textarea></td>";	
-		count = count + 1;
+	if(count < 4){
+		for(int i = 0 i < 4 ; i++){
+			if()
+			document.getElementById("self_id").innerHTML +=
+			"<td align = 'center'><input type = 'text' align = 'center' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid"+ count +"'name = 'title"+
+										count + "'><br><textarea style= 'width: 100%; height :100;' id = 'textid"+ count +"' name = 'area"+ count+"'></textarea></td>";	
+			document.getElementById("self_id").innerHTML +=
+			"<td align = 'center'><input type = 'button' value = '삭제' onclick = 'delete_text(this,form_obj)'></td>";
+			count = count + 1;
+		}
 	}else{
 		alert("더이상 생성불가");
 	}
 }
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include> 
-	<form action = "ResumeJoinLogic.jsp" method = "post" enctype="Multipart/form-data">
+	<form action = "ResumeJoinLogic.jsp" method = "post" name = "form_" enctype="Multipart/form-data">
 		<table border = "1" align = "center" style = "width :100%;"  >
 			<tr>
 				<td>타이틀</td>
@@ -162,9 +168,9 @@ function add_textbox(){
 			</tr>
 		</table>
 		<table border = "1" id = "self_id" align = "center" style = "width : 100%;">
-			<tr>
-				<td align = "center">자기소개서 작성<br><input type = "button" value = "추가하기" onclick = "add_textbox()"></td>
-			</tr>
+				<tr>
+					<td align = "center">자기소개서 작성<br><input type = "button" value = "추가하기" onclick = "add_textbox()"></td>
+				</tr>
 		</table>
 		<table border = "1" style = "width : 100%;">
 			<tr align = "center"> 

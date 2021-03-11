@@ -1,6 +1,7 @@
 package com.resume.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,20 +25,20 @@ public class ResumeJoinLogic extends HttpServlet {
 		ResumeDao dao = ResumeDao.getInstance(); 	
 		int result = -1;
 		String id = (String) session.getAttribute("currentid");
-		String main_title = request.getParameter("r_main_title");
-		String addr_head = request.getParameter("r_want_head");
-		String addr_middle = request.getParameter("r_want_middle");
-		String j_head = request.getParameter("j_head");
-		String j_middle = request.getParameter("j_middle_name");
-		String j_end = request.getParameter("j_end_name");
-		String title0 = request.getParameter("title0");
-		String text0 = request.getParameter("aear0");
-		String title1 = request.getParameter("title1");
-		String text1 = request.getParameter("aear1");
-		String title2 = request.getParameter("title2");
-		String text2 = request.getParameter("aear2");
-		String title3 = request.getParameter("title3");
-		String text3 = request.getParameter("aear3");
+		String main_title = "";
+		String addr_head = "";
+		String addr_middle = "";
+		String j_head = "";
+		String j_middle = "";
+		String j_end = "";
+		String title0 = ""; 
+		String text0 = "";
+		String title1 = "";
+		String text1 = "";
+		String title2 = "";
+		String text2 = "";
+		String title3 = "";
+		String text3 = "";
 		String fileName = "";
 		String orgfileName = "";
 		String uploadPath = request.getRealPath("upload");
@@ -52,19 +53,32 @@ public class ResumeJoinLogic extends HttpServlet {
 			);
 			fileName = multi.getFilesystemName("r_ficture"); // name=file의 업로드된 시스템 파일명을 구함(중복된 파일이 있으면, 중복 처리 후 파일 이름)
 			orgfileName = multi.getOriginalFileName("r_ficture"); // name=file의 업로드된 원본파일 이름을 구함(중복 처리 전 이름)
-			
+			main_title = multi.getParameter("r_main_title");
+			addr_head = multi.getParameter("r_want_head");
+			addr_middle =  multi.getParameter("r_want_middle");
+			j_head =  multi.getParameter("j_head");
+			j_middle =  multi.getParameter("j_middle_name");
+			j_end =  multi.getParameter("j_end_name");
+			title0 =  multi.getParameter("title0");
+			text0 =  multi.getParameter("area0");
+			title1 =  multi.getParameter("title1");
+			text1 =  multi.getParameter("area1");
+			title2 =  multi.getParameter("title2");
+			text2 =  multi.getParameter("area2");
+			title3 =  multi.getParameter("title3");
+			text3 =  multi.getParameter("area3");
 		} catch (Exception e) {
 			e.getStackTrace();
 		} // 업로드 종료
 		
-		System.out.println(id + ": id");
-		System.out.println(main_title + ": main_title");
-		System.out.println(fileName + ": fileName");
-		System.out.println(addr_head + ": addr_head");
-		System.out.println(addr_middle + ": addr_middle");
-		System.out.println(j_head + ": j_head");
-		System.out.println(j_middle + ": j_middle");
-		System.out.println(j_end + ": j_end");
+//		System.out.println(id + ": id");
+//		System.out.println(main_title + ": main_title");
+//		System.out.println(fileName + ": fileName");
+//		System.out.println(addr_head + ": addr_head");
+//		System.out.println(addr_middle + ": addr_middle");
+//		System.out.println(j_head + ": j_head");
+//		System.out.println(j_middle + ": j_middle");
+//		System.out.println(j_end + ": j_end");
 
 		//
 		if(null == title0) {
@@ -72,26 +86,31 @@ public class ResumeJoinLogic extends HttpServlet {
 			result = dao.insertResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end);
 		}
 		if(null != title0){
-			
 			if(null != title1){
-				
-				if(null != title2){
-					
+				if(null != title2){	
 					if (null != title3){
-							//3번 자소서
+							result = dao.insertResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end,title0,text0,title1,text1,title2,text2,title3,text3);
 					}else {
-						//2번 자소서
+						result = dao.insertResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end,title0,text0,title1,text1,title2,text2);
 					}
 				}else {
-					//1번자소서
+					result = dao.insertResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end,title0,text0,title1,text1);
 				}
 			}else {
-				//0번 자소서 dao실행
+				result = dao.insertResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end,title0,text0);
 			}
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+		
+//		if(result != -1) {
+//			PrintWriter writer = response.getWriter(); writer.println("<script>alert('Good');</script>"); writer.close();
+//		}else {
+//			PrintWriter writer = response.getWriter(); writer.println("<script>alert('Fail');</script>"); writer.close();
+//		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/resume/ResumeMainViewLogic.jsp");
 		rd.forward(request, response);
+		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
