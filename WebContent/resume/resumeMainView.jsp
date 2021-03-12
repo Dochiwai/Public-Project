@@ -8,11 +8,19 @@
 			<div>
 				현재 작성한 이력서<br>
 			</div>
-			<c:forEach var = "list" items = "${list}">
-			<div>
-				<a href = "미정">${list.r_title }</a>
-			</div>
-			</c:forEach>
+			<table border = "1" align = "center" style = "width :80%;"  >
+			<tr>
+				<td align = "center">No.</td><td align = "center">이력서 제목</td>
+			</tr>
+				<c:forEach var = "list" items = "${list}">
+					<tr>
+						<td align = "center">${list.r_num}</td>
+						<td align = "center">
+							<a href="/test/resume/resumeEditViewLogic.jsp?num=${list.r_num}&&title=${list.r_title}" style = "color:blue;">${list.r_title}</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
 		</c:when>
 		<c:otherwise>
 			현재 등록된 이력서가 없어영 ㅠㅠ<br>

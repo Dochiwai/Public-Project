@@ -70,6 +70,7 @@ public class ResumeDao {
 			while(rs.next()) {
 				dto = new Resume_User_Dto();
 				dto.setR_title(rs.getString("r_title"));
+				dto.setR_num(rs.getInt("r_num"));
 				list.add(dto);
 			}		
 		}catch (Exception e) {
@@ -111,6 +112,7 @@ public class ResumeDao {
 				dto = new Resume_Middle_Dto();
 				dto.setJ_id(rs.getString("j_id"));
 				dto.setJ_middle_job(rs.getString("j_middle"));
+				dto.setJ_keyid(rs.getString("j_keyid"));
 				list.add(dto);
 			}
 		}catch(Exception e) {
@@ -151,7 +153,7 @@ public class ResumeDao {
 		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH)+1;
 		int day = cal.get(Calendar.DAY_OF_MONTH);
-		sql = "INSERT INTO RESUME_DB VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		sql = "INSERT INTO RESUME_DB VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,R_NUM_SQC.nextval)";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
@@ -183,6 +185,43 @@ public class ResumeDao {
 			close(con, ps);
 		}
 		return result;
+	}
+	public Resume_User_Dto selectinfo(String id , String num, String title) {
+		Resume_User_Dto dto = null;
+		sql = "SELECT * FROM RESUME_DB WHERE R_ID = ? AND R_TITLE = ? AND R_NUM = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, title);
+			ps.setString(3, num);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				dto = new Resume_User_Dto();
+				dto.setR_id(rs.getString("r_id"));
+				dto.setR_title(rs.getString("r_title"));
+				dto.setR_picture(rs.getString("r_picture"));
+				dto.setR_wantjob_head(rs.getString("r_wantjob_head"));
+				dto.setR_wantjob_middle(rs.getString("r_wantjob_middle"));
+				dto.setR_wantjob_end(rs.getString("r_wantjob_end"));
+				dto.setR_where_head(rs.getString("r_where_head"));
+				dto.setR_where_end(rs.getString("r_where_middle"));
+				dto.setR_self_head_1(rs.getString("r_self_head_1"));
+				dto.setR_self_text_1(rs.getString("r_self_text_1"));
+				dto.setR_self_head_1(rs.getString("r_self_head_2"));
+				dto.setR_self_text_1(rs.getString("r_self_text_2"));
+				dto.setR_self_head_1(rs.getString("r_self_head_3"));
+				dto.setR_self_text_1(rs.getString("r_self_text_3"));
+				dto.setR_self_head_1(rs.getString("r_self_head_4"));
+				dto.setR_self_text_1(rs.getString("r_self_text_4"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}
+		
+		return dto;
 	}
 	
 }

@@ -2,6 +2,7 @@ package com.resume.dto;
 
 public class Resume_User_Dto {
 
+	private int r_num;
 	private String r_id;
 	private String r_title;
 	private String r_picture;
@@ -22,6 +23,12 @@ public class Resume_User_Dto {
 	private String r_self_head_4;
 	private String r_self_text_4;
 	
+	public int getR_num() {
+		return r_num;
+	}
+	public void setR_num(int r_num) {
+		this.r_num = r_num;
+	}
 	public String getR_self_head_1() {
 		return r_self_head_1;
 	}

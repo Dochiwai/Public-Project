@@ -120,4 +120,22 @@ public class AddrDao {
 		
 		return list.isEmpty() ? null : list;
 	}
+	public String head_number_search(String r_where_head) {
+		String num = "";
+		sql = "SELECT * FROM ADDR_DB WHERE ADDR = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, r_where_head);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				num = rs.getString("ADDR_NUMBER");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps , rs );
+		}
+		return num;
+	}
 }
