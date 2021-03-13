@@ -219,14 +219,14 @@ function delSet3(){
 				</td>
 				<td colspan = "2" id = "job_middle" >
 					<c:forEach var = "listt" items = "${job_mid_list}" varStatus = "status">
-						<input type = "radio" name = "j_middle_name" id = "j_middle_id" value = "${listt.j_id }"
-						 <c:if test="${dto.r_wantjob_middle eq 'job_mid_list.j_keyid'}">checked</c:if>>${listt.j_middle_job }<br>
+						<input type = "radio" name = "j_middle_name" id = "j_middle_id" value = "${listt.j_id}"
+						 <c:if test="${dto.r_wantjob_middle eq listt.j_id}">checked</c:if>>${listt.j_middle_job }<br>
 					</c:forEach>
 				</td>
 				<td colspan = "4" id = "job_end">
 				<c:forEach var = "listtt" items = "${job_end_list}" varStatus = "status">
 						<input type = "radio" name = "j_end_name" id = "j_end_id" value = "${listtt.j_id }"
-						 <c:if test="${dto.r_wantjob_end eq listtt.j_id}">checked</c:if>>${listtt.j_end_job }<br>
+						 <c:if test="${dto.r_wantjob_end eq listtt.j_keyid}">checked</c:if>>${listtt.j_end_job }<br>
 					</c:forEach>
 				</td>
 			</tr>

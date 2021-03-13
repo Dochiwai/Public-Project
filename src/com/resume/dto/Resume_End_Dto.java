@@ -4,6 +4,8 @@ public class Resume_End_Dto {
 
 	private String j_id;
 	private String j_end_job;
+	private String j_keyid;
+	
 	public String getJ_id() {
 		return j_id;
 	}
@@ -15,6 +17,12 @@ public class Resume_End_Dto {
 	}
 	public void setJ_end_job(String j_end_job) {
 		this.j_end_job = j_end_job;
+	}
+	public String getJ_keyid() {
+		return j_keyid;
+	}
+	public void setJ_keyid(String j_keyid) {
+		this.j_keyid = j_keyid;
 	}
 	
 	

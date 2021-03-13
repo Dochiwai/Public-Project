@@ -50,6 +50,35 @@ public class ResumeJoinLogic extends HttpServlet {
 		j_head =  multi.getParameter("j_head");
 		j_middle =  multi.getParameter("j_middle_name");
 		j_end =  multi.getParameter("j_end_name");
+		if(j_head.equals("1")) {
+			if(j_middle.equals("1")) {
+				if(j_end.equals("1")) {
+					j_end = "1";
+				}else {
+					j_end = "2";
+				}
+			}else if (j_middle.equals("2")) {
+				if(j_end.equals("1")) {
+					j_end = "3";
+				}else {
+					j_end = "4";
+				}
+			}
+		}else if(j_head.equals("2")){
+			if(j_middle.equals("1")) {
+				if(j_end.equals("1")) {
+					j_end = "5";
+				}else {
+					j_end = "6";
+				}
+			}else{
+				if(j_end.equals("1")) {
+					j_end = "7";
+				}else {
+					j_end = "8";
+				}
+			}
+		}		
 		title0 =  multi.getParameter("title0");
 		text0 =  multi.getParameter("area0");
 		title1 =  multi.getParameter("title1");

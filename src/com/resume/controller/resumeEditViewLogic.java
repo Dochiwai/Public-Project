@@ -37,7 +37,7 @@ public class resumeEditViewLogic extends HttpServlet {
 		ResumeDao jobdao = ResumeDao.getInstance();
 		ArrayList<Resume_Head_Dto> joblist = jobdao.jog_head_list();
 		request.setAttribute("joblist", joblist);
-//		여기서부터 다시 키를 찾자
+		
 		ArrayList<Resume_Middle_Dto> job_mid_list = jobdao.middleseacrch(dto.getR_wantjob_head());
 		request.setAttribute("job_mid_list", job_mid_list);
 		

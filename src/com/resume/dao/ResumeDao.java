@@ -136,6 +136,7 @@ public class ResumeDao {
 				dto = new Resume_End_Dto();
 				dto.setJ_id(rs.getString("j_keyid"));
 				dto.setJ_end_job(rs.getString("j_end"));
+				dto.setJ_keyid(rs.getString("j_id"));
 				list.add(dto);
 			}
 		}catch(Exception e) {
@@ -222,6 +223,24 @@ public class ResumeDao {
 		}
 		
 		return dto;
+	}
+	public String endkeysearch(String r_wantjob_middle) {
+		String result = "";
+		sql = "SELECT * FROM JOB_MIDDLE_DB WHERE J_ID = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, r_wantjob_middle);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				result = rs.getString("j_id");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}
+		return result;
 	}
 	
 }
