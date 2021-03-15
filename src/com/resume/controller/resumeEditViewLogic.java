@@ -2,7 +2,6 @@ package com.resume.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +32,8 @@ public class resumeEditViewLogic extends HttpServlet {
 		
 		ResumeDao dao = ResumeDao.getInstance();
 		Resume_User_Dto dto = dao.selectinfo(id,num,title);
-		
+		request.setAttribute("dto", dto);
+
 		ResumeDao jobdao = ResumeDao.getInstance();
 		ArrayList<Resume_Head_Dto> joblist = jobdao.jog_head_list();
 		request.setAttribute("joblist", joblist);
@@ -52,9 +52,10 @@ public class resumeEditViewLogic extends HttpServlet {
 		ArrayList<Detail_Addr_Dto> addr_detail_dto = addrdao.detailSearch(head_num);
 		request.setAttribute("addr_detail_list", addr_detail_dto);
 		
+		String sex = "http://localhost:9090/gygus/upload/"+dto.getR_picture();
+		request.setAttribute("sex", sex);
 		
-		request.setAttribute("dto", dto);
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher("resumeEditView.jsp");
 		rd.forward(request, response);
 	

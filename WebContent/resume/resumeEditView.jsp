@@ -151,7 +151,8 @@ function delSet3(){
 				<td colspan ="6"><input type = "text" name = "r_main_title" value = "${dto.r_title }"placeholder="이력서의 제목을 입력해주세요" style= "width: 100%;"></td>
 			</tr>
 			<tr>
-				<td rowspan="5"><img id="print" src="" height = "200" alt="이미지를 선택해 주세요"><br><input type="file" id="sel-file" name = "r_ficture" accept="image/*">
+				<td rowspan="5"><img id="print" src= "${sex }" height = "200" alt="이미지를 선택해 주세요"><br>
+				<input type="file" id="sel-file" name = "r_ficture" accept="image/*">
 				<td colspan="6"  width="90%" align = "center" >개인정보</td>
 			</tr>
 			<tr>
