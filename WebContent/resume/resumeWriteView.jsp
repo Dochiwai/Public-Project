@@ -139,7 +139,7 @@ function delSet2(){
 	set2.style.display = "none";
 }
 function delSet3(){
-	var set0 = document.getElementById("titleset3");
+	var set3 = document.getElementById("titleset3");
 	var titleset = document.getElementById("titleid3");
 	var areaset = document.getElementById("textid3");
 	titleset.value = "";

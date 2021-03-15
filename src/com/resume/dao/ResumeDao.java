@@ -209,12 +209,12 @@ public class ResumeDao {
 				dto.setR_where_end(rs.getString("r_where_middle"));
 				dto.setR_self_head_1(rs.getString("r_self_head_1"));
 				dto.setR_self_text_1(rs.getString("r_self_text_1"));
-				dto.setR_self_head_1(rs.getString("r_self_head_2"));
-				dto.setR_self_text_1(rs.getString("r_self_text_2"));
-				dto.setR_self_head_1(rs.getString("r_self_head_3"));
-				dto.setR_self_text_1(rs.getString("r_self_text_3"));
-				dto.setR_self_head_1(rs.getString("r_self_head_4"));
-				dto.setR_self_text_1(rs.getString("r_self_text_4"));
+				dto.setR_self_head_2(rs.getString("r_self_head_2"));
+				dto.setR_self_text_2(rs.getString("r_self_text_2"));
+				dto.setR_self_head_3(rs.getString("r_self_head_3"));
+				dto.setR_self_text_3(rs.getString("r_self_text_3"));
+				dto.setR_self_head_4(rs.getString("r_self_head_4"));
+				dto.setR_self_text_4(rs.getString("r_self_text_4"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -106,11 +106,7 @@ var count = 0;
 			count = count + 1;
 			break;
 		}
-	}	
-		if(count == 4){
-			alert("생성불가");
-		}
-	
+	}
 }
 </script>
 <script type="text/javascript">
@@ -139,7 +135,7 @@ function delSet2(){
 	set2.style.display = "none";
 }
 function delSet3(){
-	var set0 = document.getElementById("titleset3");
+	var set3 = document.getElementById("titleset3");
 	var titleset = document.getElementById("titleid3");
 	var areaset = document.getElementById("textid3");
 	titleset.value = "";
@@ -235,34 +231,78 @@ function delSet3(){
 			<tr >
 				<td align = "center">자기소개서 작성<br><input type = "button" value = "추가하기" onclick = "showTr()"></td>
 			</tr>
-			<tr id = titleset0 style="display:none;">
-				<td align = 'center'>
-				<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid0'name = 'title0"
-						count + "'><br>
-				<textarea style= 'width: 100%; height :100;' id = 'textid0' name = 'area0'></textarea>
-				<input type = 'button' value = '삭제' onclick = "delSet0()"></td>
-			</tr>
-			<tr id = titleset1 style="display:none;">
-				<td align = 'center'>
-				<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid1'name = 'title1"
-						count + "'><br>
-				<textarea style= 'width: 100%; height :100;' id = 'textid1' name = 'area1'></textarea>
-				<input type = 'button' value = '삭제' onclick = "delSet1()"></td>
-			</tr>
-			<tr id = titleset2 style="display:none;">
-				<td align = 'center'>
-				<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid2'name = 'title2"
-						count + "'><br>
-				<textarea style= 'width: 100%; height :100;' id = 'textid2' name = 'area2'></textarea>
-				<input type = 'button' value = '삭제' onclick = "delSet2()"></td>
-			</tr>
-			<tr id = titleset3 style="display:none;">
-				<td align = 'center'>
-				<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid3'name = 'title3"
-						count + "'><br>
-				<textarea style= 'width: 100%; height :100;' id = 'textid3' name = 'area3'></textarea>
-				<input type = 'button' value = '삭제' onclick = "delSet3()"></td>
-			</tr>
+				<c:if test = "${null == dto.r_self_head_1}">
+					<tr id = titleset0 style="display:none;">
+						<td align = 'center'>
+						<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid0'name = 'title0"
+								count + "'><br>
+						<textarea style= 'width: 100%; height :100;' id = 'textid0' name = 'area0'></textarea>
+						<input type = 'button' value = '삭제' onclick = "delSet0()"></td>
+					</tr>
+				</c:if>
+				<c:if test = "${null != dto.r_self_head_1 }">
+					<tr id = titleset0 style="display:'';">
+						<td align = 'center'>
+						<input type = 'text' value = "${dto.r_self_head_1 }" placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid0'name = 'title0"
+								count + "'><br>
+						<textarea style= 'width: 100%; height :100;' id = 'textid0' name = 'area0'>${dto.r_self_text_1}</textarea>
+						<input type = 'button' value = '삭제' onclick = "delSet0()"></td>
+					</tr>
+				</c:if>
+				<c:if test = "${null == dto.r_self_head_2}">
+					<tr id = titleset1 style="display:none;">
+						<td align = 'center'>
+						<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid1'name = 'title1"
+								count + "'><br>
+						<textarea style= 'width: 100%; height :100;' id = 'textid1' name = 'area1'></textarea>
+						<input type = 'button' value = '삭제' onclick = "delSet1()"></td>
+					</tr>
+				</c:if>
+				<c:if test = "${null != dto.r_self_head_2 }">
+					<tr id = titleset1 style="display:'';">
+						<td align = 'center'>
+						<input type = 'text' value = "${dto.r_self_head_2 }" placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid1'name = 'title1"
+								count + "'><br>
+						<textarea style= 'width: 100%; height :100;' id = 'textid1' name = 'area1'>${dto.r_self_text_2}</textarea>
+						<input type = 'button' value = '삭제' onclick = "delSet1()"></td>
+					</tr>
+				</c:if>
+				<c:if test = "${null == dto.r_self_head_3}">
+					<tr id = titleset2 style="display:none;">
+						<td align = 'center'>
+						<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid2'name = 'title2"
+								count + "'><br>
+						<textarea style= 'width: 100%; height :100;' id = 'textid2' name = 'area2'></textarea>
+						<input type = 'button' value = '삭제' onclick = "delSet2()"></td>
+					</tr>
+				</c:if>
+				<c:if test = "${null != dto.r_self_head_3 }">
+					<tr id = titleset2 style="display:'';">
+						<td align = 'center'>
+						<input type = 'text' value = "${dto.r_self_head_3 }" placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid2'name = 'title2"
+								count + "'><br>
+						<textarea style= 'width: 100%; height :100;' id = 'textid2' name = 'area2'>${dto.r_self_text_3}</textarea>
+						<input type = 'button' value = '삭제' onclick = "delSet2()"></td>
+					</tr>
+				</c:if>
+				<c:if test = "${null == dto.r_self_head_4}">
+					<tr id = titleset3 style="display:none;">
+						<td align = 'center'>
+						<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid3'name = 'title3"
+								count + "'><br>
+						<textarea style= 'width: 100%; height :100;' id = 'textid3' name = 'area3'></textarea>
+						<input type = 'button' value = '삭제' onclick = "delSet3()"></td>
+					</tr>
+				</c:if>
+				<c:if test = "${null != dto.r_self_head_4 }">
+					<tr id = titleset3 style="display:'';">
+						<td align = 'center'>
+						<input type = 'text' value = "${dto.r_self_head_4 }" placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid3'name = 'title3"
+								count + "'><br>
+						<textarea style= 'width: 100%; height :100;' id = 'textid3' name = 'area3'>${dto.r_self_text_4}</textarea>
+						<input type = 'button' value = '삭제' onclick = "delSet3()"></td>
+					</tr>
+				</c:if>
 		</table>
 		<table border = "1" style = "width : 100%;">
 			<tr align = "center"> 

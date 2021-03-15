@@ -87,6 +87,11 @@ public class ResumeJoinLogic extends HttpServlet {
 		text2 =  multi.getParameter("area2");
 		title3 =  multi.getParameter("title3");
 		text3 =  multi.getParameter("area3");
+//		System.out.println(title0);
+//		System.out.println(title1);
+//		System.out.println(title2);
+//		System.out.println(title3);
+		
 		result = dao.insertResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end,title0,text0,title1,text1,title2,text2,title3,text3);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/resume/ResumeMainViewLogic.jsp");

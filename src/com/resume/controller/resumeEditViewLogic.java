@@ -52,6 +52,7 @@ public class resumeEditViewLogic extends HttpServlet {
 		ArrayList<Detail_Addr_Dto> addr_detail_dto = addrdao.detailSearch(head_num);
 		request.setAttribute("addr_detail_list", addr_detail_dto);
 		
+		
 		request.setAttribute("dto", dto);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("resumeEditView.jsp");
