@@ -242,5 +242,43 @@ public class ResumeDao {
 		}
 		return result;
 	}
+
+	public int updateResume(String id, String main_title, String fileName, String addr_head, String addr_middle,
+			String j_head, String j_middle, String j_end, String title0, String text0, String title1, String text1,
+			String title2, String text2, String title3, String text3,String number) {
+		int result = -1;
+		Calendar cal = Calendar.getInstance();
+		sql = "UPDATE RESUME_DB SET R_TITLE = ?,R_PICTURE = ? , R_WANWJOB_HEAD = ?,R_WANWJOB_MIDDLE = ?,"
+				+ "R_WANWJOB_END = ?,R_WHERE_HEAD = ?,R_WHERE_MIDDLE = ?,"
+				+ "R_SELF_HEAD_1 = ?,R_SELF_HEAD_2 = ?,R_SELF_HEAD_3 = ?,R_SELF_HEAD_4 = ?,"
+				+ "R_SELF_TEXT_1 = ?,R_SELF_TEXT_2 = ?,R_SELF_TEXT_3 = ?,R_SELF_TEXT_4 = ? WHERE R_ID = ? AND R_NUM = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, main_title);
+			ps.setString(2, fileName);
+			ps.setString(3, j_head);
+			ps.setString(4, j_middle);
+			ps.setString(5, j_end);
+			ps.setString(6, addr_head);
+			ps.setString(7, addr_middle);
+			ps.setString(8, title0);
+			ps.setString(9, title1);
+			ps.setString(10, title2);
+			ps.setString(11, title3);
+			ps.setString(12, text0);
+			ps.setString(13, text1);
+			ps.setString(14, text2);
+			ps.setString(15, text3);
+			ps.setString(16, id);
+			ps.setString(17, number);
+			result = ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
+		return result;
+	}
 	
 }

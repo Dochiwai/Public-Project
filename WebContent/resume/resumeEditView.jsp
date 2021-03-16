@@ -144,10 +144,10 @@ function delSet3(){
 }
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include> 
-	<form action = "ResumeJoinLogic.jsp" method = "post" enctype="multipart/form-data">
+	<form action = "ResumeUpdateLogic.jsp" method = "post" enctype="multipart/form-data">
 		<table border = "1" align = "center" style = "width :100%;"  >
 			<tr>
-				<td>타이틀</td>
+				<td>타이틀 <input type="hidden"name="resume_number" value="${resume_num }"></td>
 				<td colspan ="6"><input type = "text" name = "r_main_title" value = "${dto.r_title }"placeholder="이력서의 제목을 입력해주세요" style= "width: 100%;"></td>
 			</tr>
 			<tr>
@@ -299,7 +299,7 @@ function delSet3(){
 		</table>
 		<table border = "1" style = "width : 100%;">
 			<tr align = "center"> 
-				<td><input type = "submit" value = "작성완료">        <input type = "button" value = "초기화하기"></td>
+				<td><input type = "submit" value = "수정하기">        <input type = "button" value = "뒤로가기"></td>
 			</tr>
 		</table>
 	</form>

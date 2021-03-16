@@ -14,14 +14,19 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.resume.dao.ResumeDao;
 
-@WebServlet("/resume/ResumeJoinLogic.jsp")
-public class ResumeJoinLogic extends HttpServlet {
+/**
+ * Servlet implementation class ResumeUpdateLogic
+ */
+@WebServlet("/resume/ResumeUpdateLogic.jsp")
+public class ResumeUpdateLogic extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		int result = -1;
 		ResumeDao dao = ResumeDao.getInstance(); 	
 		String id = (String) session.getAttribute("currentid");
+		String number = "";
 		String main_title = null;
 		String addr_head = null;
 		String addr_middle = null;
@@ -58,6 +63,7 @@ public class ResumeJoinLogic extends HttpServlet {
 		text2 =  multi.getParameter("area2");
 		title3 =  multi.getParameter("title3");
 		text3 =  multi.getParameter("area3");
+		number = multi.getParameter("resume_number");
 		
 		if(j_head.equals("1")) {
 			if(j_middle.equals("1")) {
@@ -87,43 +93,12 @@ public class ResumeJoinLogic extends HttpServlet {
 					j_end = "8";
 				}
 			}
-		}		
-//		System.out.println(title0);
-//		System.out.println(title1);
-//		System.out.println(title2);
-//		System.out.println(title3);
+		}
 		
-		result = dao.insertResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end,title0,text0,title1,text1,title2,text2,title3,text3);
+		result = dao.updateResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end,title0,text0,title1,text1,title2,text2,title3,text3,number);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/resume/ResumeMainViewLogic.jsp");
 		rd.forward(request, response);
-	
-//		System.out.println(id + ": id");
-//		System.out.println(main_title + ": main_title");
-//		System.out.println(fileName + ": fileName");
-//		System.out.println(orgfileName + ": orgfileName");
-//		System.out.println(addr_head + ": addr_head");
-//		System.out.println(addr_middle + ": addr_middle");
-//		System.out.println(j_head + ": j_head");
-//		System.out.println(j_middle + ": j_middle");
-//		System.out.println(title0 + ": title0");
-//		System.out.println(text0 + ": text0");
-//		System.out.println(title1 + ": title1");
-//		System.out.println(text1 + ": text1");
-//		System.out.println(title2 + ": title2");
-//		System.out.println(text2 + ": text2");
-//		System.out.println(title3 + ": title3");
-//		System.out.println(text3 + ": text3");
-
-		//
-		
-		
-//		if(result != -1) {
-//			PrintWriter writer = response.getWriter(); writer.println("<script>alert('Good');</script>"); writer.close();
-//		}else {
-//			PrintWriter writer = response.getWriter(); writer.println("<script>alert('Fail');</script>"); writer.close();
-//		}
-		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

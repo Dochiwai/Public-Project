@@ -29,6 +29,7 @@ public class resumeEditViewLogic extends HttpServlet {
 		String id = (String)session.getAttribute("currentid");
 		String num = request.getParameter("num");
 		String title = request.getParameter("title");
+		request.setAttribute("resume_num", num);
 		
 		ResumeDao dao = ResumeDao.getInstance();
 		Resume_User_Dto dto = dao.selectinfo(id,num,title);
@@ -95,10 +96,10 @@ public class resumeEditViewLogic extends HttpServlet {
 				dto.setR_self_head_4(null);
 			}
 		}
-		System.out.println("1번 : "+dto.getR_self_head_1());
-		System.out.println("2번 : "+dto.getR_self_head_2());
-		System.out.println("3번 : "+dto.getR_self_head_3());
-		System.out.println("4번 : "+dto.getR_self_head_4());
+//		System.out.println("1번 : "+dto.getR_self_head_1());
+//		System.out.println("2번 : "+dto.getR_self_head_2());
+//		System.out.println("3번 : "+dto.getR_self_head_3());
+//		System.out.println("4번 : "+dto.getR_self_head_4());
 		
 
 		RequestDispatcher rd = request.getRequestDispatcher("resumeEditView.jsp");
