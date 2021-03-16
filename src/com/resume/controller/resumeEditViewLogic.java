@@ -56,6 +56,50 @@ public class resumeEditViewLogic extends HttpServlet {
 		request.setAttribute("image", image);
 	
 		
+		if(null == dto.getR_self_head_1()) {
+			if(null != dto.getR_self_head_2()) {
+				dto.setR_self_head_1(dto.getR_self_head_2());
+				dto.setR_self_text_1(dto.getR_self_text_2());
+				dto.setR_self_text_2(null);
+				dto.setR_self_head_2(null);
+			}else if(null != dto.getR_self_head_3()) {
+				dto.setR_self_head_1(dto.getR_self_head_3());
+				dto.setR_self_text_1(dto.getR_self_text_3());
+				dto.setR_self_text_3(null);
+				dto.setR_self_head_3(null);
+			}else if(null != dto.getR_self_head_4()) {
+				dto.setR_self_head_1(dto.getR_self_head_4());
+				dto.setR_self_text_1(dto.getR_self_text_4());
+				dto.setR_self_text_4(null);
+				dto.setR_self_head_4(null);
+			}
+		}
+		if(null == dto.getR_self_head_2()) {
+			if(null != dto.getR_self_head_3()) {
+				dto.setR_self_head_2(dto.getR_self_head_3());
+				dto.setR_self_text_2(dto.getR_self_text_3());
+				dto.setR_self_text_3(null);
+				dto.setR_self_head_3(null);
+			}else if(null != dto.getR_self_head_4()) {
+				dto.setR_self_head_2(dto.getR_self_head_4());
+				dto.setR_self_text_2(dto.getR_self_text_4());
+				dto.setR_self_text_4(null);
+				dto.setR_self_head_4(null);
+			}
+		}
+		if(null == dto.getR_self_head_3()) {
+			if(null != dto.getR_self_head_4()) {
+				dto.setR_self_head_3(dto.getR_self_head_4());
+				dto.setR_self_text_3(dto.getR_self_text_4());
+				dto.setR_self_text_4(null);
+				dto.setR_self_head_4(null);
+			}
+		}
+		System.out.println("1번 : "+dto.getR_self_head_1());
+		System.out.println("2번 : "+dto.getR_self_head_2());
+		System.out.println("3번 : "+dto.getR_self_head_3());
+		System.out.println("4번 : "+dto.getR_self_head_4());
+		
 
 		RequestDispatcher rd = request.getRequestDispatcher("resumeEditView.jsp");
 		rd.forward(request, response);

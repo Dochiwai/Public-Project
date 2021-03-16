@@ -3,8 +3,7 @@
 <%@ taglib prefix = "c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
-	<c:choose>
-		<c:when test ="${list != null }">
+		<c:if test ="${list != null }">
 			<div>
 				현재 작성한 이력서<br>
 			</div>
@@ -21,10 +20,9 @@
 					</tr>
 				</c:forEach>
 			</table>
-		</c:when>
-		<c:otherwise>
+		</c:if>
+		<c:if test = "${list == null }">
 			현재 등록된 이력서가 없어영 ㅠㅠ<br>
-		</c:otherwise>
-	</c:choose>
+		</c:if>
 	<input type = "button" value = "이력서 작성하기" onclick = "location.href = 'ResumeWriteViewLogic.jsp'">
 <jsp:include page = "/layout/footer.jsp"></jsp:include>

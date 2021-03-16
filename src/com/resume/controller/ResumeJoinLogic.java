@@ -28,14 +28,14 @@ public class ResumeJoinLogic extends HttpServlet {
 		String j_head = null;
 		String j_middle = null;
 		String j_end = null;
-		String title0 = "none"; 
-		String text0 = "none"; 
-		String title1 = "none"; 
-		String text1 = "none"; 
-		String title2 = "none"; 
-		String text2 = "none"; 
-		String title3 = "none"; 
-		String text3 = "none"; 
+		String title0 = ""; 
+		String text0 = ""; 
+		String title1 = ""; 
+		String text1 = ""; 
+		String title2 = ""; 
+		String text2 = ""; 
+		String title3 = ""; 
+		String text3 = ""; 
 		String fileName = null;
 		String orgfileName = null;
 		String uploadPath = request.getRealPath("upload");
@@ -50,6 +50,15 @@ public class ResumeJoinLogic extends HttpServlet {
 		j_head =  multi.getParameter("j_head");
 		j_middle =  multi.getParameter("j_middle_name");
 		j_end =  multi.getParameter("j_end_name");
+		title0 =  multi.getParameter("title0");
+		text0 =  multi.getParameter("area0");
+		title1 =  multi.getParameter("title1");
+		text1 =  multi.getParameter("area1");
+		title2 =  multi.getParameter("title2");
+		text2 =  multi.getParameter("area2");
+		title3 =  multi.getParameter("title3");
+		text3 =  multi.getParameter("area3");
+		
 		if(j_head.equals("1")) {
 			if(j_middle.equals("1")) {
 				if(j_end.equals("1")) {
@@ -79,18 +88,10 @@ public class ResumeJoinLogic extends HttpServlet {
 				}
 			}
 		}		
-		title0 =  multi.getParameter("title0");
-		text0 =  multi.getParameter("area0");
-		title1 =  multi.getParameter("title1");
-		text1 =  multi.getParameter("area1");
-		title2 =  multi.getParameter("title2");
-		text2 =  multi.getParameter("area2");
-		title3 =  multi.getParameter("title3");
-		text3 =  multi.getParameter("area3");
-//		System.out.println(title0);
-//		System.out.println(title1);
-//		System.out.println(title2);
-//		System.out.println(title3);
+		System.out.println(title0);
+		System.out.println(title1);
+		System.out.println(title2);
+		System.out.println(title3);
 		
 		result = dao.insertResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end,title0,text0,title1,text1,title2,text2,title3,text3);
 
