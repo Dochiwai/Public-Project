@@ -248,8 +248,8 @@ public class ResumeDao {
 			String title2, String text2, String title3, String text3,String number) {
 		int result = -1;
 		Calendar cal = Calendar.getInstance();
-		sql = "UPDATE RESUME_DB SET R_TITLE = ?,R_PICTURE = ? , R_WANWJOB_HEAD = ?,R_WANWJOB_MIDDLE = ?,"
-				+ "R_WANWJOB_END = ?,R_WHERE_HEAD = ?,R_WHERE_MIDDLE = ?,"
+		sql = "UPDATE RESUME_DB SET R_TITLE = ?,R_PICTURE = ? , R_WANTJOB_HEAD = ?,R_WANTJOB_MIDDLE = ?,"
+				+ "R_WANTJOB_END = ?,R_WHERE_HEAD = ?,R_WHERE_MIDDLE = ?,"
 				+ "R_SELF_HEAD_1 = ?,R_SELF_HEAD_2 = ?,R_SELF_HEAD_3 = ?,R_SELF_HEAD_4 = ?,"
 				+ "R_SELF_TEXT_1 = ?,R_SELF_TEXT_2 = ?,R_SELF_TEXT_3 = ?,R_SELF_TEXT_4 = ? WHERE R_ID = ? AND R_NUM = ?";
 		try {
@@ -277,6 +277,22 @@ public class ResumeDao {
 			e.printStackTrace();
 		}finally {
 			close(con, ps);
+		}
+		return result;
+	}
+	public int resumeDelete(String id, String num) {
+		int result = -1;
+		sql = "DELETE FROM RESUME_DB WHERE R_ID = ? AND R_NUM = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, num);
+			result = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
 		}
 		return result;
 	}

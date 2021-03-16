@@ -153,6 +153,7 @@ function delSet3(){
 			<tr>
 				<td rowspan="5"><img id="print" src= "${image }" height = "200" alt="이미지를 선택해 주세요"><br>
 				<input type="file" id="sel-file" name = "r_ficture" accept="image/*">
+				<input type = "hidden" name = "filename_2" value = "${dto.r_picture}">
 				<td colspan="6"  width="90%" align = "center" >개인정보</td>
 			</tr>
 			<tr>
@@ -221,7 +222,7 @@ function delSet3(){
 					</c:forEach>
 				</td>
 				<td colspan = "4" id = "job_end">
-				<c:forEach var = "listtt" items = "${job_end_list}" varStatus = "status">
+					<c:forEach var = "listtt" items = "${job_end_list}" varStatus = "status">
 						<input type = "radio" name = "j_end_name" id = "j_end_id" value = "${listtt.j_id }"
 						 <c:if test="${dto.r_wantjob_end eq listtt.j_keyid}">checked</c:if>>${listtt.j_end_job }<br>
 					</c:forEach>
@@ -299,7 +300,7 @@ function delSet3(){
 		</table>
 		<table border = "1" style = "width : 100%;">
 			<tr align = "center"> 
-				<td><input type = "submit" value = "수정하기">        <input type = "button" value = "뒤로가기"></td>
+				<td><input type = "submit" value = "수정하기"> <input type = "button" value = "삭제하기"  onclick="location.href='/test/resume/resumedel.jsp?id=${dto.r_id}&&num=${resume_num }'">  <input type = "button" value = "뒤로가기" onclick="history.back();"></td>
 			</tr>
 		</table>
 	</form>

@@ -16,6 +16,9 @@
         	<ul>
         		<c:if test = "${sessionScope.currentid != null }">
         			<li>
+        				<input type = "button" value = "회사검색" onclick = "location.href = '/test/worksearch/WorkSearchMainViewLogic.jsp'">
+        			</li>
+        			<li>
         				<input type = "button" value = "이력서관리" onclick = "location.href = '/test/resume/ResumeMainViewLogic.jsp'">
         			</li>
         		</c:if>

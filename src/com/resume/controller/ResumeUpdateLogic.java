@@ -64,7 +64,9 @@ public class ResumeUpdateLogic extends HttpServlet {
 		title3 =  multi.getParameter("title3");
 		text3 =  multi.getParameter("area3");
 		number = multi.getParameter("resume_number");
-		
+		if(null == fileName) {
+			fileName = multi.getParameter("filename_2");
+		}
 		if(j_head.equals("1")) {
 			if(j_middle.equals("1")) {
 				if(j_end.equals("1")) {
