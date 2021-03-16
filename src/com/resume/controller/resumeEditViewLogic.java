@@ -53,7 +53,7 @@ public class resumeEditViewLogic extends HttpServlet {
 		ArrayList<Detail_Addr_Dto> addr_detail_dto = addrdao.detailSearch(head_num);
 		request.setAttribute("addr_detail_list", addr_detail_dto);
 		
-		String image = "http://localhost:9090/gygus/upload/"+dto.getR_picture();
+		String image = "http://localhost:9090/korea/upload/"+dto.getR_picture();
 		request.setAttribute("image", image);
 	
 		
