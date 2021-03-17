@@ -85,13 +85,33 @@ $(function() {
 	         return false;
 	      });
 	   });
+$(function() {
+    $('#file1').change(function() {
+    var form = new FormData();
+    form.append( "file1", $("#file1")[0].files[0] );
+    alert(form);
+       $.ajax({
+      	  type:'GET',
+      	  async:'true',
+      	  url: './index.jsp',
+      	  data: btn,
+          success: function() {    
+        	  alert("성공");
+          }, 
+          error: function(xhr, status) {
+          	alert(xhr + " error :" + status);
+          }
+       }); // $.ajax
+       return false;
+    });
+ });
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
-	<form method = "post">
+	<form id="FILE_FORM" method="post" enctype="multipart/form-data" action="">
 		<table border = "1" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
-					<h3>직업을 찾아보자..</h3>
+					<h3>직업을 등록해보자..</h3>
 				</td>
 			</tr>
 			<tr>
@@ -153,14 +173,18 @@ $(function() {
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<input type = "text" style = "width : 90%;" placeholder="검색하기">
-					<input type = "button" value = "검색" class="search_btn">
-					<input type = "button" value = "리셋" onclick = "window.location.reload()">
+					<input type = "text" style = "width : 100%;" placeholder="제목을 입력해주세요">
 				</td>
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<a href="/test/worksearch/WorkSearchWriteViewLogic.jsp">글 쓰기</a>
+					<input type = "file" name = "file1" id = "file1">
+					<input type = "file" name = "file2" id = "file2">
+				</td>
+			</tr>
+			<tr>
+				<td	colspan = "7">
+					<textarea placeholder="내용을 입력해주세요" style = "width : 100%; height : 575px;"></textarea>
 				</td>
 			</tr>
 		</table>
