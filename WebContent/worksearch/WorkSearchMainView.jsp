@@ -185,7 +185,6 @@ $(function() {
 						제목
 					</td>
 				</tr>
-			</c:if>
 			<tr>
 				<c:forEach var = "list" items = "${worklist}" varStatus = "status">
 					<td colspan = "1"  align = "center">
@@ -199,6 +198,7 @@ $(function() {
 					</td>
 				</c:forEach>
 			</tr>
+			</c:if>
 		</table>
 	</form>
 <jsp:include page = "/layout/footer.jsp"></jsp:include>
