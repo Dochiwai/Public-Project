@@ -85,29 +85,16 @@ $(function() {
 	         return false;
 	      });
 	   });
-$(function() {
-    $('#file1').change(function() {
-    var form = new FormData();
-    form.append( "file1", $("#file1")[0].files[0] );
-    alert(form);
-       $.ajax({
-      	  type:'GET',
-      	  async:'true',
-      	  url: './index.jsp',
-      	  data: btn,
-          success: function() {    
-        	  alert("성공");
-          }, 
-          error: function(xhr, status) {
-          	alert(xhr + " error :" + status);
-          }
-       }); // $.ajax
-       return false;
-    });
- });
+</script>
+<script type="text/javascript">
+	function gosubmit(obj){
+		form_data.divval.value = $("#text_image_test").innerHTML;
+		return false;
+		document.searchForm.submit();
+	}
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
-	<form id="FILE_FORM" method="post" enctype="multipart/form-data" action="">
+	<form name = "form_data" id = "form_data" method="post" action="WorkInsertLogic.jsp" enctype="multipart/form-data" onsubmit = "return gosubmit(this);">
 		<table border = "1" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
@@ -154,8 +141,23 @@ $(function() {
 				</td>
 			</tr>
 			<tr>
-				<td colspan = "7">
+				<tr>
+				<td colspan = "5">
 					직종
+				</td>
+				<td colspan = "1">
+					<select name = "work_day">
+						<option value = "신입">신입</option>
+						<option value = "경력">경력</option>
+						<option value = "무관">무관</option>
+					</select>
+				</td>
+				<td>
+					<select name = "want_money">
+						<option value = "회사내규">연봉선택</option>
+						<option value = "2400~2600">2400~2600</option>
+						<option value = "2600~3000">2600~3000</option>
+					</select>
 				</td>
 			</tr>
 			<tr>
@@ -173,7 +175,7 @@ $(function() {
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<input type = "text" style = "width : 100%;" placeholder="제목을 입력해주세요">
+					<input type = "text" name = "title" style = "width : 100%;" placeholder="제목을 입력해주세요">
 				</td>
 			</tr>
 			<tr>
@@ -183,10 +185,51 @@ $(function() {
 				</td>
 			</tr>
 			<tr>
-				<td	colspan = "7">
-					<textarea placeholder="내용을 입력해주세요" style = "width : 100%; height : 575px;"></textarea>
+				<td	colspan = "7" align = "center" style = "background-color : #E1E3E2; width : 100%; ">
+					<div id = "text_image_test" contentEditable="true" style = "background-color : white; height : 100%; width : 80%; margin : 0px;" >
+					<input type = "hidden" name = "divval" id = "divval" value = "">
+					<img id = "print1" src="" height = "200" alt="첫번째 이미지를 선택해주세요 이미지 미선택시 글작성 불가능">
+					<img id = 'print2' src = '' height = '200' alt = '두번째 이미지를 선택해주세요.'></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type = "submit" value = "전송!">
 				</td>
 			</tr>
 		</table>
-	</form>
+	</form>	
+<script type="text/javascript">
+var selFile1 = document.querySelector('#file1');
+var selFile2 = document.querySelector('#file2');
+
+selFile1.onchange = function () { 
+    var getList = this.files;
+    
+    // 읽기
+    var reader = new FileReader();
+    
+    reader.readAsDataURL(getList[0]);
+
+    //로드 한 후
+    reader.onload = function  () {
+        document.querySelector('#print1').src = reader.result ;
+    }; 
+}; 
+
+selFile2.onchange = function () { 
+    var getList = this.files;
+    // 읽기
+    var reader = new FileReader();
+    
+    reader.readAsDataURL(getList[0]);
+
+    //로드 한 후
+    reader.onload = function  () {
+        document.querySelector('#print2').src = reader.result ;
+    }; 
+}; 
+
+
+</script>
 <jsp:include page = "/layout/footer.jsp"></jsp:include>

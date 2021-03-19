@@ -134,8 +134,22 @@ $(function() {
 				</td>
 			</tr>
 			<tr>
-				<td colspan = "7">
+				<td colspan = "5">
 					직종
+				</td>
+				<td colspan = "1">
+					<select name = "work_day">
+						<option value = "신입">신입</option>
+						<option value = "경력">경력</option>
+						<option value = "무관">무관</option>
+					</select>
+				</td>
+				<td>
+					<select name = "want_money">
+						<option value = "회사내규">연봉선택</option>
+						<option value = "2400~2600">2400~2600</option>
+						<option value = "2600~3000">2600~3000</option>
+					</select>
 				</td>
 			</tr>
 			<tr>
@@ -156,11 +170,7 @@ $(function() {
 					<input type = "text" style = "width : 90%;" placeholder="검색하기">
 					<input type = "button" value = "검색" class="search_btn">
 					<input type = "button" value = "리셋" onclick = "window.location.reload()">
-				</td>
-			</tr>
-			<tr>
-				<td colspan = "7">
-					<a href="/test/worksearch/WorkSearchWriteViewLogic.jsp">글 쓰기</a>
+					<a href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
 				</td>
 			</tr>
 		</table>
