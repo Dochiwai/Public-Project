@@ -185,19 +185,19 @@ $(function() {
 						제목
 					</td>
 				</tr>
-			<tr>
-				<c:forEach var = "list" items = "${worklist}" varStatus = "status">
-					<td colspan = "1"  align = "center">
-						${list.no}
-					</td>
-					<td colspan = "1"  align = "center">
-						${list.id}
-					</td>
-					<td colspan = "5">
-						${list.work_title}
-					</td>
-				</c:forEach>
-			</tr>
+				<tr>
+					<c:forEach var = "list" items = "${worklist}" varStatus = "status">
+						<td colspan = "1"  align = "center">
+							${list.no}
+						</td>
+						<td colspan = "1"  align = "center">
+							${list.id}
+						</td>
+						<td colspan = "5">
+							${list.work_title}
+						</td>
+					</c:forEach>
+				</tr>
 			</c:if>
 		</table>
 	</form>
