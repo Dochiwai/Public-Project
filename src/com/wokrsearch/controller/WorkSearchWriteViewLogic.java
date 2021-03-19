@@ -14,6 +14,8 @@ import com.addr.dao.AddrDao;
 import com.addr.dto.Head_Addr_Dto;
 import com.resume.dao.ResumeDao;
 import com.resume.dto.Resume_Head_Dto;
+import com.work.dao.WorkDao;
+import com.work.dto.WorkDto;
 
 @WebServlet("/worksearch/WorkSearchWriteViewLogic.jsp")
 public class WorkSearchWriteViewLogic extends HttpServlet {
@@ -31,6 +33,7 @@ public class WorkSearchWriteViewLogic extends HttpServlet {
 		
 		String[] sex = {"남자","여자"};
 		request.setAttribute("sex", sex);
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WorkSearchWriteView.jsp");
 		rd.forward(request, response);

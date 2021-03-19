@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.resume.dao.ResumeDao;
+import com.work.dao.WorkDao;
 
 @WebServlet("/worksearch/WorkInsertLogic.jsp")
 public class WorkInsertLogic extends HttpServlet {
@@ -22,7 +23,6 @@ public class WorkInsertLogic extends HttpServlet {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		int result = -1;
-		ResumeDao dao = ResumeDao.getInstance(); 	
 		String id = (String) session.getAttribute("currentid");
 		String title = "";
 		String text = "";
@@ -83,7 +83,7 @@ public class WorkInsertLogic extends HttpServlet {
 				}else {
 					job_end = "6";
 				}
-			}else{
+			}else if(job_middle.equals("2")){
 				if(job_end.equals("1")) {
 					job_end = "7";
 				}else {
@@ -92,19 +92,24 @@ public class WorkInsertLogic extends HttpServlet {
 			}
 		}
 		
-		System.out.println(title);
-		System.out.println(text);
-		System.out.println(gender);
-		System.out.println(age);
-		System.out.println(position);
-		System.out.println(money);
-		System.out.println(where_head);
-		System.out.println(where_middle);
-		System.out.println(job_head);
-		System.out.println(job_middle);
-		System.out.println(job_end);
+		WorkDao dao = WorkDao.getInstance();
+	    result = dao.workjoin(where_head,where_middle,age,gender,position,money,job_head,job_middle,job_end
+	    						,title,filename1,text,filename2,id);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("WorkSearchMainView.jsp");
+		
+//		System.out.println(title);
+//		System.out.println(text);
+//		System.out.println(gender);
+//		System.out.println(age);
+//		System.out.println(position);
+//		System.out.println(money);
+//		System.out.println(where_head);
+//		System.out.println(where_middle);
+//		System.out.println(job_head);
+//		System.out.println(job_middle);
+//		System.out.println(job_end);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("WorkSearchMainViewLogic.jsp");
 		rd.forward(request, response);
 	}
 

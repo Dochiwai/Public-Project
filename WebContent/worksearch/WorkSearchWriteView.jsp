@@ -85,11 +85,12 @@ $(function() {
 	         return false;
 	      });
 	   });
-</script>
+</script>x
 <script type="text/javascript">
-	function gosubmit(obj){
-		form_data.divval.value = $("#text_image_test").innerHTML;
-		return false;
+	function gosubmit(){
+		divvalue = document.getElementById("divval");
+		text = document.getElementById("text_image_test");
+		divvalue.value = text.innerText;
 		document.searchForm.submit();
 	}
 </script>

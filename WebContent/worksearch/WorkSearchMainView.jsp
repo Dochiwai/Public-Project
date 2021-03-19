@@ -173,6 +173,32 @@ $(function() {
 					<a href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
 				</td>
 			</tr>
+			<c:if test = "${worklist != null}">
+				<tr>
+					<td colspan = "1" align = "center">
+						번호
+					</td>
+					<td colspan = "1" align = "center">
+						이름
+					</td>
+					<td colspan = "5" align = "center">
+						제목
+					</td>
+				</tr>
+			</c:if>
+			<tr>
+				<c:forEach var = "list" items = "${worklist}" varStatus = "status">
+					<td colspan = "1"  align = "center">
+						${list.no}
+					</td>
+					<td colspan = "1"  align = "center">
+						${list.id}
+					</td>
+					<td colspan = "5">
+						${list.work_title}
+					</td>
+				</c:forEach>
+			</tr>
 		</table>
 	</form>
 <jsp:include page = "/layout/footer.jsp"></jsp:include>

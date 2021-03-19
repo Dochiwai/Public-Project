@@ -166,16 +166,16 @@ public class UserDao {
 		int result = -1;
 		sql = "UPDATE USER_DB SET m_userpassword = ?, m_name = ?, m_age = ?, m_gender = ?, m_addr_head = ?, m_addr_middle = ?, m_addr_end = ?, m_phone = ?, m_email = ? WHERE m_userid = ?";
 		try {
-			System.out.println(password);
-			System.out.println(name);
-			System.out.println(gender);
-			System.out.println(age);
-			System.out.println(addr_head);
-			System.out.println(addr_middle);
-			System.out.println(addr_end);
-			System.out.println(phone);
-			System.out.println(email);
-			System.out.println(id);
+//			System.out.println(password);
+//			System.out.println(name);
+//			System.out.println(gender);
+//			System.out.println(age);
+//			System.out.println(addr_head);
+//			System.out.println(addr_middle);
+//			System.out.println(addr_end);
+//			System.out.println(phone);
+//			System.out.println(email);
+//			System.out.println(id);
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1,password);

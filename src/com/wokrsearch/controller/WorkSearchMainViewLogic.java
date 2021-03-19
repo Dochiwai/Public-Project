@@ -14,6 +14,8 @@ import com.addr.dao.AddrDao;
 import com.addr.dto.Head_Addr_Dto;
 import com.resume.dao.ResumeDao;
 import com.resume.dto.Resume_Head_Dto;
+import com.work.dao.WorkDao;
+import com.work.dto.WorkDto;
 
 @WebServlet("/worksearch/WorkSearchMainViewLogic.jsp")
 public class WorkSearchMainViewLogic extends HttpServlet {
@@ -31,6 +33,10 @@ public class WorkSearchMainViewLogic extends HttpServlet {
 		
 		String[] sex = {"남자","여자"};
 		request.setAttribute("sex", sex);
+		
+		WorkDao wdao = WorkDao.getInstance();
+		ArrayList<WorkDto> wdto = wdao.search_list();
+		request.setAttribute("worklist", wdto);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WorkSearchMainView.jsp");
 		rd.forward(request, response);

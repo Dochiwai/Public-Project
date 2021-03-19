@@ -14,6 +14,8 @@ public class WorkDto {
 	private String work_file1;
 	private String work_text;
 	private String work_file2;
+	private String no;
+	private String id;
 	
 	public String getWork_where_head() {
 		return work_where_head;
@@ -93,6 +95,17 @@ public class WorkDto {
 	public void setWork_file2(String work_file2) {
 		this.work_file2 = work_file2;
 	}
-	
+	public String getNo() {
+		return no;
+	}
+	public void setNo(String no) {
+		this.no = no;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 }
