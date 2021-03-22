@@ -95,11 +95,14 @@ $(function() {
 	}
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
-	<form name = "form_data" id = "form_data" method="post" action="WorkInsertLogic.jsp" enctype="multipart/form-data" onsubmit = "return gosubmit(this);">
+	<form name = "form_data" id = "form_data" method="post" action="WorkEditLogic.jsp" enctype="multipart/form-data" onsubmit = "return gosubmit(this);">
+	<input type = "hidden" name = "get_no" value = "${get_no }">
+	<input type = "hidden" name = "get_id" value = "${get_id }">
+	<input type = "hidden" name = "get_title" value = "${get_title }">
 		<table border = "1" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
-					<h3>직업을 등록해보자..</h3>
+					<h3>직업을 수정해보자..</h3>
 				</td>
 			</tr>
 			<tr>
@@ -116,27 +119,37 @@ $(function() {
 			<tr>
 				<td colspan = "2">
 					<select id = "selectID" name = "r_want_head">
-						<c:forEach var = "list" items = "${addrlist}" varStatus = "status">
-							<option value = "${list.head_addr}">${list.head_addr}</option>
+						<c:forEach var = "list" items = "${addr_head_list}" varStatus = "status">
+							<option value = "${list.head_addr}" 
+							<c:if test= "${userdto.work_where_head eq list.head_addr}">selected</c:if>
+							>${list.head_addr}</option>
 						</c:forEach>
 					</select>
 				</td>
 				<td colspan = "3">
 					<select id = "selectID2" name = "r_want_middle">
-						<option></option>
+						<c:forEach var = "list" items = "${addr_middle_list}" varStatus = "status">
+							<option value = "${list.detail_addr}"
+							<c:if test= "${userdto.work_where_middle eq list.detail_addr}">selected</c:if>
+							>${list.detail_addr}</option>
+						</c:forEach>
 					</select>
 				</td>
 				<td>
 					<select name = "age_gogo">
-						<c:forEach var = "list" items = "${age_list }" varStatus = "status">
-							<option value = "${list}">${list}</option>
+						<c:forEach var = "list" items = "${agelist }" varStatus = "status">
+							<option value = "${list}"
+							<c:if test= "${userdto.work_age eq list}">selected</c:if>
+							>${list}</option>
 						</c:forEach>
 					</select>
 				</td>
 				<td>
 					<select name = "sex_gogo">
-						<c:forEach var = "list" items = "${sex }" varStatus = "status">
-							<option value = "${list}">${list}</option>
+						<c:forEach var = "list" items = "${gender }" varStatus = "status">
+							<option value = "${list}"
+							<c:if test= "${userdto.work_gender eq list}">selected</c:if>
+							>${list}</option>
 						</c:forEach>
 					</select>
 				</td>
@@ -148,35 +161,46 @@ $(function() {
 				</td>
 				<td colspan = "1">
 					<select name = "work_day">
-						<option value = "신입">신입</option>
-						<option value = "경력">경력</option>
-						<option value = "무관">무관</option>
+						<c:forEach var = "list" items = "${position }" varStatus = "status">
+							<option value = "${list}"
+							<c:if test= "${userdto.work_position eq list}">selected</c:if>
+							>${list}</option>
+						</c:forEach>
 					</select>
 				</td>
 				<td>
 					<select name = "want_money">
-						<option value = "회사내규">연봉선택</option>
-						<option value = "2400~2600">2400~2600</option>
-						<option value = "2600~3000">2600~3000</option>
+						<c:forEach var = "list" items = "${money }" varStatus = "status">
+							<option value = "${list}"
+							<c:if test= "${userdto.work_money eq list}">selected</c:if>
+							>${list}</option>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td colspan = "2">
-					<c:forEach var = "list" items = "${joblist}" varStatus = "status">
-						<input type = "radio" name = "j_head" id = "j_head_id" value = "${list.j_id }">${list.j_head_job }<br>
+					<c:forEach var = "list" items = "${job_head_list}" varStatus = "status">
+						<input type = "radio" name = "j_head" id = "j_head_id" value = "${list.j_id }"
+						<c:if test="${userdto.work_job_head eq list.j_id}">checked</c:if>>${list.j_head_job }<br>
 					</c:forEach>
 				</td>
 				<td colspan = "3" id = "job_middle">
-					직종 미들
+					<c:forEach var = "listt" items = "${job_mid_list}" varStatus = "status">
+						<input type = "radio" name = "j_middle_name" id = "j_middle_id" value = "${listt.j_id}"
+						 <c:if test="${userdto.work_job_middle eq listt.j_id}">checked</c:if>>${listt.j_middle_job }<br>
+					</c:forEach>
 				</td>
 				<td colspan = "2" id = "job_end">
-					직종엔드
+					<c:forEach var = "listtt" items = "${job_end_list}" varStatus = "status">
+						<input type = "radio" name = "j_end_name" id = "j_end_id" value = "${listtt.j_id }"
+						 <c:if test="${userdto.work_job_end eq listtt.j_keyid}">checked</c:if>>${listtt.j_end_job }<br>
+					</c:forEach>
 				</td>
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<input type = "text" name = "title" style = "width : 100%;" placeholder="제목을 입력해주세요">
+					<input type = "text" value = "${userdto.work_title }"name = "title" style = "width : 100%;" placeholder="제목을 입력해주세요">
 				</td>
 			</tr>
 			<tr>
@@ -189,8 +213,10 @@ $(function() {
 				<td	colspan = "7" align = "center" style = "background-color : #E1E3E2; width : 100%; ">
 					<div id = "text_image_test" contentEditable="true" style = "background-color : white; height : 100%; width : 80%; margin : 0px;" >
 					<input type = "hidden" name = "divval" id = "divval" value = "">
-					<img id = "print1" src="" height = "200" alt="첫번째 이미지를 선택해주세요 이미지 미선택시 글작성 불가능">
-					<img id = 'print2' src = '' height = '200' alt = '두번째 이미지를 선택해주세요.'></div>
+					<img id = "print1" src="${image1 }" height = "200" alt="첫번째 이미지를 선택해주세요 이미지 미선택시 글작성 불가능">
+					<img id = 'print2' src ="${image2 }" height = '200' alt = '두번째 이미지를 선택해주세요.'>
+					${userdto.work_text }
+					</div>
 				</td>
 			</tr>
 			<tr>

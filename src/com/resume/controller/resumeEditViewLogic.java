@@ -48,7 +48,7 @@ public class resumeEditViewLogic extends HttpServlet {
 		AddrDao addrdao = AddrDao.getInstance();
 		ArrayList<Head_Addr_Dto> addrdto = addrdao.head_search();
 		request.setAttribute("addrlist", addrdto);
-		
+		 
 		String head_num = addrdao.head_number_search(dto.getR_where_head());
 		ArrayList<Detail_Addr_Dto> addr_detail_dto = addrdao.detailSearch(head_num);
 		request.setAttribute("addr_detail_list", addr_detail_dto);

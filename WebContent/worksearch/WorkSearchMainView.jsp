@@ -185,19 +185,19 @@ $(function() {
 						제목
 					</td>
 				</tr>
+				<c:forEach var = "list" items = "${worklist}" varStatus = "status">
 				<tr>
-					<c:forEach var = "list" items = "${worklist}" varStatus = "status">
-						<td colspan = "1"  align = "center">
-							${list.no}
-						</td>
-						<td colspan = "1"  align = "center">
-							${list.id}
-						</td>
-						<td colspan = "5">
-							${list.work_title}
-						</td>
-					</c:forEach>
+					<td colspan = "1"  align = "center">
+						${list.no}
+					</td>
+					<td colspan = "1"  align = "center">
+						${list.id}
+					</td>
+					<td colspan = "5">
+						<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">${list.work_title}</a>
+					</td>
 				</tr>
+				</c:forEach>
 			</c:if>
 		</table>
 	</form>

@@ -126,6 +126,50 @@ public class WorkDao {
 		return list.isEmpty() ? null : list;
 	}
 	
+	public WorkDto worksearchview(String no, String id, String title) {
+		WorkDto dto = null;
+		sql = "SELECT * FROM COMPANY_DB WHERE NO = ? AND ID = ? AND WORK_TITLE = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, no);
+			ps.setString(2, id);
+			ps.setString(3, title);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				dto = new WorkDto();
+				dto.setId(rs.getString("id"));
+				dto.setNo(rs.getString("no"));
+				dto.setWork_where_head(rs.getString("work_where_head"));
+				dto.setWork_where_middle(rs.getString("work_where_middle"));
+				dto.setWork_age(rs.getString("work_age"));
+				dto.setWork_gender(rs.getString("work_gender"));
+				dto.setWork_position(rs.getString("work_position"));
+				dto.setWork_money(rs.getString("work_money"));
+				dto.setWork_job_head(rs.getString("work_job_head"));
+				dto.setWork_job_middle(rs.getString("work_job_middle"));
+				dto.setWork_job_end(rs.getString("work_job_end"));
+				dto.setWork_title(rs.getString("work_title"));
+				dto.setWork_text(rs.getString("work_text"));
+				dto.setWork_file1(rs.getString("work_file1"));
+				dto.setWork_file2(rs.getString("work_file2"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}
+		return dto;
+	}
+	public int editworksearch(String where_head, String where_middle, String age, String gender, String position,
+			String money, String job_head, String job_middle, String job_end, String title, String filename1,
+			String text, String filename2, String no, String backtitle) {
+		int result = -1;
+		sql = "";
+		
+		return result;
+	}
+
 	
 }
 	
