@@ -77,13 +77,13 @@ public class WorkInsertLogic extends HttpServlet {
 				}
 			}
 		}else if(job_head.equals("2")){
-			if(job_middle.equals("1")) {
+			if(job_middle.equals("3")) {
 				if(job_end.equals("1")) {
 					job_end = "5";
 				}else {
 					job_end = "6";
 				}
-			}else if(job_middle.equals("2")){
+			}else if(job_middle.equals("4")){
 				if(job_end.equals("1")) {
 					job_end = "7";
 				}else {

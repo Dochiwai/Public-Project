@@ -209,6 +209,68 @@ public class WorkDao {
 		}
 		return result;
 	}
+	public ArrayList<WorkDto> nontitlesearch(String addr, String age, String sex, String position, String money,
+			String job_head, String job_middle, String job_end) {
+		WorkDto dto = null;
+		ArrayList<WorkDto> list = new ArrayList<WorkDto>();
+		sql = "SELECT * FROM COMPANY_DB WHERE WORK_WHERE_HEAD = ? AND WORK_AGE = ? AND WORK_GENDER = ? AND WORK_POSITION = ? AND WORK_MONEY = ? AND WORK_JOB_HEAD = ? AND WORK_JOB_MIDDLE = ? AND WORK_JOB_END = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, addr);
+			ps.setString(2, age);
+			ps.setString(3, sex);
+			ps.setString(4, position);
+			ps.setString(5, money);
+			ps.setString(6, job_head);
+			ps.setString(7, job_middle);
+			ps.setString(8, job_end);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				dto = new WorkDto();
+				dto.setNo(rs.getString("NO"));
+				dto.setId(rs.getString("ID"));
+				dto.setWork_title(rs.getString("WORK_TITLE"));
+				dto.setWork_gender(rs.getString("WORK_GENDER"));
+				dto.setWork_age(rs.getString("WORK_AGE"));
+				dto.setWork_money(rs.getString("WORK_MONEY"));
+				dto.setWork_where_head(rs.getString("WORK_WHERE_HEAD"));
+				list.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}
+		return list.isEmpty() ? null : list;
+	}
+	
+	public ArrayList<WorkDto> yestitlesearch(String title) {
+		WorkDto dto = null;
+		ArrayList<WorkDto> list = new ArrayList<WorkDto>();
+		sql = "SELECT * FROM COMPANY_DB WHERE WORK_TITLE LIKE '%"+ title +"%'";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				dto = new WorkDto();
+				dto.setNo(rs.getString("NO"));
+				dto.setId(rs.getString("ID"));
+				dto.setWork_title(rs.getString("WORK_TITLE"));
+				dto.setWork_gender(rs.getString("WORK_GENDER"));
+				dto.setWork_age(rs.getString("WORK_AGE"));
+				dto.setWork_money(rs.getString("WORK_MONEY"));
+				dto.setWork_where_head(rs.getString("WORK_WHERE_HEAD"));
+				list.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps, rs);
+		}
+		return list.isEmpty() ? null : list;
+	}
 
 	
 }

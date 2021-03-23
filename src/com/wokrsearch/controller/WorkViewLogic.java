@@ -56,8 +56,8 @@ public class WorkViewLogic extends HttpServlet {
 		String[] age = {"10대","20대","30대","40대","50대","60대","지건딱대"};
 		request.setAttribute("agelist", age);
 		
-		String[] sex = {"남자","여자"};
-		request.setAttribute("gender", sex);
+		String[] gender = {"남자","여자"};
+		request.setAttribute("gender", gender);
 		
 		String[] position = {"신입","경력","무관"};
 		request.setAttribute("position", position);

@@ -74,14 +74,14 @@ public class ResumeJoinLogic extends HttpServlet {
 				}
 			}
 		}else if(j_head.equals("2")){
-			if(j_middle.equals("1")) {
+			if(j_middle.equals("3")) {
 				if(j_end.equals("1")) {
 					j_end = "5";
 				}else {
 					j_end = "6";
 				}
 			}else{
-				if(j_end.equals("1")) {
+				if(j_end.equals("4")) {
 					j_end = "7";
 				}else {
 					j_end = "8";

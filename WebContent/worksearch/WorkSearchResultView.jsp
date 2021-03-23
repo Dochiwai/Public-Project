@@ -87,20 +87,20 @@ $(function() {
 			</tr>
 			<tr>
 				<td colspan = "5">
-					<c:forEach var = "list" items = "${addrlist}" varStatus = "status">
+					<c:forEach var = "list" items = "${addr_head_list}" varStatus = "status">
 						<input type="radio" name="where_name" value="${list.head_addr}">${list.head_addr}
 					</c:forEach>
 				</td>
 				<td>
 					<select name = "age_gogo">
-						<c:forEach var = "list" items = "${age_list}" varStatus = "status">
+						<c:forEach var = "list" items = "${agelist}" varStatus = "status">
 							<option value = "${list}">${list}</option>
 						</c:forEach>
 					</select>
 				</td>
 				<td>
 					<select name = "sex_gogo">
-						<c:forEach var = "list" items = "${sex }" varStatus = "status">
+						<c:forEach var = "list" items = "${gender }" varStatus = "status">
 							<option value = "${list}">${list}</option>
 						</c:forEach>
 					</select>
@@ -112,22 +112,22 @@ $(function() {
 				</td>
 				<td colspan = "1">
 					<select name = "work_day">
-						<option value = "신입">신입</option>
-						<option value = "경력">경력</option>
-						<option value = "무관">무관</option>
+						<c:forEach var = "list" items = "${position}" varStatus = "status">
+							<option value = "${list}">${list}</option>
+						</c:forEach>
 					</select>
 				</td>
 				<td>
 					<select name = "want_money">
-						<option value = "회사내규">연봉선택</option>
-						<option value = "2400~2600">2400~2600</option>
-						<option value = "2600~3000">2600~3000</option>
+						<c:forEach var = "list" items = "${money}" varStatus = "status">
+							<option value = "${list}">${list}</option>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td colspan = "2">
-					<c:forEach var = "list" items = "${joblist}" varStatus = "status">
+					<c:forEach var = "list" items = "${job_head_list}" varStatus = "status">
 						<input type = "radio" name = "j_head" id = "j_head_id" value = "${list.j_id }">${list.j_head_job }<br>
 					</c:forEach>
 				</td>
@@ -146,7 +146,6 @@ $(function() {
 					<a href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
 				</td>
 			</tr>
-			<c:if test = "${worklist != null}">
 				<tr>
 					<td colspan = "1" align = "center">
 						번호
@@ -158,7 +157,7 @@ $(function() {
 						정보 
 					</td>
 				</tr>
-				<c:forEach var = "list" items = "${worklist}" varStatus = "status">
+				<c:forEach var = "list" items = "${resultlist}" varStatus = "status">
 				<tr>
 					<td colspan = "1"  align = "center">
 						${list.no}
@@ -193,7 +192,6 @@ $(function() {
 					</td>
 				</tr>
 				</c:forEach>
-			</c:if>
 		</table>
 	</form>
 <jsp:include page = "/layout/footer.jsp"></jsp:include>
