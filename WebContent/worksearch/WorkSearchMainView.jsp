@@ -182,7 +182,7 @@ $(function() {
 						이름
 					</td>
 					<td colspan = "5" align = "center">
-						제목
+						정보 
 					</td>
 				</tr>
 				<c:forEach var = "list" items = "${worklist}" varStatus = "status">
@@ -194,7 +194,29 @@ $(function() {
 						${list.id}
 					</td>
 					<td colspan = "5">
-						<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">${list.work_title}</a>
+						<table border = "1" style = "width :100%;">
+							<tr>
+								<td colspan = "2">
+									<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">제목 : ${list.work_title}</a> 
+								</td>
+							</tr>
+							<tr>
+								<td colspan = "1">
+									<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">성별 : ${list.work_gender}	</a>	
+								</td>
+								<td colspan = "1">
+									<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">나이 : ${list.work_age }</a>	
+								</td>
+							</tr>
+							<tr>
+								<td colspan = "1">
+									<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">연봉 : ${list.work_money}</a>	
+								</td>
+								<td colspan = "1">
+								<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">지역 : ${list.work_where_head}</a>
+								</td>
+							</tr>
+						</table>
 					</td>
 				</tr>
 				</c:forEach>
