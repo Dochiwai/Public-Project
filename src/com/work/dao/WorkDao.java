@@ -165,8 +165,31 @@ public class WorkDao {
 			String money, String job_head, String job_middle, String job_end, String title, String filename1,
 			String text, String filename2, String no, String backtitle) {
 		int result = -1;
-		sql = "";
-		
+		sql = "UPDATE COMPANY_DB SET WORK_WHERE_HEAD = ? , WORK_WHERE_MIDDLE = ? , WORK_AGE = ?, WORK_GENDER = ?, WORK_POSITION = ?,WORK_MONEY = ? , WORK_JOB_HEAD = ? ,WORK_JOB_MIDDLE = ? , WORK_JOB_END = ? , WORK_TITLE = ?,WORK_FILE1 = ? , WORK_TEXT = ? , WORK_FILE2 = ? WHERE NO = ? AND WORK_TITLE = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, where_head);
+			ps.setString(2, where_middle);
+			ps.setString(3, age);
+			ps.setString(4, gender);
+			ps.setString(5, position);
+			ps.setString(6, money);
+			ps.setString(7, job_head);
+			ps.setString(8, job_middle);
+			ps.setString(9, job_end);
+			ps.setString(10, title);
+			ps.setString(11, filename1);
+			ps.setString(12, text);
+			ps.setString(13, filename2);
+			ps.setString(14, no);
+			ps.setString(15, backtitle);
+			result = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
 		return result;
 	}
 

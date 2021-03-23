@@ -70,11 +70,13 @@ public class WorkViewLogic extends HttpServlet {
 		request.setAttribute("worklist", wdto);
 		
 		String image1 = "http://localhost:9090/korea/company/"+userdto.getWork_file1();
-		System.out.println(image1);
+		String imageback_1 = userdto.getWork_file1();
 		String image2 = "http://localhost:9090/korea/company/"+userdto.getWork_file2();
-		System.out.println(image2);
+		String imageback_2 = userdto.getWork_file2();
 		request.setAttribute("image1", image1);
 		request.setAttribute("image2", image2);
+		request.setAttribute("imageback_1", imageback_1);
+		request.setAttribute("imageback_2", imageback_2);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WorkSearchEditView.jsp");
 		rd.forward(request, response);

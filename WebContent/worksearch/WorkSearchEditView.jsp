@@ -221,6 +221,8 @@ $(function() {
 			</tr>
 			<tr>
 				<td>
+					<input type = "hidden" name = "imageback_1" value = "${imageback_1 }">
+					<input type = "hidden" name = "imageback_2" value = "${imageback_2 }">
 					<input type = "submit" value = "전송!">
 				</td>
 			</tr>

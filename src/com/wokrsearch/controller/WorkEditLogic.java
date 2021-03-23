@@ -3,6 +3,7 @@ package com.wokrsearch.controller;
 import java.io.IOException;
 import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,10 +49,20 @@ public class WorkEditLogic extends HttpServlet {
 
 		Enumeration files = multi.getFileNames();
 
+		
 		String file = (String)files.nextElement();
-		filename1 = multi.getFilesystemName(file);
 		String file2 = (String)files.nextElement();
+		
+		filename1 = multi.getFilesystemName(file);
 		filename2 = multi.getFilesystemName(file2);
+		
+		if(null == filename1) {
+			filename1 = multi.getParameter("imageback_1");
+			System.out.println(filename1);
+		}
+		if(null == filename2) {
+			filename2 = multi.getParameter("imageback_2");
+		}
 		
 		no = multi.getParameter("get_no");
 		backtitle = multi.getParameter("get_title");
@@ -100,6 +111,8 @@ public class WorkEditLogic extends HttpServlet {
 		WorkDao dao = WorkDao.getInstance();
 		result = dao.editworksearch(where_head,where_middle,age,gender,position,money,job_head,job_middle,job_end
 				,title,filename1,text,filename2,no,backtitle);
+		RequestDispatcher rd = request.getRequestDispatcher("WorkSearchMainViewLogic.jsp");
+		rd.forward(request, response);
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
