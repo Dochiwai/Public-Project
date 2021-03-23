@@ -192,6 +192,23 @@ public class WorkDao {
 		}
 		return result;
 	}
+	public int deletework(String no, String id, String title) {
+		int result = -1;
+		sql = "DELETE FROM COMPANY_DB WHERE NO = ? AND ID = ? AND WORK_TITLE = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, no);
+			ps.setString(2, id);
+			ps.setString(3, title);
+			result = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
+		return result;
+	}
 
 	
 }

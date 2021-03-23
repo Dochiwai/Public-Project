@@ -224,6 +224,7 @@ $(function() {
 					<input type = "hidden" name = "imageback_1" value = "${imageback_1 }">
 					<input type = "hidden" name = "imageback_2" value = "${imageback_2 }">
 					<input type = "submit" value = "전송!">
+					<input type = "button" value = "삭제!" onclick = "location.href = 'WorkSearchDeleteLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
 				</td>
 			</tr>
 		</table>

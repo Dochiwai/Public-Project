@@ -5,26 +5,6 @@
 <script type="text/javascript">
 $(function() {
 	   //formAction s  
-	      $('#selectID').change(function() {
-	      var city = $("#selectID").val();
-	         $.ajax({
-	        	  type:'GET',
-	        	  async:'true',
-	        	  url: '/test/userjoin/AddrMiddleSearch.do?city=' + city,
-	        	  data: city,
-	        	  dataType: 'text',
-	            success: function(data) {
-	               $("#selectID2").empty();
-	               $("#selectID2").append(data);        
-	            }, 
-	            error: function(xhr, status) {
-	            }
-	         }); // $.ajax
-	         return false;
-	      }); //formAction e
-	   });
-$(function() {
-	   //formAction s  
 	      $(j_head_id).change(function() {
 	      var job_head=$('[name=j_head]:checked').val();
 	         $.ajax({
@@ -87,7 +67,7 @@ $(function() {
 	   });
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
-	<form method = "post">
+	<form action = "WorkSearchSearchLogic.jsp" method = "post">
 		<table border = "1" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
@@ -106,21 +86,14 @@ $(function() {
 				</td>
 			</tr>
 			<tr>
-				<td colspan = "2">
-					<select id = "selectID" name = "r_want_head">
-						<c:forEach var = "list" items = "${addrlist}" varStatus = "status">
-							<option value = "${list.head_addr}">${list.head_addr}</option>
-						</c:forEach>
-					</select>
-				</td>
-				<td colspan = "3">
-					<select id = "selectID2" name = "r_want_middle">
-						<option></option>
-					</select>
+				<td colspan = "5">
+					<c:forEach var = "list" items = "${addrlist}" varStatus = "status">
+						<input type="radio" name="where_name" value="${list.head_addr}">${list.head_addr}
+					</c:forEach>
 				</td>
 				<td>
 					<select name = "age_gogo">
-						<c:forEach var = "list" items = "${age_list }" varStatus = "status">
+						<c:forEach var = "list" items = "${age_list}" varStatus = "status">
 							<option value = "${list}">${list}</option>
 						</c:forEach>
 					</select>
@@ -168,7 +141,7 @@ $(function() {
 			<tr>
 				<td colspan = "7">
 					<input type = "text" style = "width : 90%;" placeholder="검색하기">
-					<input type = "button" value = "검색" class="search_btn">
+					<input type = "submit" value = "검색">
 					<input type = "button" value = "리셋" onclick = "window.location.reload()">
 					<a href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
 				</td>
