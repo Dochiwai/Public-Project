@@ -118,7 +118,7 @@ $(function() {
 			</tr>
 			<tr>
 				<td colspan = "2">
-					<select id = "selectID" name = "r_want_head">
+					<select id = "selectID" name = "r_want_head" disabled>
 						<c:forEach var = "list" items = "${addr_head_list}" varStatus = "status">
 							<option value = "${list.head_addr}" 
 							<c:if test= "${userdto.work_where_head eq list.head_addr}">selected</c:if>
@@ -127,7 +127,7 @@ $(function() {
 					</select>
 				</td>
 				<td colspan = "3">
-					<select id = "selectID2" name = "r_want_middle">
+					<select id = "selectID2" name = "r_want_middle" disabled>
 						<c:forEach var = "list" items = "${addr_middle_list}" varStatus = "status">
 							<option value = "${list.detail_addr}"
 							<c:if test= "${userdto.work_where_middle eq list.detail_addr}">selected</c:if>
@@ -136,7 +136,7 @@ $(function() {
 					</select>
 				</td>
 				<td>
-					<select name = "age_gogo">
+					<select name = "age_gogo" disabled>
 						<c:forEach var = "list" items = "${agelist }" varStatus = "status">
 							<option value = "${list}"
 							<c:if test= "${userdto.work_age eq list}">selected</c:if>
@@ -145,7 +145,7 @@ $(function() {
 					</select>
 				</td>
 				<td>
-					<select name = "sex_gogo">
+					<select name = "sex_gogo" disabled>
 						<c:forEach var = "list" items = "${gender }" varStatus = "status">
 							<option value = "${list}"
 							<c:if test= "${userdto.work_gender eq list}">selected</c:if>
@@ -160,7 +160,7 @@ $(function() {
 					직종
 				</td>
 				<td colspan = "1">
-					<select name = "work_day">
+					<select name = "work_day" disabled>
 						<c:forEach var = "list" items = "${position }" varStatus = "status">
 							<option value = "${list}"
 							<c:if test= "${userdto.work_position eq list}">selected</c:if>
@@ -169,7 +169,7 @@ $(function() {
 					</select>
 				</td>
 				<td>
-					<select name = "want_money">
+					<select name = "want_money" disabled>
 						<c:forEach var = "list" items = "${money }" varStatus = "status">
 							<option value = "${list}"
 							<c:if test= "${userdto.work_money eq list}">selected</c:if>
@@ -181,37 +181,35 @@ $(function() {
 			<tr>
 				<td colspan = "2">
 					<c:forEach var = "list" items = "${job_head_list}" varStatus = "status">
-						<input type = "radio" name = "j_head" id = "j_head_id" value = "${list.j_id }"
-						<c:if test="${userdto.work_job_head eq list.j_id}">checked</c:if>>${list.j_head_job }<br>
+						<input type = "radio" name = "j_head" id = "j_head_id" value = "${list.j_id }" 
+						<c:if test="${userdto.work_job_head eq list.j_id}">checked</c:if> disabled>${list.j_head_job }<br>
 					</c:forEach>
 				</td>
 				<td colspan = "3" id = "job_middle">
-					<c:forEach var = "listt" items = "${job_mid_list}" varStatus = "status">
-						<input type = "radio" name = "j_middle_name" id = "j_middle_id" value = "${listt.j_id}"
-						 <c:if test="${userdto.work_job_middle eq listt.j_id}">checked</c:if>>${listt.j_middle_job }<br>
+					<c:forEach var = "listt" items = "${job_mid_list}" varStatus = "status"> 
+						<input type = "radio" name = "j_middle_name" id = "j_middle_id" value = "${listt.j_id}" 
+						 <c:if test="${userdto.work_job_middle eq listt.j_id}">checked</c:if> disabled>${listt.j_middle_job }<br>
 					</c:forEach>
 				</td>
 				<td colspan = "2" id = "job_end">
 					<c:forEach var = "listtt" items = "${job_end_list}" varStatus = "status">
-						<input type = "radio" name = "j_end_name" id = "j_end_id" value = "${listtt.j_id }"
-						 <c:if test="${userdto.work_job_end eq listtt.j_id}">checked</c:if>>${listtt.j_end_job }<br>
+						<input type = "radio" name = "j_end_name" id = "j_end_id" value = "${listtt.j_id }" 
+						 <c:if test="${userdto.work_job_end eq listtt.j_id}">checked</c:if> disabled>${listtt.j_end_job }<br>
 					</c:forEach>
 				</td>
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<input type = "text" value = "${userdto.work_title }"name = "title" style = "width : 100%;" placeholder="제목을 입력해주세요">
+					<input type = "text" value = "${userdto.work_title }"name = "title" style = "width : 100%;" placeholder="제목을 입력해주세요" readonly>
 				</td>
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<input type = "file" name = "file1" id = "file1">
-					<input type = "file" name = "file2" id = "file2">
 				</td>
 			</tr>
 			<tr>
-				<td	colspan = "7" align = "center" style = "background-color : #E1E3E2; width : 100%; ">
-					<div id = "text_image_test" contentEditable="true" style = "background-color : white; height : 100%; width : 80%; margin : 0px;" >
+				<td	colspan = "7" align = "center" style = "background-color : #E1E3E2; width : 100%; " >
+					<div id = "text_image_test" style = "background-color : white; height : 100%; width : 80%; margin : 0px;" >
 					<input type = "hidden" name = "divval" id = "divval" value = "">
 					<img id = "print1" src="${image1 }" height = "200" alt="첫번째 이미지를 선택해주세요 이미지 미선택시 글작성 불가능">
 					<img id = 'print2' src ="${image2 }" height = '200' alt = '두번째 이미지를 선택해주세요.'>
@@ -223,8 +221,10 @@ $(function() {
 				<td>
 					<input type = "hidden" name = "imageback_1" value = "${imageback_1 }">
 					<input type = "hidden" name = "imageback_2" value = "${imageback_2 }">
-					<input type = "submit" value = "수정!">
-					<input type = "button" value = "삭제!" onclick = "location.href = 'WorkSearchDeleteLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
+					<c:if test = "${userdto.id == sessionScope.currentid}">
+						<input type = "button" value = "수정!" onclick = "location.href = 'WorkEditViewLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
+						<input type = "button" value = "삭제!" onclick = "location.href = 'WorkSearchDeleteLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
+					</c:if>
 				</td>
 			</tr>
 		</table>

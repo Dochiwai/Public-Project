@@ -20,8 +20,8 @@ import com.resume.dto.Resume_Middle_Dto;
 import com.work.dao.WorkDao;
 import com.work.dto.WorkDto;
 
-@WebServlet("/worksearch/WorkViewLogic.jsp")
-public class WorkViewLogic extends HttpServlet {
+@WebServlet("/worksearch/WorkEditViewLogic.jsp")
+public class WorkEditViewLogic extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String no = request.getParameter("no");
@@ -78,7 +78,7 @@ public class WorkViewLogic extends HttpServlet {
 		request.setAttribute("imageback_1", imageback_1);
 		request.setAttribute("imageback_2", imageback_2);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("WorkSearchDetailView.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WorkSearchEditView.jsp");
 		rd.forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
