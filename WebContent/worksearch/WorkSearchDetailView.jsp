@@ -95,8 +95,10 @@ $(function() {
 	}
 	function openSelectWindow(){
 		var id = document.getElementById("now_user_id").value;
-		var workid = document.getElementById("get_no").value;
-		var url = './WorkSelectResumeLogic.jsp?id=' + id + "&&workid=" + workid;	// 새로 띄울 창에 표시할 페이지
+		var workno = document.getElementById("get_no").value;
+		var workid = document.getElementById("get_id").value;
+		var worktitle = document.getElementById("get_title").value;
+		var url = './WorkSelectResumeLogic.jsp?id=' + id + "&&workid=" + workid + "&&workno=" + workno + "&&worktitle=" + worktitle;	// 새로 띄울 창에 표시할 페이지
 		var title = '이력서 선택';		// 윈도우 이름
 		var option = 'top=100px, left=100px, width=500px height=600px';	// 윈도우 옵션
 		window.open(url, title, option);
@@ -105,8 +107,8 @@ $(function() {
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form name = "form_data" id = "form_data" method="post" action="WorkEditLogic.jsp" enctype="multipart/form-data" onsubmit = "return gosubmit(this);">
 	<input type = "hidden" id = "get_no" name = "get_no" value = "${get_no }">
-	<input type = "hidden" name = "get_id" value = "${get_id }">
-	<input type = "hidden" name = "get_title" value = "${get_title }">
+	<input type = "hidden" id = "get_id" name = "get_id" value = "${get_id }">
+	<input type = "hidden" id = "get_title"name = "get_title" value = "${get_title }">
 	<input type = "hidden" id = "now_user_id" value = "${sessionScope.currentid }">
 		<table border = "1" style = "width :100%;">
 			<tr>
@@ -209,7 +211,7 @@ $(function() {
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<input type = "text" value = "${userdto.work_title }"name = "title" style = "width : 100%;" placeholder="제목을 입력해주세요" readonly>
+					<input type = "text" value = "${userdto.work_title }"id = "work_id_desu" name = "title" style = "width : 100%;" placeholder="제목을 입력해주세요" readonly>
 				</td>
 			</tr>
 			<tr>
