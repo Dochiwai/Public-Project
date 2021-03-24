@@ -93,12 +93,21 @@ $(function() {
 		divvalue.value = text.innerText;
 		document.searchForm.submit();
 	}
+	function openSelectWindow(){
+		var id = document.getElementById("now_user_id").value;
+		var workid = document.getElementById("get_no").value;
+		var url = './WorkSelectResumeLogic.jsp?id=' + id + "&&workid=" + workid;	// 새로 띄울 창에 표시할 페이지
+		var title = '이력서 선택';		// 윈도우 이름
+		var option = 'top=100px, left=100px, width=500px height=600px';	// 윈도우 옵션
+		window.open(url, title, option);
+	}
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form name = "form_data" id = "form_data" method="post" action="WorkEditLogic.jsp" enctype="multipart/form-data" onsubmit = "return gosubmit(this);">
-	<input type = "hidden" name = "get_no" value = "${get_no }">
+	<input type = "hidden" id = "get_no" name = "get_no" value = "${get_no }">
 	<input type = "hidden" name = "get_id" value = "${get_id }">
 	<input type = "hidden" name = "get_title" value = "${get_title }">
+	<input type = "hidden" id = "now_user_id" value = "${sessionScope.currentid }">
 		<table border = "1" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
@@ -224,6 +233,9 @@ $(function() {
 					<c:if test = "${userdto.id == sessionScope.currentid}">
 						<input type = "button" value = "수정!" onclick = "location.href = 'WorkEditViewLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
 						<input type = "button" value = "삭제!" onclick = "location.href = 'WorkSearchDeleteLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
+					</c:if>
+					<c:if test = "${userdto.id != sessionScope.currentid}" >
+						<input type = "button" value = "지원하기!" onclick = "openSelectWindow()">
 					</c:if>
 				</td>
 			</tr>
