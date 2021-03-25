@@ -2,11 +2,14 @@ package com.support.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+
+import com.support.dto.SupportDto;
 
 public class SupportDao {
 	private static SupportDao dao;
@@ -53,7 +56,7 @@ public class SupportDao {
 	public int resumeSupport(String work_id, String work_no, String work_title, String user_id, String user_resume_num,
 			String user_resume_title) {
 		int result = -1;
-		sql = "INSERT INTO SUPPORT_DB VALUES(?,?,?,?,?,?,?)";
+		sql = "INSERT INTO SUPPORT_DB VALUES(?,?,?,?,?,?,?,S_NUM_SQC.nextval)";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
@@ -71,5 +74,51 @@ public class SupportDao {
 			close(con, ps);
 		}		
 		return result;
+	}
+	public int countalram(String id) {
+		int count = 0;
+		sql = "SELECT COUNT(*) FROM SUPPORT_DB WHERE WORK_ID = ? AND HIT_TRIGGER = 1";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			while(rs.next()) {	
+				count = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
+		return count;
+	}
+	public ArrayList<SupportDto> searchsupport(String id) {
+		ArrayList<SupportDto> list = new ArrayList<SupportDto>();
+		SupportDto dto = null;
+		sql = "SELECT FROM SUPPORT_DB WHERE WORK_ID = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			while(rs.next()) {	
+				dto = new SupportDto();
+				dto.setNo(rs.getString("no"));
+				dto.setWork_id(rs.getString("work_id"));
+				dto.setWork_no(rs.getString("work_no"));
+				dto.setWork_title(rs.getString("work_title"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setUser_resume(rs.getString("user_resume"));
+				dto.setUser_resume_title(rs.getString("user_title"));
+				dto.setHit_trigger(rs.getString("HIT_TRIGGER"));
+				list.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}
+		return list.isEmpty() ? null : list;
 	}
 }

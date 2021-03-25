@@ -8,7 +8,14 @@ public class SupportDto {
 	private String user_resume;
 	private String user_resume_title;
 	private String hit_trigger;
+	private String no;
 	
+	public String getNo() {
+		return no;
+	}
+	public void setNo(String no) {
+		this.no = no;
+	}
 	public String getWork_id() {
 		return work_id;
 	}
