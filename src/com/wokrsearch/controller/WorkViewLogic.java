@@ -17,6 +17,8 @@ import com.resume.dao.ResumeDao;
 import com.resume.dto.Resume_End_Dto;
 import com.resume.dto.Resume_Head_Dto;
 import com.resume.dto.Resume_Middle_Dto;
+import com.support.dao.SupportDao;
+import com.support.dto.SupportDto;
 import com.work.dao.WorkDao;
 import com.work.dto.WorkDto;
 
@@ -30,6 +32,10 @@ public class WorkViewLogic extends HttpServlet {
 		request.setAttribute("get_id", id);
 		String title = request.getParameter("title");
 		request.setAttribute("get_title", title);
+		
+		SupportDao sdao = SupportDao.getInstance();
+		ArrayList<SupportDto> slist = sdao.searchsupportlist(no,id,title);
+		request.setAttribute("support_list", slist);
 		
 		WorkDao userdao = WorkDao.getInstance();
 		WorkDto userdto = userdao.worksearchview(no,id,title);
@@ -52,6 +58,8 @@ public class WorkViewLogic extends HttpServlet {
 		String head_num = ddao.head_number_search(userdto.getWork_where_head());
 		ArrayList<Detail_Addr_Dto> addr_detail_dto = ddao.detailSearch(head_num);
 		request.setAttribute("addr_middle_list", addr_detail_dto);
+		
+		
 		
 		String[] age = {"10대","20대","30대","40대","50대","60대","지건딱대"};
 		request.setAttribute("agelist", age);

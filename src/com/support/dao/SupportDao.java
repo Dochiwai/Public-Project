@@ -96,7 +96,7 @@ public class SupportDao {
 	public ArrayList<SupportDto> searchsupport(String id) {
 		ArrayList<SupportDto> list = new ArrayList<SupportDto>();
 		SupportDto dto = null;
-		sql = "SELECT FROM SUPPORT_DB WHERE WORK_ID = ?";
+		sql = "SELECT * FROM SUPPORT_DB WHERE WORK_ID = ?";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
@@ -110,15 +110,45 @@ public class SupportDao {
 				dto.setWork_title(rs.getString("work_title"));
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setUser_resume(rs.getString("user_resume"));
-				dto.setUser_resume_title(rs.getString("user_title"));
+				dto.setUser_resume_title(rs.getString("user_resume_title"));
 				dto.setHit_trigger(rs.getString("HIT_TRIGGER"));
 				list.add(dto);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(con, ps);
+			close(con, ps ,rs);
 		}
+		return list.isEmpty() ? null : list;
+	}
+	public ArrayList<SupportDto> searchsupportlist(String no, String id, String title) {
+		ArrayList<SupportDto> list = new ArrayList<SupportDto>();
+		SupportDto dto = null;
+		sql = "SELECT * FROM SUPPORT_DB WHERE WORK_ID = ? AND WORK_NO = ? AND WORK_TITLE = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, no);
+			ps.setString(3, title);
+			rs = ps.executeQuery();
+			while(rs.next()) {	
+				dto = new SupportDto();
+				dto.setNo(rs.getString("no"));
+				dto.setWork_id(rs.getString("work_id"));
+				dto.setWork_no(rs.getString("work_no"));
+				dto.setWork_title(rs.getString("work_title"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setUser_resume(rs.getString("user_resume"));
+				dto.setUser_resume_title(rs.getString("user_resume_title"));
+				dto.setHit_trigger(rs.getString("HIT_TRIGGER"));
+				list.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps ,rs);
+		}	
 		return list.isEmpty() ? null : list;
 	}
 }

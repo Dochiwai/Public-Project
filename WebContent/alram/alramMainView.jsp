@@ -7,15 +7,44 @@
 <meta charset="UTF-8">
 <title>알림장</title>
 <script type="text/javascript">
+	function GoWorkWiew(){
+		var values = document.getElementById("url_value_id").value;
+		var url = '/test/worksearch/WorkViewLogic.jsp?'+values;
+		opener.parent.location = url;
+		window.close(); 
+	}
 </script>
 
 </head>
 	<body style = "background-color : gray;">
 		<h1 align = "center" style = "background-color : red; margin-top: 0px;margin-bottom: 0px;">알림장</h1>
 		<div style = "background-color : white; height: 480px;">	
-			<table>
-				
+			<table border = "1" style = "width :100%;">
+				<tr>
+					<th colspan = "1" style = "width :10%;">
+						번호
+					</th>
+					<th colspan = "5">
+						내용
+					</th>
+				</tr>
+				<c:forEach var = "list" items = "${support_list}">
+					<tr>
+						<td>
+							${list.no }
+						</td>
+						<td>
+							<input type = "hidden" id = "url_value_id" value = "no=${list.work_no}&&id=${list.work_id}&&title=${list.work_title}">
+							<a href = "/test/worksearch/WorkViewLogic.jsp?no=${list.work_no}&&id=${list.work_id}&&title=${list.work_title}"
+							onclick = "GoWorkWiew()">
+							${list.work_title}에 ${list.user_id }님이 지원했습니다!<br>지금 바로 확인해보세요!</a>
+						</td>
+					</tr>
+				</c:forEach>
 			</table>
+			<div align ="center">
+				<input type = "button" value = "닫기" onclick = "window.close()">
+			</div>
 		</div>
 	</body>
 </html>

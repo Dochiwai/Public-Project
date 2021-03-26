@@ -37,8 +37,8 @@
 </script>
 <script type="text/javascript">
 	function alramcheck(){
-		var id = document.getElementById("session_user_id").value;
-		var url = '/test/alram/alramMainViewLogic.jsp?id=' + id;
+		var id = document.getElementById("session_user_id");
+		var url = '/test/alram/alramMainViewLogic.jsp?id=' + id.value;
 		var title = '알람';		// 윈도우 이름
 		var option = 'top=100px, left=100px, width=500px height=600px';	// 윈도우 옵션
 		window.open(url, title, option);
