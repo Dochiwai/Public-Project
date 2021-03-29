@@ -33,9 +33,9 @@ public class WorkViewLogic extends HttpServlet {
 		String title = request.getParameter("title");
 		request.setAttribute("get_title", title);
 		
-		SupportDao sdao = SupportDao.getInstance();
-		ArrayList<SupportDto> slist = sdao.searchsupportlist(no,id,title);
-		request.setAttribute("support_list", slist);
+//		System.out.println(no);
+//		System.out.println(id);
+//		System.out.println(title);
 		
 		WorkDao userdao = WorkDao.getInstance();
 		WorkDto userdto = userdao.worksearchview(no,id,title);

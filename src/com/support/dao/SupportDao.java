@@ -134,7 +134,7 @@ public class SupportDao {
 			rs = ps.executeQuery();
 			while(rs.next()) {	
 				dto = new SupportDto();
-				dto.setNo(rs.getString("no"));
+				dto.setNo(rs.getString("no")); 
 				dto.setWork_id(rs.getString("work_id"));
 				dto.setWork_no(rs.getString("work_no"));
 				dto.setWork_title(rs.getString("work_title"));

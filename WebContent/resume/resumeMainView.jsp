@@ -15,7 +15,7 @@
 					<tr>
 						<td align = "center">${list.r_num}</td>
 						<td align = "center">
-							<a href="/test/resume/resumeEditViewLogic.jsp?num=${list.r_num}&&title=${list.r_title}" style = "color:blue;">${list.r_title}</a>
+							<a href="/test/resume/ResumeViewLogic.jsp?num=${list.r_num}&&title=${list.r_title}" style = "color:blue;">${list.r_title}</a>
 						</td>
 					</tr>
 				</c:forEach>

@@ -104,12 +104,15 @@ $(function() {
 		window.open(url, title, option);
 	}
 	function openSupportWindow(){
-		var listvalues = ${support_list};
-		var url = '/WorkSupportListLogic.jsp?list='+listvalues;	// 새로 띄울 창에 표시할 페이지
+		var workno = document.getElementById("get_no").value;
+		var workid = document.getElementById("get_id").value;
+		var worktitle = document.getElementById("get_title").value; 
+		var url = '/test/worksearch/WorkSupportListLogic.jsp?no='+ workno +'&&id=' + workid + '&&title=' + worktitle;	// 새로 띄울 창에 표시할 페이지
 		var title = '지원자 보기';		// 윈도우 이름
 		var option = 'top=100px, left=100px, width=500px height=600px';	// 윈도우 옵션
 		window.open(url, title, option);
 	}
+		
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form name = "form_data" id = "form_data" method="post" action="WorkEditLogic.jsp" enctype="multipart/form-data" onsubmit = "return gosubmit(this);">
