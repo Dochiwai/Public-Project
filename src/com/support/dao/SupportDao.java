@@ -151,4 +151,19 @@ public class SupportDao {
 		}	
 		return list.isEmpty() ? null : list;
 	}
+	public int triggeronoff(String no) {
+		sql = "UPDATE SUPPORT_DB SET HIT_TRIGGER = 0 WHERE NO = ?";
+		int result = -1;
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, no);
+			result = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps);
+		}	
+		return result;
+	}
 }

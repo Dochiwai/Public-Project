@@ -18,6 +18,7 @@ import com.resume.dto.Resume_End_Dto;
 import com.resume.dto.Resume_Head_Dto;
 import com.resume.dto.Resume_Middle_Dto;
 import com.resume.dto.Resume_User_Dto;
+import com.support.dao.SupportDao;
 
 @WebServlet("/resume/ResumeViewLogic.jsp")
 public class ResumeViewLogic extends HttpServlet {
@@ -29,9 +30,18 @@ public class ResumeViewLogic extends HttpServlet {
 		String id = request.getParameter("id");
 		String num = request.getParameter("num");
 		String title = request.getParameter("title");
+		String no = request.getParameter("trigger");
+		
+		System.out.println(no);
+		
 		request.setAttribute("resume_id", id);
 		request.setAttribute("resume_title", title);
 		request.setAttribute("resume_num", num);
+		
+		if(null != no) {
+			SupportDao sdao = SupportDao.getInstance();
+			int result = sdao.triggeronoff(no);
+		}
 		
 		ResumeDao dao = ResumeDao.getInstance();
 		Resume_User_Dto dto = dao.selectinfo(id,num,title);
