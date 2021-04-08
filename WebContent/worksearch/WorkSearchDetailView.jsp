@@ -85,7 +85,7 @@ $(function() {
 	         return false;
 	      });
 	   });
-</script>x
+</script>
 <script type="text/javascript">
 	function gosubmit(){
 		divvalue = document.getElementById("divval");
