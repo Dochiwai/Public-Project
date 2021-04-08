@@ -142,7 +142,7 @@ $(function() {
 				<td colspan = "7">
 					<input type = "text" style = "width : 90%;" name = "title_name" placeholder="검색하기">
 					<input type = "submit" value = "검색">
-					<input type = "button" value = "리셋" onclick = "window.location.reload()">
+					<input type = "button" value = "리셋" onclick = "window.location.reload()"><br/>
 					<a href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
 				</td>
 			</tr>

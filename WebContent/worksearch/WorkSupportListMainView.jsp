@@ -27,11 +27,10 @@
 					<tr>
 						<td>
 							<input type = "hidden" value = "${list.user_resume}">
-							<a href = "/test/resume/ResumeViewLogic.jsp?id=${list.user_id}&&num=${list.user_resume}&&title=${list.user_resume_title}&&trigger=${list.no}" target="_blank">${list.user_id }</a>
+							<a href = "/test/resume/ResumeViewLogic.jsp?work_no=${list.work_no}&&work_title=${list.work_title}&&id=${list.user_id}&&num=${list.user_resume}&&title=${list.user_resume_title}&&trigger=${list.no}" target="_blank">${list.user_id }</a>
 						</td>
 						<td>
-							<a href = "/test/resume/ResumeViewLogic.jsp?id=${list.user_id}&&num=${list.user_resume}&&title=${list.user_resume_title}&&trigger=${list.no}" target="_blank">${list.user_resume_title}</a>
-							${list.no }
+							<a href = "/test/resume/ResumeViewLogic.jsp?work_no=${list.work_no}&&work_title=${list.work_title}&&id=${list.user_id}&&num=${list.user_resume}&&title=${list.user_resume_title}&&trigger=${list.no}" target="_blank">${list.user_id }</a>						
 						</td>
 					</tr>
 				</c:forEach>

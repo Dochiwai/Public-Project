@@ -103,6 +103,7 @@ $(function() {
 				</div>
 				<div class = "edit_submit">
 					<input type = "submit" value = "수정하기">
+					<input type = "button" value = "삭제하기" onclick = "location.href = 'UserDelLogic.jsp'">
 				</div>
 			</form>
 		</c:otherwise>

@@ -60,6 +60,9 @@
         			<li>
         				<input type = "button" value = "이력서관리" onclick = "location.href = '/test/resume/ResumeMainViewLogic.jsp'">
         			</li>
+        			<li>
+        				<input type = "button" value = "입사지원관리" onclick = "location.href = '/test/resume/ResumeListViewLogic.jsp'">
+        			</li>
         		</c:if>
         		<li>
         			<c:if test = "${sessionScope.currentid == null }">
@@ -77,6 +80,7 @@
         				<input type = "button" value = "로그아웃" onclick = "location.href = '/test/userlogin/LogoutLogic.jsp'">
         			</c:if>
         		</li>
+        		
         		<li>
         			<c:if test = "${sessionScope.currentid != null }">
         				<input type = "button" value = "알람" id = "alram_id" style = "background-color : white;" 

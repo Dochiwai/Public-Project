@@ -196,5 +196,20 @@ public class UserDao {
 		}	
 		return result;
 	}
+	public int deleteUser(String id) {
+		int result = -1;
+		sql = "delete USER_dB where m_userid = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			result = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con,ps);
+		}
+		return result;
+	}
 	
 }

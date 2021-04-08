@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.addr.dao.AddrDao;
 import com.addr.dto.Detail_Addr_Dto;
 import com.addr.dto.Head_Addr_Dto;
+import com.alram.dao.alramDao;
 import com.resume.dao.ResumeDao;
 import com.resume.dto.Resume_End_Dto;
 import com.resume.dto.Resume_Head_Dto;
@@ -27,16 +28,16 @@ public class ResumeViewLogic extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		
-		String id = request.getParameter("id");
+		String id = (String)session.getAttribute("currentid");
+		String searchid = request.getParameter("id");
 		String num = request.getParameter("num");
 		String title = request.getParameter("title");
 		String no = request.getParameter("trigger");
-		
-		System.out.println(no);
-		
+		Resume_User_Dto dto = null;
 		request.setAttribute("resume_id", id);
 		request.setAttribute("resume_title", title);
 		request.setAttribute("resume_num", num);
+		
 		
 		if(null != no) {
 			SupportDao sdao = SupportDao.getInstance();
@@ -44,13 +45,25 @@ public class ResumeViewLogic extends HttpServlet {
 		}
 		
 		ResumeDao dao = ResumeDao.getInstance();
-		Resume_User_Dto dto = dao.selectinfo(id,num,title);
-		request.setAttribute("dto", dto);
+		if(null == searchid) {
+			dto = dao.selectinfo(id,num,title);			
+			request.setAttribute("dto", dto);
+		}else {
+			dto = dao.selectinfo(searchid,num,title);
+			//알람추가부분
+			String work_no = request.getParameter("work_no");
+			String work_title = request.getParameter("work_title");
+			alramDao adao = alramDao.getInstance();
+			adao.checkinsert(work_no,work_title,searchid,id);
+			request.setAttribute("dto", dto);
+		}
+		
 
 		ResumeDao jobdao = ResumeDao.getInstance();
 		ArrayList<Resume_Head_Dto> joblist = jobdao.jog_head_list();
 		request.setAttribute("joblist", joblist);
 		
+		System.out.println(dto.getR_wantjob_head());
 		ArrayList<Resume_Middle_Dto> job_mid_list = jobdao.middleseacrch(dto.getR_wantjob_head());
 		request.setAttribute("job_mid_list", job_mid_list);
 		
@@ -65,6 +78,7 @@ public class ResumeViewLogic extends HttpServlet {
 		ArrayList<Detail_Addr_Dto> addr_detail_dto = addrdao.detailSearch(head_num);
 		request.setAttribute("addr_detail_list", addr_detail_dto);
 		
+		System.out.println(dto.getR_picture());
 		String image = "http://localhost:9090/korea/upload/"+dto.getR_picture();
 		request.setAttribute("image", image);
 	

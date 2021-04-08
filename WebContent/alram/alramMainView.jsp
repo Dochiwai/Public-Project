@@ -13,6 +13,12 @@
 		opener.parent.location = url;
 		window.close(); 
 	}
+	function GoWorkView(){
+		var values = document.getElementById("url_value2_id").value;
+		var url = '/test/worksearch/WorkViewLogic.jsp?'+values;
+		opener.parent.location = url;
+		window.close(); 
+	}
 </script>
 
 </head>
@@ -28,19 +34,36 @@
 						내용
 					</th>
 				</tr>
-				<c:forEach var = "list" items = "${support_list}">
-					<tr>
-						<td>
-							${list.no }
-						</td>
-						<td>
-							<input type = "hidden" id = "url_value_id" value = "no=${list.work_no}&&id=${list.work_id}&&title=${list.work_title}">
-							<a href = "/test/worksearch/WorkViewLogic.jsp?no=${list.work_no}&&id=${list.work_id}&&title=${list.work_title}"
-							onclick = "GoWorkWiew()">
-							${list.work_title}에 ${list.user_id }님이 지원했습니다!<br>지금 바로 확인해보세요!</a>
-						</td>
-					</tr>
-				</c:forEach>
+				<c:if test="${support_list != null}">
+					<c:forEach var = "list" items = "${support_list}">
+						<tr>
+							<td>
+								${list.no }
+							</td>
+							<td>
+								<input type = "hidden" id = "url_value_id" value = "no=${list.work_no}&&id=${list.work_id}&&title=${list.work_title}">
+								<a href = "/test/worksearch/WorkViewLogic.jsp?no=${list.work_no}&&id=${list.work_id}&&title=${list.work_title}"
+								onclick = "GoWorkWiew()">
+								${list.work_title}에 ${list.user_id }님이 지원했습니다!<br>지금 바로 확인해보세요!</a>
+							</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+				<c:if test="${arlam_list != null}">
+					<c:forEach var = "list" items = "${arlam_list}">
+						<tr>
+							<td>
+								${list.company_no }
+							</td>
+							<td>
+								<input type = "hidden" id = "url_value2_id" value = "no=${list.company_no}&&title=${list.company_title}&&id=${list.id}&&userid=${list.user_id}">
+								<a href = "/test/worksearch/WorkViewLogic.jsp?no=${list.company_no}&&title=${list.company_title}&&id=${list.id}&&userid=${list.user_id}"
+								onclick = "GoWorkView()">
+								${list.company_title} 의 지원한 이력서를 회사가 확인했습니다!.<br>지금 바로 확인해보세요!</a>
+							</td>
+						</tr>
+					</c:forEach>
+				</c:if>
 			</table>
 			<div align ="center">
 				<input type = "button" value = "닫기" onclick = "window.close()">

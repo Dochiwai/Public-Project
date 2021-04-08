@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.support.dto.SupportDto;
+import com.support.dto.SupportListDto;
 
 public class SupportDao {
 	private static SupportDao dao;
@@ -166,4 +167,34 @@ public class SupportDao {
 		}	
 		return result;
 	}
+	public ArrayList<SupportListDto> SupportListView(String id) {
+		SupportListDto dto = null;
+		ArrayList<SupportListDto> list = new ArrayList<SupportListDto>();
+		sql = "SELECT * FROM SUPPORT_DB WHERE USER_ID = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			while(rs.next()) {	
+				dto = new SupportListDto();
+				dto.setWork_id(rs.getString("WORK_ID"));
+				dto.setWork_no(rs.getString("WORK_NO"));
+				dto.setWork_title(rs.getString("WORK_TITLE"));
+				list.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(con, ps ,rs);
+		}	
+		return list.isEmpty() ? null : list;
+	}
 }
+
+
+
+
+
+
+

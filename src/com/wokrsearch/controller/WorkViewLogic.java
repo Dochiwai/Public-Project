@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.addr.dao.AddrDao;
 import com.addr.dto.Detail_Addr_Dto;
 import com.addr.dto.Head_Addr_Dto;
+import com.alram.dao.alramDao;
 import com.resume.dao.ResumeDao;
 import com.resume.dto.Resume_End_Dto;
 import com.resume.dto.Resume_Head_Dto;
@@ -32,6 +33,11 @@ public class WorkViewLogic extends HttpServlet {
 		request.setAttribute("get_id", id);
 		String title = request.getParameter("title");
 		request.setAttribute("get_title", title);
+		String user_id = request.getParameter("userid");
+		if(null != user_id) {
+			alramDao adao = alramDao.getInstance();
+			adao.checkchange(user_id,no);
+		}
 		
 //		System.out.println(no);
 //		System.out.println(id);

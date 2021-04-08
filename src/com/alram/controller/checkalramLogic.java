@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alram.dao.alramDao;
 import com.resume.dao.ResumeDao;
 import com.resume.dto.Resume_End_Dto;
 import com.support.dao.SupportDao;
@@ -24,7 +25,9 @@ public class checkalramLogic extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		String id = request.getParameter("id");
 		SupportDao dao = SupportDao.getInstance();
+		alramDao adao = alramDao.getInstance();
 		int count = dao.countalram(id);
+		count += adao.countalram(id);
 		response.getWriter().write(getJSON(count));
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
