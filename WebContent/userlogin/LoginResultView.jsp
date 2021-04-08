@@ -6,7 +6,8 @@
 		환영합니다 ${dto.user_id } 님<br>
 	</c:if>
 	<c:if test = "${dto == null }">
-		누구세요?<br>
+		로그인 실패했습니다.<br>
+		다시 시도해주세요.<br/>
 	</c:if>
-	<input type = "button" value = "메인화면으로 돌아가기" onclick = "location.href = '/test/index.jsp'">
+	<input type = "button" class="btn btn-primary" value = "메인화면으로 돌아가기" onclick = "location.href = '/test/index.jsp'">
 <jsp:include page = "/layout/footer.jsp"></jsp:include>

@@ -18,13 +18,13 @@
 
 </head>
 	<body style = "background-color : gray;">
-		<h1 align = "center" style = "background-color : red; margin-top: 0px;margin-bottom: 0px;">이력서를 선택해주세요</h1>
+		<h1 align = "center" style = "margin-top: 0px;margin-bottom: 0px;">이력서를 선택해주세요</h1>
 		<div style = "background-color : white; height: 480px;">	
 		<input type = "hidden" id = "work_id" value = "${work_id }">
 		<input type = "hidden" id = "work_no" value = "${work_no }">
 		<input type = "hidden" id = "work_title" value = "${work_title }">
 		<input type = "hidden" id = "user_id" value = "${sessionScope.currentid }">
-			<table border = "1" style="width:100%;">
+			<table border = "1" class="table table-bordered" style="width:100%;">
 				<tr>
 					<th colspan = "1" style = "width : 10%;">
 						번호
@@ -36,11 +36,11 @@
 				<c:forEach var = "list" items = "${resumelist}">
 					<tr>
 						<td colspan = "1" align = "center">
-							<a href = "WorkSupportLogic.jsp?work_id=${work_id}&&work_no=${work_no}&&work_title=${work_title}&&user_id=${sessionScope.currentid}&&user_resume_num=${list.r_num}&&user_resume_title=${list.r_title}">
+							<a class="btn btn-default" href = "WorkSupportLogic.jsp?work_id=${work_id}&&work_no=${work_no}&&work_title=${work_title}&&user_id=${sessionScope.currentid}&&user_resume_num=${list.r_num}&&user_resume_title=${list.r_title}">
 							${list.r_num }</a>
 						</td>
 						<td colspan = "3" align = "center">
-							<a href = "WorkSupportLogic.jsp?work_id=${work_id}&&work_no=${work_no}&&work_title=${work_title}&&user_id=${sessionScope.currentid}&&user_resume_num=${list.r_num}&&user_resume_title=${list.r_title}">
+							<a class="btn btn-default" href = "WorkSupportLogic.jsp?work_id=${work_id}&&work_no=${work_no}&&work_title=${work_title}&&user_id=${sessionScope.currentid}&&user_resume_num=${list.r_num}&&user_resume_title=${list.r_title}">
 							${list.r_title }</a>
 						</td>
 					</tr>

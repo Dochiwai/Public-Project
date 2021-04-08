@@ -99,10 +99,10 @@ $(function() {
 	<input type = "hidden" name = "get_no" value = "${get_no }">
 	<input type = "hidden" name = "get_id" value = "${get_id }">
 	<input type = "hidden" name = "get_title" value = "${get_title }">
-		<table border = "1" style = "width :100%;">
+		<table border = "1" class="table table-bordered" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
-					<h3>직업을 수정해보자..</h3>
+					<h3>구인글 수정 테이블</h3>
 				</td>
 			</tr>
 			<tr>
@@ -220,11 +220,11 @@ $(function() {
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td align ="center" colspan = "7">
 					<input type = "hidden" name = "imageback_1" value = "${imageback_1 }">
 					<input type = "hidden" name = "imageback_2" value = "${imageback_2 }">
-					<input type = "submit" value = "수정!">
-					<input type = "button" value = "삭제!" onclick = "location.href = 'WorkSearchDeleteLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
+					<input type = "submit" class="btn btn-primary" value = "수정!">
+					<input type = "button" class="btn btn-primary" value = "삭제!" onclick = "location.href = 'WorkSearchDeleteLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
 				</td>
 			</tr>
 		</table>

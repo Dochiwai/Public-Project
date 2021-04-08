@@ -68,10 +68,10 @@ $(function() {
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form action = "WorkSearchSearchLogic.jsp" method = "post">
-		<table border = "1" style = "width :100%;">
+		<table border = "1"  class="table table-bordered" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
-					<h3>직업을 찾아보자..</h3>
+					<h3>원하시는 직종을 선택 혹은 검색해주세요.</h3>
 				</td>
 			</tr>
 			<tr>
@@ -140,10 +140,10 @@ $(function() {
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<input type = "text" style = "width : 90%;" name = "title_name" placeholder="검색하기">
-					<input type = "submit" value = "검색">
-					<input type = "button" value = "리셋" onclick = "window.location.reload()"><br/>
-					<a href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
+					<input type = "text" class="form-control" style = "width : 100%;" name = "title_name" placeholder="검색하기"><br/>
+					<input type = "submit" class="btn btn-primary" value = "검색">
+					<input type = "button" class="btn btn-primary" value = "리셋" onclick = "window.location.reload()">
+					<a class="btn btn-primary" href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
 				</td>
 			</tr>
 			<c:if test = "${worklist != null}">

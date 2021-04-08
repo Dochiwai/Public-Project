@@ -96,10 +96,10 @@ $(function() {
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form name = "form_data" id = "form_data" method="post" action="WorkInsertLogic.jsp" enctype="multipart/form-data" onsubmit = "return gosubmit(this);">
-		<table border = "1" style = "width :100%;">
+		<table border = "1" class="table table-bordered" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
-					<h3>직업을 등록해보자..</h3>
+					<h3>구인게시글 작성</h3>
 				</td>
 			</tr>
 			<tr>
@@ -181,8 +181,8 @@ $(function() {
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<input type = "file" name = "file1" id = "file1">
-					<input type = "file" name = "file2" id = "file2">
+					<input type = "file" class="btn btn-primary" name = "file1" id = "file1">
+					<input type = "file" class="btn btn-primary" name = "file2" id = "file2">
 				</td>
 			</tr>
 			<tr>
@@ -195,7 +195,7 @@ $(function() {
 			</tr>
 			<tr>
 				<td>
-					<input type = "submit" value = "전송!">
+					<input type = "submit" class="btn btn-primary" value = "전송!">
 				</td>
 			</tr>
 		</table>

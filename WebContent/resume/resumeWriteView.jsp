@@ -149,13 +149,13 @@ function delSet3(){
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include> 
 	<form action = "ResumeJoinLogic.jsp" method = "post" enctype="multipart/form-data">
-		<table border = "1" align = "center" style = "width :100%;"  >
+		<table class="table" border = "1" align = "center" style = "width :100%;"  >
 			<tr>
 				<td>타이틀</td>
 				<td colspan ="6"><input type = "text" name = "r_main_title" placeholder="이력서의 제목을 입력해주세요" style= "width: 100%;"></td>
 			</tr>
 			<tr>
-				<td rowspan="5"><img id="print" src="" height = "200" alt="이미지를 선택해 주세요"><br><input type="file" id="sel-file" name = "r_ficture" accept="image/*">
+				<td rowspan="5"><img id="print" src="" height = "200" alt="이미지를 선택해 주세요"><br><input type="file" class="btn btn-primary" id="sel-file" name = "r_ficture" accept="image/*">
 				<td colspan="6"  width="90%" align = "center" >개인정보</td>
 			</tr>
 			<tr>
@@ -177,7 +177,7 @@ function delSet3(){
 				<td>${sessionScope.currentemail}</td>
 			</tr>
 		</table>
-		<table border = "1" style = "width : 100%;">
+		<table class="table" border = "1" style = "width : 100%;">
 			<tr>
 				<td align = "center">
 					원하는 근무 지역
@@ -200,7 +200,7 @@ function delSet3(){
 				</td>
 			</tr>
 		</table>
-		<table border = "1"  style = "width : 100%;">
+		<table class="table" border = "1"  style = "width : 100%;">
 			<tr>
 				<td colspan="7"  align ="center">원하는 직업군</td>		
 			</tr>
@@ -218,9 +218,9 @@ function delSet3(){
 				</td>
 			</tr>
 		</table>
-		<table border = "1" id = "self_id" style = "width : 100%;">
+		<table class="table" border = "1" id = "self_id" style = "width : 100%;">
 			<tr >
-				<td align = "center">자기소개서 작성<br><input type = "button" value = "추가하기" onclick = "showTr()"></td>
+				<td align = "center">자기소개서 작성<br><input type = "button" class="btn btn-primary" value = "추가하기" onclick = "showTr()"></td>
 			</tr>
 			<tr id = titleset0 style="display:none;">
 				<td align = 'center'>
@@ -247,9 +247,9 @@ function delSet3(){
 				<input type = 'button' value = '삭제' onclick = "delSet3()"></td>
 			</tr>
 		</table>
-		<table border = "1" style = "width : 100%;">
+		<table class="table" border = "1" style = "width : 100%;">
 			<tr align = "center"> 
-				<td><input type = "submit" value = "작성완료">        <input type = "button" value = "초기화하기"></td>
+				<td><input type = "submit" class="btn btn-primary" value = "작성완료">        <input type = "button" class="btn btn-primary" value = "초기화하기"></td>
 			</tr>
 		</table>
 	</form>

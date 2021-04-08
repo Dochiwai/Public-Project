@@ -1,22 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix = "c" uri ="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page = "/layout/header.jsp"></jsp:include>
-	<form action = "/test/userlogin/LoginLogic.jsp" method = "post">
-		<div class = "login_text">
-			아이디
-		</div>
-		<div>
-			<input type = "text" name = "login_id">
-		</div>
-		<div class = "login_text">
-			패스워드
-		</div>
-		<div>		
-			<input type = "password" name = "login_password">
-		</div>
-		<div class = "login_submit">
-			<input type = "submit" value = "로그인">
-		</div>
-	</form>	
-<jsp:include page = "/layout/footer.jsp"></jsp:include>
+<link rel="stylesheet" type="text/css" href="/test/boot/css/bootstrap.css">
+<style>
+    body {
+        background: #f8f8f8;
+        padding: 60px 0;
+    }
+    
+    #login-form > div {
+        margin: 15px 0;
+    }
+
+</style>
+
+<div class="container" align = "center">
+    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title">환영합니다! <br/>아이디와 비밀번호를 입력해주세요!</div>
+            </div>
+            <div class="panel-body">
+                <form id="login-form" action = "/test/userlogin/LoginLogic.jsp" method = "post">
+                    <div>
+                        <input type="text" class="form-control" name="login_id" placeholder="Username" autofocus>
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" name="login_password" placeholder="Password">
+                    </div>
+                    <div>
+                        <button type="submit" class="form-control btn btn-primary">로그인</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

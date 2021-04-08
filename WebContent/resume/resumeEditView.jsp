@@ -145,14 +145,14 @@ function delSet3(){
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include> 
 	<form action = "ResumeUpdateLogic.jsp" method = "post" enctype="multipart/form-data">
-		<table border = "1" align = "center" style = "width :100%;"  >
+		<table border = "1" class="table table-bordered" align = "center" style = "width :100%;"  >
 			<tr>
 				<td>타이틀 <input type="hidden"name="resume_number" value="${resume_num }"></td>
 				<td colspan ="6"><input type = "text" name = "r_main_title" value = "${dto.r_title }"placeholder="이력서의 제목을 입력해주세요" style= "width: 100%;"></td>
 			</tr>
 			<tr>
 				<td rowspan="5"><img id="print" src= "${image }" height = "200" alt="이미지를 선택해 주세요"><br>
-				<input type="file" id="sel-file" name = "r_ficture" accept="image/*">
+				<input type="file" class="btn btn-primary" id="sel-file" name = "r_ficture" accept="image/*">
 				<input type = "hidden" name = "filename_2" value = "${dto.r_picture}">
 				<td colspan="6"  width="90%" align = "center" >개인정보</td>
 			</tr>
@@ -231,14 +231,14 @@ function delSet3(){
 		</table>
 		<table border = "1" id = "self_id" style = "width : 100%;">
 			<tr >
-				<td align = "center">자기소개서 작성<br><input type = "button" value = "추가하기" onclick = "showTr()"></td>
+				<td align = "center">자기소개서 작성<br><input type = "button" class="btn btn-primary" value = "추가하기" onclick = "showTr()"></td>
 			</tr>
 				<c:if test = "${null == dto.r_self_head_1}">
 					<tr id = titleset0 style="display:none;">
 						<td align = 'center'>
 						<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid0'name = 'title0'><br>
 						<textarea style= 'width: 100%; height :100;' id = 'textid0' name = 'area0'></textarea>
-						<input type = 'button' value = '삭제' onclick = "delSet0()"></td>
+						<input type = 'button' value = '삭제' class="btn btn-primary" onclick = "delSet0()"></td>
 					</tr>
 				</c:if>
 				<c:if test = "${null != dto.r_self_head_1 }">
@@ -246,7 +246,7 @@ function delSet3(){
 						<td align = 'center'>
 						<input type = 'text' value = "${dto.r_self_head_1 }" placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid0'name = 'title0'><br>
 						<textarea style= 'width: 100%; height :100;' id = 'textid0' name = 'area0'>${dto.r_self_text_1}</textarea>
-						<input type = 'button' value = '삭제' onclick = "delSet0()"></td>
+						<input type = 'button' value = '삭제' class="btn btn-primary" onclick = "delSet0()"></td>
 					</tr>
 				</c:if>
 				<c:if test = "${null == dto.r_self_head_2}">
@@ -254,7 +254,7 @@ function delSet3(){
 						<td align = 'center'>
 						<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid1'name = 'title1'><br>
 						<textarea style= 'width: 100%; height :100;' id = 'textid1' name = 'area1'></textarea>
-						<input type = 'button' value = '삭제' onclick = "delSet1()"></td>
+						<input type = 'button' value = '삭제' class="btn btn-primary" onclick = "delSet1()"></td>
 					</tr>
 				</c:if>
 				<c:if test = "${null != dto.r_self_head_2 }">
@@ -262,7 +262,7 @@ function delSet3(){
 						<td align = 'center'>
 						<input type = 'text' value = "${dto.r_self_head_2 }" placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid1'name = 'title1'><br>
 						<textarea style= 'width: 100%; height :100;' id = 'textid1' name = 'area1'>${dto.r_self_text_2}</textarea>
-						<input type = 'button' value = '삭제' onclick = "delSet1()"></td>
+						<input type = 'button' value = '삭제' class="btn btn-primary" onclick = "delSet1()"></td>
 					</tr>
 				</c:if>
 				<c:if test = "${null == dto.r_self_head_3}">
@@ -270,7 +270,7 @@ function delSet3(){
 						<td align = 'center'>
 						<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid2'name = 'title2'><br>
 						<textarea style= 'width: 100%; height :100;' id = 'textid2' name = 'area2'></textarea>
-						<input type = 'button' value = '삭제' onclick = "delSet2()"></td>
+						<input type = 'button' value = '삭제' class="btn btn-primary" onclick = "delSet2()"></td>
 					</tr>
 				</c:if>
 				<c:if test = "${null != dto.r_self_head_3 }">
@@ -278,7 +278,7 @@ function delSet3(){
 						<td align = 'center'>
 						<input type = 'text' value = "${dto.r_self_head_3 }" placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid2'name = 'title2'><br>
 						<textarea style= 'width: 100%; height :100;' id = 'textid2' name = 'area2'>${dto.r_self_text_3}</textarea>
-						<input type = 'button' value = '삭제' onclick = "delSet2()"></td>
+						<input type = 'button' value = '삭제' class="btn btn-primary" onclick = "delSet2()"></td>
 					</tr>
 				</c:if>
 				<c:if test = "${null == dto.r_self_head_4}">
@@ -286,7 +286,7 @@ function delSet3(){
 						<td align = 'center'>
 						<input type = 'text' placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid3'name = 'title3'><br>
 						<textarea style= 'width: 100%; height :100;' id = 'textid3' name = 'area3'></textarea>
-						<input type = 'button' value = '삭제' onclick = "delSet3()"></td>
+						<input type = 'button' value = '삭제' class="btn btn-primary" onclick = "delSet3()"></td>
 					</tr>
 				</c:if>
 				<c:if test = "${null != dto.r_self_head_4 }">
@@ -294,13 +294,15 @@ function delSet3(){
 						<td align = 'center'>
 						<input type = 'text' value = "${dto.r_self_head_4 }" placeholder = '제목'  style= 'width: 100%; height :30;' id = 'titleid3'name = 'title3'><br>
 						<textarea style= 'width: 100%; height :100;' id = 'textid3' name = 'area3'>${dto.r_self_text_4}</textarea>
-						<input type = 'button' value = '삭제' onclick = "delSet3()"></td>
+						<input type = 'button' value = '삭제' class="btn btn-primary" onclick = "delSet3()"></td>
 					</tr>
 				</c:if>
 		</table>
 		<table border = "1" style = "width : 100%;">
 			<tr align = "center"> 
-				<td><input type = "submit" value = "수정하기"> <input type = "button" value = "삭제하기"  onclick="location.href='/test/resume/resumedel.jsp?id=${dto.r_id}&&num=${resume_num }'">  <input type = "button" value = "뒤로가기" onclick="history.back();"></td>
+				<td><input type = "submit" class="btn btn-primary" value = "수정하기">
+				 <input type = "button" class="btn btn-primary"value = "삭제하기"  onclick="location.href='/test/resume/resumedel.jsp?id=${dto.r_id}&&num=${resume_num }'">
+				   <input type = "button" class="btn btn-primary" value = "뒤로가기" onclick="history.back();"></td>
 			</tr>
 		</table>
 	</form>

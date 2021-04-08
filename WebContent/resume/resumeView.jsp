@@ -145,9 +145,9 @@ function delSet3(){
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include> 
 	<form action = "ResumeUpdateLogic.jsp" method = "post" enctype="multipart/form-data">
-		<table border = "1" align = "center" style = "width :100%;"  >
+		<table class="table table-hover" border = "1" align = "center" style = "width :100%;"  >
 			<tr>
-				<td>타이틀 <input type="hidden"name="resume_number" value="${resume_num }"></td>
+				<td aling = "center">타이틀 <input type="hidden"name="resume_number" value="${resume_num }"></td>
 				<td colspan ="6"><input type = "text" name = "r_main_title" value = "${dto.r_title }"placeholder="이력서의 제목을 입력해주세요" style= "width: 100%;" readonly="readonly"></td>
 			</tr>
 			<tr>
@@ -291,7 +291,8 @@ function delSet3(){
 		</table>
 		<table border = "1" style = "width : 100%;">
 			<tr align = "center"> 
-				<td><input type = "button" value = "수정하기" onclick = "location.href = '/test/resume/resumeEditViewLogic.jsp?id=${resume_id}&&num=${resume_num}&&title=${resume_title}'"><input type = "button" value = "뒤로가기" onclick="history.back();"></td>
+				<td><input type = "button" class="btn btn-primary" value = "수정하기" onclick = "location.href = '/test/resume/resumeEditViewLogic.jsp?id=${resume_id}&&num=${resume_num}&&title=${resume_title}'">
+				<input type = "button" class="btn btn-primary" value = "뒤로가기" onclick="history.back();"></td>
 			</tr>
 		</table>
 	</form>

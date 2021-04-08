@@ -68,10 +68,10 @@ $(function() {
 </script>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
 	<form action = "WorkSearchSearchLogic.jsp" method = "post">
-		<table border = "1" style = "width :100%;">
+		<table border = "1" class="table table-bordered" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
-					<h3>직업을 찾아보자..</h3>
+					<h3>구인게시판</h3>
 				</td>
 			</tr>
 			<tr>
@@ -140,10 +140,10 @@ $(function() {
 			</tr>
 			<tr>
 				<td colspan = "7">
-					<input type = "text" style = "width : 90%;" name = "title_name" placeholder="검색하기">
-					<input type = "submit" value = "검색">
-					<input type = "button" value = "리셋" onclick = "window.location.reload()">
-					<a href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
+					<input type = "text" class="form-control" style = "width : 100%;" name = "title_name" placeholder="검색하기">
+					<input type = "submit" class="btn btn-primary" value = "검색">
+					<input type = "button" class="btn btn-primary" value = "리셋" onclick = "window.location.reload()">
+					<a class="btn btn-primary" href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
 				</td>
 			</tr>
 				<tr>
@@ -169,23 +169,23 @@ $(function() {
 						<table border = "1" style = "width :100%;">
 							<tr>
 								<td colspan = "2">
-									<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">제목 : ${list.work_title}</a> 
+									<a class="table table-bordered" href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">제목 : ${list.work_title}</a> 
 								</td>
 							</tr>
 							<tr>
 								<td colspan = "1">
-									<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">성별 : ${list.work_gender}	</a>	
+									<a class="table table-bordered" href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">성별 : ${list.work_gender}	</a>	
 								</td>
 								<td colspan = "1">
-									<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">나이 : ${list.work_age }</a>	
+									<a class="table table-bordered" href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">나이 : ${list.work_age }</a>	
 								</td>
 							</tr>
 							<tr>
 								<td colspan = "1">
-									<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">연봉 : ${list.work_money}</a>	
+									<a class="table table-bordered" href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">연봉 : ${list.work_money}</a>	
 								</td>
 								<td colspan = "1">
-								<a href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">지역 : ${list.work_where_head}</a>
+								<a class="table table-bordered" href="WorkViewLogic.jsp?no=${list.no}&&id=${list.id}&&title=${list.work_title}">지역 : ${list.work_where_head}</a>
 								</td>
 							</tr>
 						</table>

@@ -89,92 +89,100 @@ $(function() {
 </script>
 <%-- submit 버튼용 스크립트입니다. --%>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
-	<form class = "join_form" action = "./JoinLogic.jsp" method = "post"> 
-		<div class = "id">
-			<div class = "join_text_css">
-				아이디 
-			</div>
-			<div class = "join_id_text">
-				<input type = "text" name = "join_user_id" id = "user_input_id" required>
-			</div>
-			<div class = "id_overlap_check">
-				<div id = "id_overlap_result">
-					
+<div class="container" align = "center">
+    <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-2">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title">환영합니다!</div>
+            </div>
+            <div class="panel-body">
+                <form id="login-form" action = "./JoinLogic.jsp" method = "post">
+                <div class = "id">
+					<div class = "join_text_css">
+						아이디 
+					</div>
+					<div class = "join_id_text">
+						<input type = "text" class="form-control" name = "join_user_id" id = "user_input_id" required>
+					</div>
+					<div class = "id_overlap_check">
+						<div id = "id_overlap_result">
+							
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class = "password">
-			<div class = "join_text_css">
-				비밀번호 
-			</div>
-			<div class = "join_password_text">
-				<input type = "password" name = "join_user_password" id = "password1" required>
-			</div>
-			<div class = "join_text_css">
-				비밀번호 한번더~
-			</div>
-			<div class = "join_password_text">
-				<input type = "password" name = "join_user_password_onemore" id = "password2" required>
-			</div>
-			<div class = "join_password_equel_result" id = "password_result">
-				
-			</div>
-		</div>
-		<div class = "name">
-			<div class = "join_text_css">
-				이름 
-			</div>
-			<div class = "join_name_text">
-				<input type = "text" name = "join_user_name" required>
-			</div>
-		</div>
-		<div class = "join_text_css">
-			<div class = "join_user_gender">
-				<input type="radio" name="join_user_gender" value="남자" checked="checked">남자
-				<input type="radio" name="join_user_gender" value="여자">여자
-				<label>나이</label>
-				<input type="text" name = "join_user_age" required>
-			</div>
-		</div>
-		<div class = "addr">
-			<div class = "join_text_css">
-				거주지 // 나중에 api를 추가할건데 일단 귀찮아\서 패스.
-			</div>
-			<div class = "join_addr_text">
-				<select id = "selectID" name = "join_addr_head">
-					<c:forEach var = "list" items = "${headlist}" varStatus = "status">
-						<option value = "${list.head_addr}">${list.head_addr}</option>
-					</c:forEach>
-				</select>
-				광역시/도
-				<select id = "selectID2" name = "join_addr_middle">
-					<option value = "" required></option>
-				</select>
-				시/군/구<br>
-				상세주소 <input type = "text" name = "join_addr_end">
-			</div>
-		</div>
-		<div class = "phone">
-			<div class = "join_text_css">
-				핸드폰번호 
-			</div>
-			<div class = "join_phone_text">
-				<input type = "text" name = "join_user_phone" required>
-			</div>
-		</div>
-		<div class = "email">
-			<div class = "join_text_css">
-				이메일 
-			</div>
-			<div class = "join_email_text">
-				<input type = "email" name = "join_user_email" required>
-			</div>
-		</div>
-		<div class = "submit">
-			<div class = "join_submit">
-				<input type = "submit" name = "join_go" value = "회원가입" id = "join_go" disabled="">
-				<input type = "reset" value = "초기화">
-			</div>
-		</div>
-	</form>
+				<div class = "password">
+					<div class = "join_text_css">
+						비밀번호 
+					</div>
+					<div class = "join_password_text">
+						<input type = "password" class="form-control" placeholder="password" name = "join_user_password" id = "password1" required>
+					</div>
+					<div class = "join_password_text">
+						<input type = "password" class="form-control" placeholder="password" name = "join_user_password_onemore" id = "password2" required>
+					</div>
+					<div class = "join_password_equel_result" id = "password_result">
+						
+					</div>
+				</div>
+				<div class = "name">
+					<div class = "join_text_css">
+						이름 
+					</div>
+					<div class = "join_name_text">
+						<input type = "text" class="form-control" name = "join_user_name" required>
+					</div>
+				</div>
+				<div class = "join_text_css">
+					<div class = "join_user_gender">
+						<input type="radio" name="join_user_gender" value="남자" checked="checked">남자
+						<input type="radio" name="join_user_gender" value="여자">여자
+						<label>나이</label>
+						<input type="text" style = "width : 50px;"name = "join_user_age" required>
+					</div>
+				</div>
+				<div class = "addr">
+					<div class = "join_text_css">
+						거주지를 선택해주세요
+					</div>
+					<div class = "join_addr_text">
+						<select id = "selectID" name = "join_addr_head">
+							<c:forEach var = "list" items = "${headlist}" varStatus = "status">
+								<option value = "${list.head_addr}">${list.head_addr}</option>
+							</c:forEach>
+						</select>
+						광역시/도
+						<select id = "selectID2" name = "join_addr_middle">
+							<option value = "" required></option>
+						</select>
+						시/군/구<br>
+						상세주소 <input type = "text" name = "join_addr_end">
+					</div>
+				</div>
+				<div class = "phone">
+					<div class = "join_text_css">
+						핸드폰번호 
+					</div>
+					<div class = "join_phone_text">
+						<input type = "text" class="form-control" name = "join_user_phone" required>
+					</div>
+				</div>
+				<div class = "email">
+					<div class = "join_text_css">
+						이메일 
+					</div>
+					<div class = "join_email_text">
+						<input type = "email" class="form-control" name = "join_user_email" required>
+					</div>
+				</div>
+				<div class = "submit">
+					<div class = "join_submit">
+						<input type = "submit" class="form-control btn btn-primary"  name = "join_go" value = "회원가입" id = "join_go" disabled=""><br/><br/>
+						<input type = "reset" class="form-control btn btn-primary"  value = "초기화">
+					</div>
+				</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <jsp:include page = "/layout/footer.jsp"></jsp:include>

@@ -31,6 +31,7 @@ public class ProfileEditLogic extends HttpServlet {
 			result = 1;
 			AddrDao dao = AddrDao.getInstance();
 			ArrayList<Head_Addr_Dto> dto = dao.head_search();
+			System.out.println(dto.get(0).getHead_addr());
 			request.setAttribute("headlist", dto);
 			AddrDao addrdao = AddrDao.getInstance();
 			String headnum = addrdao.middle_search(dto.get(0).getHead_addr());

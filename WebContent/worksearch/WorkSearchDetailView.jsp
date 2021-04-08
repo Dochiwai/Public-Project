@@ -121,10 +121,10 @@ $(function() {
 	<input type = "hidden" id = "get_title"name = "get_title" value = "${get_title }">
 	<input type = "hidden" id = "now_user_id" value = "${sessionScope.currentid }">
 	<input type = "hidden" id = "support_list_id" value = "${support_list}">
-		<table border = "1" style = "width :100%;">
+		<table border = "1" class="table table-bordered" style = "width :100%;">
 			<tr>
 				<td colspan = "7">
-					<h3>직업을 수정해보자..</h3>
+					<h3></h3>
 				</td>
 			</tr>
 			<tr>
@@ -240,16 +240,15 @@ $(function() {
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td  colspan = "7" align = "center">
 					<input type = "hidden" name = "imageback_1" value = "${imageback_1 }">
 					<input type = "hidden" name = "imageback_2" value = "${imageback_2 }">
 					<c:if test = "${userdto.id == sessionScope.currentid}">
-						<input type = "button" value = "수정!" onclick = "location.href = 'WorkEditViewLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
-						<input type = "button" value = "삭제!" onclick = "location.href = 'WorkSearchDeleteLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
-						<input type = "button" value = "지원자보기" onclick = "openSupportWindow()">
+						<input type = "button" class="btn btn-primary"  value = "수정!" onclick = "location.href = 'WorkEditViewLogic.jsp?no=${get_no}&&id=${get_id}&&title=${get_title}'">
+						<input type = "button" class="btn btn-primary" value = "지원자보기" onclick = "openSupportWindow()">
 					</c:if>
 					<c:if test = "${userdto.id != sessionScope.currentid}" >
-						<input type = "button" value = "지원하기!" onclick = "openSelectWindow()">
+						<input type = "button" class="btn btn-primary"  value = "지원하기!" onclick = "openSelectWindow()">
 					</c:if>
 				</td>
 			</tr>

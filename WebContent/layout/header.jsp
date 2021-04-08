@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" type="text/css" href="/test/layout/layout.css">
+<link rel="stylesheet" type="text/css" href="/test/boot/css/bootstrap.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>테스트스트</title>
+<title>사람인</title>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var id = document.getElementById("session_user_id").value;
@@ -44,49 +46,47 @@
 		window.open(url, title, option);
 	}
 </script>
-<link rel="stylesheet" type="text/css" href="/test/layout/layout.css">
 </head>
 	<body>	
 		<input type = "hidden" id = "session_user_id" value = "${sessionScope.currentid }">
         <div class = "header" align = "center">
-        	<h1><a href = "/test/index.jsp">사라민</a></h1>
+        <div>
+	        	<h1><a href = "/test/index.jsp">구인구직 웹페이지</a></h1>
+        </div>
         </div>
         <div class = "side">
         	<ul>
         		<c:if test = "${sessionScope.currentid != null }">
-        			<li>
-        				<input type = "button" value = "회사검색" onclick = "location.href = '/test/worksearch/WorkSearchMainViewLogic.jsp'">
+	        		<li class="list-group-item">
+	        				<input type = "button" class="btn btn-link" value = "알람" id = "alram_id" style = "background-color : white;" 
+	        						onclick = "alramcheck()">
+	        		</li>
+        			<li class="list-group-item">
+        				<input type = "button" class="btn btn-link" value = "회사검색" onclick = "location.href = '/test/worksearch/WorkSearchMainViewLogic.jsp'">
         			</li>
-        			<li>
-        				<input type = "button" value = "이력서관리" onclick = "location.href = '/test/resume/ResumeMainViewLogic.jsp'">
+        			<li class="list-group-item">
+        				<input type = "button" class="btn btn-link"  value = "이력서관리" onclick = "location.href = '/test/resume/ResumeMainViewLogic.jsp'">
         			</li>
-        			<li>
-        				<input type = "button" value = "입사지원관리" onclick = "location.href = '/test/resume/ResumeListViewLogic.jsp'">
+        			<li class="list-group-item">
+        				<input type = "button" class="btn btn-link" value = "입사지원관리" onclick = "location.href = '/test/resume/ResumeListViewLogic.jsp'">
         			</li>
         		</c:if>
-        		<li>
+        		<li class="list-group-item">
         			<c:if test = "${sessionScope.currentid == null }">
-        				<input type = "button" value = "회원가입" onclick = "location.href = '/test/userjoin/UserJoinViewLogic.jsp'">
+        				<input type = "button" class="btn btn-link" value = "회원가입" onclick = "location.href = '/test/userjoin/UserJoinViewLogic.jsp'">
         			</c:if>
         			<c:if test = "${sessionScope.currentid != null}"> 
-        				<input type = "button" value = "내정보수정" onclick = "location.href = '/test/profile/profilepasswordView.jsp'">
+        				<input type = "button" class="btn btn-link" value = "내정보수정" onclick = "location.href = '/test/profile/profilepasswordView.jsp'">
         			</c:if>
         		</li>
-        		<li>
+        		<li class="list-group-item">
         			<c:if test = "${sessionScope.currentid == null }">
-        				<input type = "button" value = "로그인" onclick = "location.href = '/test/userlogin/LoginView.jsp'">
+        				<input type = "button" class="btn btn-link" value = "로그인" onclick = "location.href = '/test/userlogin/LoginView.jsp'">
         			</c:if>
         			<c:if test = "${sessionScope.currentid != null }">
-        				<input type = "button" value = "로그아웃" onclick = "location.href = '/test/userlogin/LogoutLogic.jsp'">
+        				<input type = "button" class="btn btn-link" value = "로그아웃" onclick = "location.href = '/test/userlogin/LogoutLogic.jsp'">
         			</c:if>
-        		</li>
-        		
-        		<li>
-        			<c:if test = "${sessionScope.currentid != null }">
-        				<input type = "button" value = "알람" id = "alram_id" style = "background-color : white;" 
-        						onclick = "alramcheck()">
-        			</c:if>
-        		</li>
+        		</li>  		
         	</ul>
         </div>
         <div class = "body">

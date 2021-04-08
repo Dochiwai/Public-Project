@@ -7,7 +7,7 @@
 			<div>
 				현재 작성한 이력서<br>
 			</div>
-			<table border = "1" align = "center" style = "width :80%;"  >
+			<table class="table table-striped" border = "1" align = "center" style = "width :80%;"  >
 			<tr>
 				<td align = "center">No.</td><td align = "center">이력서 제목</td>
 			</tr>
@@ -22,7 +22,7 @@
 			</table>
 		</c:if>
 		<c:if test = "${list == null }">
-			현재 등록된 이력서가 없어영 ㅠㅠ<br>
+			현재 등록된 이력서가 없습니다.<br>
 		</c:if>
-	<input type = "button" value = "이력서 작성하기" onclick = "location.href = 'ResumeWriteViewLogic.jsp'">
+	<input type = "button" class="btn btn-primary" value = "이력서 작성하기" onclick = "location.href = 'ResumeWriteViewLogic.jsp'">
 <jsp:include page = "/layout/footer.jsp"></jsp:include>
