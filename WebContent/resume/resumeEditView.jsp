@@ -224,9 +224,10 @@ function delSet3(){
 				<td colspan = "4" id = "job_end">
 					<c:forEach var = "listtt" items = "${job_end_list}" varStatus = "status">
 						<input type = "radio" name = "j_end_name" id = "j_end_id" value = "${listtt.j_id }"
-						 <c:if test="${dto.r_wantjob_end eq listtt.j_keyid}">checked</c:if>>${listtt.j_end_job }<br>
+						 <c:if test="${dto.r_wantjob_end eq listtt.j_id}">checked</c:if>>${listtt.j_end_job }<br>
 					</c:forEach>
 				</td>
+				
 			</tr>
 		</table>
 		<table border = "1" id = "self_id" style = "width : 100%;">

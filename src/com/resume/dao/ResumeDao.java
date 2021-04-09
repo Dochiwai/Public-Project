@@ -134,9 +134,9 @@ public class ResumeDao {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				dto = new Resume_End_Dto();
-				dto.setJ_id(rs.getString("j_keyid"));
+				dto.setJ_id(rs.getString("j_id"));
 				dto.setJ_end_job(rs.getString("j_end"));
-				dto.setJ_keyid(rs.getString("j_id"));
+				dto.setJ_keyid(rs.getString("j_keyid"));
 				list.add(dto);
 			}
 		}catch(Exception e) {

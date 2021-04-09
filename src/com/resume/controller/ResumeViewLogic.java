@@ -57,7 +57,7 @@ public class ResumeViewLogic extends HttpServlet {
 			adao.checkinsert(work_no,work_title,searchid,id);
 			request.setAttribute("dto", dto);
 		}
-		
+		System.out.println(dto.getR_wantjob_end());
 
 		ResumeDao jobdao = ResumeDao.getInstance();
 		ArrayList<Resume_Head_Dto> joblist = jobdao.jog_head_list();

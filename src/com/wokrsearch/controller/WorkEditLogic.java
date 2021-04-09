@@ -78,35 +78,6 @@ public class WorkEditLogic extends HttpServlet {
 		job_middle = multi.getParameter("j_middle_name");   
 		job_end = multi.getParameter("j_end_name");    
 		
-		if(job_head.equals("1")) {
-			if(job_middle.equals("1")) {
-				if(job_end.equals("1")) {
-					job_end = "1";
-				}else {
-					job_end = "2";
-				}
-			}else if (job_middle.equals("2")) {
-				if(job_end.equals("1")) {
-					job_end = "3";
-				}else {
-					job_end = "4";
-				}
-			}
-		}else if(job_head.equals("2")){
-			if(job_middle.equals("1")) {
-				if(job_end.equals("1")) {
-					job_end = "5";
-				}else {
-					job_end = "6";
-				}
-			}else if(job_middle.equals("2")){
-				if(job_end.equals("1")) {
-					job_end = "7";
-				}else {
-					job_end = "8";
-				}
-			}
-		}
 		
 		WorkDao dao = WorkDao.getInstance();
 		result = dao.editworksearch(where_head,where_middle,age,gender,position,money,job_head,job_middle,job_end

@@ -64,38 +64,11 @@ public class ResumeUpdateLogic extends HttpServlet {
 		title3 =  multi.getParameter("title3");
 		text3 =  multi.getParameter("area3");
 		number = multi.getParameter("resume_number");
+		System.out.println("j head : " + j_head + " j mid : " + j_middle + " j end : " + j_end);
 		if(null == fileName) {
 			fileName = multi.getParameter("filename_2");
 		}
-		if(j_head.equals("1")) {
-			if(j_middle.equals("1")) {
-				if(j_end.equals("1")) {
-					j_end = "1";
-				}else {
-					j_end = "2";
-				}
-			}else if (j_middle.equals("2")) {
-				if(j_end.equals("1")) {
-					j_end = "3";
-				}else {
-					j_end = "4";
-				}
-			}
-		}else if(j_head.equals("2")){
-			if(j_middle.equals("1")) {
-				if(j_end.equals("1")) {
-					j_end = "5";
-				}else {
-					j_end = "6";
-				}
-			}else{
-				if(j_end.equals("1")) {
-					j_end = "7";
-				}else {
-					j_end = "8";
-				}
-			}
-		}
+
 		
 		result = dao.updateResume(id,main_title,fileName,addr_head,addr_middle,j_head,j_middle,j_end,title0,text0,title1,text1,title2,text2,title3,text3,number);
 

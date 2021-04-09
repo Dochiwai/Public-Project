@@ -59,35 +59,6 @@ public class ResumeJoinLogic extends HttpServlet {
 		title3 =  multi.getParameter("title3");
 		text3 =  multi.getParameter("area3");
 		
-		if(j_head.equals("1")) {
-			if(j_middle.equals("1")) {
-				if(j_end.equals("1")) {
-					j_end = "1";
-				}else {
-					j_end = "2";
-				}
-			}else if (j_middle.equals("2")) {
-				if(j_end.equals("1")) {
-					j_end = "3";
-				}else {
-					j_end = "4";
-				}
-			}
-		}else if(j_head.equals("2")){
-			if(j_middle.equals("3")) {
-				if(j_end.equals("1")) {
-					j_end = "5";
-				}else {
-					j_end = "6";
-				}
-			}else{
-				if(j_end.equals("4")) {
-					j_end = "7";
-				}else {
-					j_end = "8";
-				}
-			}
-		}		
 //		System.out.println(title0);
 //		System.out.println(title1);
 //		System.out.println(title2);
