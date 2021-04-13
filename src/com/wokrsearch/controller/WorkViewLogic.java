@@ -34,17 +34,18 @@ public class WorkViewLogic extends HttpServlet {
 		String title = request.getParameter("title");
 		request.setAttribute("get_title", title);
 		String user_id = request.getParameter("userid");
-		if(null != user_id) {
-			alramDao adao = alramDao.getInstance();
-			adao.checkchange(user_id,no);
-		}
 		
 //		System.out.println(no);
 //		System.out.println(id);
 //		System.out.println(title);
 		
+		if(null != user_id) {
+			alramDao adao = alramDao.getInstance();
+			adao.checkchange(user_id,no);
+		}
 		WorkDao userdao = WorkDao.getInstance();
 		WorkDto userdto = userdao.worksearchview(no,id,title);
+
 		request.setAttribute("userdto", userdto);
 		
 		ResumeDao dao = ResumeDao.getInstance();

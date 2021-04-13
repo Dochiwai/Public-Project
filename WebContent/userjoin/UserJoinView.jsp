@@ -2,29 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri ="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <%-- ajax 통신용 스크립트입니다. --%>
 <script type="text/javascript">
-
-$(function() {
-   //formAction s  
-      $('#selectID').change(function() {
-      var city = $("#selectID").val();
-         $.ajax({
-        	  type:'GET',
-        	  async:'true',
-        	  url: './AddrMiddleSearch.do?city=' + city,
-        	  data: city,
-        	  dataType: 'text',
-            success: function(data) {
-               $("#selectID2").empty();
-               $("#selectID2").append(data);        
-            }, 
-            error: function(xhr, status) {
-            }
-         }); // $.ajax
-         return false;
-      }); //formAction e
-   });
 $(function() {
 	   //formAction s  
 	      $('#user_input_id').keyup(function() {
@@ -80,12 +60,29 @@ $(function() {
 		    		  }
 		    	  }else{
 		    		  $("#password_result").empty();
-		    		  $("#password_result").append("비밀번호가 하지않습니다.");
+		    		  $("#password_result").append("비밀번호가 일치하지않습니다.");
 		    		  joinbtn.disabled = true;
 		    	  }
 		      return false;
 		      }); //formAction e
 		   });
+</script>
+<script>
+function searchAddr(){
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr = "";
+            
+            if(data.userSelectedType === 'R'){
+            	addr = data.roadAddress;
+            }else{
+            	addr = data.jibunAddress;
+            }
+            
+            document.getElementById('join_addr_headAndMiddle').value = addr;
+        }
+    }).open();
+}
 </script>
 <%-- submit 버튼용 스크립트입니다. --%>
 <jsp:include page = "/layout/header.jsp"></jsp:include>
@@ -142,20 +139,11 @@ $(function() {
 				</div>
 				<div class = "addr">
 					<div class = "join_text_css">
-						거주지를 선택해주세요
+						거주지를 선택해주세요<input type = "button" value = "주소지 선택" onclick = "searchAddr()">
 					</div>
 					<div class = "join_addr_text">
-						<select id = "selectID" name = "join_addr_head">
-							<c:forEach var = "list" items = "${headlist}" varStatus = "status">
-								<option value = "${list.head_addr}">${list.head_addr}</option>
-							</c:forEach>
-						</select>
-						광역시/도
-						<select id = "selectID2" name = "join_addr_middle">
-							<option value = "" required></option>
-						</select>
-						시/군/구<br>
-						상세주소 <input type = "text" name = "join_addr_end">
+						일반주소 <input type = "text" id = "join_addr_headAndMiddle" name = "join_addr_head" style = "width : 80%;" readonly="readonly"><br/>
+						상세주소 <input type = "text" name = "join_addr_end" style = "width : 80%;">
 					</div>
 				</div>
 				<div class = "phone">

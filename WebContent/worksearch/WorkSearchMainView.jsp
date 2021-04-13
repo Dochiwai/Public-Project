@@ -143,7 +143,9 @@ $(function() {
 					<input type = "text" class="form-control" style = "width : 100%;" name = "title_name" placeholder="검색하기"><br/>
 					<input type = "submit" class="btn btn-primary" value = "검색">
 					<input type = "button" class="btn btn-primary" value = "리셋" onclick = "window.location.reload()">
+				<c:if test = "${sessionScope.currentid == 'admin' }">
 					<a class="btn btn-primary" href="/test/worksearch/WorkSearchWriteViewLogic.jsp">쓰기</a>
+				</c:if>
 				</td>
 			</tr>
 			<c:if test = "${worklist != null}">

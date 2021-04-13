@@ -26,7 +26,7 @@ public class UserJoinLogic extends HttpServlet {
 		int age = Integer.parseInt(request.getParameter("join_user_age"));
 		String gender = request.getParameter("join_user_gender");
 		String addr_head = request.getParameter("join_addr_head");
-		String addr_middle = request.getParameter("join_addr_middle");
+		String addr_middle = "/";
 		String addr_end = request.getParameter("join_addr_end");
 		String phone = request.getParameter("join_user_phone");
 		String email = request.getParameter("join_user_email");

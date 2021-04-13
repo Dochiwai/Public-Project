@@ -233,8 +233,8 @@ $(function() {
 				<td	colspan = "7" align = "center" style = "background-color : #E1E3E2; width : 100%; " >
 					<div id = "text_image_test" style = "background-color : white; height : 100%; width : 80%; margin : 0px;" >
 					<input type = "hidden" name = "divval" id = "divval" value = "">
-					<img id = "print1" src="${image1 }" height = "200" alt="첫번째 이미지를 선택해주세요 이미지 미선택시 글작성 불가능">
-					<img id = 'print2' src ="${image2 }" height = '200' alt = '두번째 이미지를 선택해주세요.'>
+					<img id = "print1" width = "800" height = "50%" src="${image1 }" height = "200" alt="첫번째 이미지를 선택해주세요 이미지 미선택시 글작성 불가능">
+					<img id = 'print2' width = "800" height = "50%" src ="${image2 }" height = '200' alt = '두번째 이미지를 선택해주세요.'>
 					${userdto.work_text }
 					</div>
 				</td>
